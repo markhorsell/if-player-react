@@ -2,11 +2,12 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from './containers/Home';
 import About from './containers/About';
+import './App.css';
 
 const App = props => (
   <Router>
     <div>
-      <ul>
+      <ul className='nav'>
         <li>
           <Link to="/">Home</Link>
         </li>
