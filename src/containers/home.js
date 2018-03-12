@@ -11,9 +11,18 @@ class Home extends Component {
 
     super(props)
   }
+  getDescription(roomData){
+    return roomData.desc;
+  }
+  getRoomData(roomId,rooms){
+    const roomData = rooms.filter(room => room.id===roomId)[0];
+    return roomData; 
+  }
 
   render() {
     const { gameData } = this.props;
+    const currentRoomData = this.getRoomData(gameData.room,gameData.rooms);
+    const description = this.getDescription(currentRoomData);
 
     return (
       <div className='home'>
@@ -21,11 +30,13 @@ class Home extends Component {
         <p>This will hold the component and component trees for the game</p>
         <p>TODO build header component</p>
         <p>TODO build room description component</p>
-        <RoomDescription description='description goes here'/>
+        <RoomDescription description={description}/>
+        <p>TODO Put the images in the image folder</p>
+        <p>TODO Should image be a subcomponent of RoomDescription or should i put it on this level?</p>
         <p>TODO build message component</p>
         <p>TODO build inventory component</p>
         <p>TODO build map component</p>
-        <p>TODO build commands commponent</p>
+        <p>TODO build commands component SHOULD BE THE ONLY Thing that needs to be a class and which dispatches to redux</p>
         
       </div>
     )
