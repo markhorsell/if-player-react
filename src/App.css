@@ -1,23 +1,4 @@
 
-body {
-	
-}
-/* Consider sass */
-/* https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-css-preprocessor-sass-less-etc */
-/* LoVe HAte */
-.nav li {
-  font-size:40px;
-  color:black; 
-}
-.nav li:link {
-  color:red; 
-}
-.nav li:visited {
-  color:green; 
-}
-.nav li:hover {
-  color:blue;
-}
-.nav li:active {
-  color:orange; 
+.main {
+	background-color: darkgrey;
 }

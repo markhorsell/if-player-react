@@ -1,0 +1,28 @@
+.nav {
+    width: 100%;
+    background-color: lightgrey;
+    margin:0px;
+}
+
+
+.nav >li {
+    display: inline-block;
+    font-size: 30px;
+    
+    margin:20px;
+}
+
+.nav >li >a {
+	color: black;
+}
+
+.nav >li >a:link, .nav >li >a:visited {
+	color: darkgrey;
+}
+ 
+
+.nav >li >a:hover, .nav >li >a:active {
+    color: black;
+}
+
+ 
