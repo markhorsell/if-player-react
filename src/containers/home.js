@@ -1,6 +1,9 @@
 
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import RoomDescription from '../components/RoomDescription';
+
+import './Home.css';
 
 class Home extends Component {
 
@@ -13,11 +16,12 @@ class Home extends Component {
     const { gameData } = this.props;
 
     return (
-      <div>
+      <div className='home'>
         <h2>{gameData.gameTitle}</h2>
         <p>This will hold the component and component trees for the game</p>
         <p>TODO build header component</p>
         <p>TODO build room description component</p>
+        <RoomDescription description='description goes here'/>
         <p>TODO build message component</p>
         <p>TODO build inventory component</p>
         <p>TODO build map component</p>
