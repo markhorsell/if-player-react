@@ -1,38 +1,60 @@
 
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+
 import RoomDescription from '../components/RoomDescription';
+import RoomImage from '../components/RoomImage';
 
 import './Home.css';
 
+import { getRoomData } from '../utils/dataHelper';
+
+/*
+The project was built assuming it is hosted at the server root.
+You can control this with the homepage field in your package.json.
+For example, add this to build it for GitHub Pages:
+
+  "homepage" : "http://myname.github.io/myapp",
+*/
+//npm run build
+//yarn global add serve
+//yarn - s serve
+//http://localhost:5000
+
+
 class Home extends Component {
-
   constructor(props) {
-
     super(props)
   }
   getDescription(roomData){
     return roomData.desc;
   }
-  getRoomData(roomId,rooms){
-    const roomData = rooms.filter(room => room.id===roomId)[0];
-    return roomData; 
+  getImage(roomData){
+    return roomData.image;
   }
+  
 
   render() {
+    console.log(process.env.PUBLIC_URL);
     const { gameData } = this.props;
-    const currentRoomData = this.getRoomData(gameData.room,gameData.rooms);
+    const currentRoomData = getRoomData(gameData.room,gameData.rooms);
     const description = this.getDescription(currentRoomData);
+    const image = this.getImage(currentRoomData);
+    //TODO assets folder will be switchable later
+    const assetsFolder='theshivers';
+
 
     return (
       <div className='home'>
         <h2>{gameData.gameTitle}</h2>
-        <p>This will hold the component and component trees for the game</p>
+        
         <p>TODO build header component</p>
-        <p>TODO build room description component</p>
+        
+        <p>{'process.env.PUBLIC_URL = '+process.env.PUBLIC_URL}</p>
+        <RoomImage imageURL ={'/assets/'+assetsFolder+'/images/'+image}/>
         <RoomDescription description={description}/>
-        <p>TODO Put the images in the image folder</p>
-        <p>TODO Should image be a subcomponent of RoomDescription or should i put it on this level?</p>
+        
+      
         <p>TODO build message component</p>
         <p>TODO build inventory component</p>
         <p>TODO build map component</p>

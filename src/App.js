@@ -8,6 +8,8 @@ import Nav from './components/Nav';
 import Home from './containers/Home';
 import About from './containers/About';
 
+
+
 import {
     initData,
 } from './actions'
@@ -20,6 +22,7 @@ class App extends Component {
     }
     componentWillMount() {
         //Inital state
+      
         this.props.dispatch(initData(data))
     }
 
