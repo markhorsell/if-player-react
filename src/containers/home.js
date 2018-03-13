@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import RoomDescription from '../components/RoomDescription';
 import RoomImage from '../components/RoomImage';
+import WorldMap from '../components/WorldMap';
 import Debug from '../components/Debug';
 
 import './Home.css';
@@ -43,6 +44,7 @@ class Home extends Component {
     const currentRoomData = getRoomData(gameData.room,gameData.rooms);
     const description = this.getDescription(currentRoomData);
     const image = this.getImage(currentRoomData);
+
     //TODO assets folder will be switchable later
     const assetsFolder='theshivers';
 
@@ -56,11 +58,12 @@ class Home extends Component {
         <p>{'process.env.PUBLIC_URL = '+process.env.PUBLIC_URL}</p>
         <RoomImage path ={'/assets/'+assetsFolder+'/images/'} image={image}/>
         <RoomDescription description={description}/>
+        <p>TODO items in this location</p>
         
       
         <p>TODO build message component</p>
-        <p>🤡 TODO build inventory component - check anguar code - where are inventory items stored - in a room ? 0? -1? 🌈</p>
-        <p>TODO build map component</p>
+        <p>TODO build inventory component - check anguar code - where are inventory items stored - in a room ? 0? -1?</p>
+        <WorldMap discoveredPaths={'this will be a discovered paths list'}/>
         <p>TODO build commands component SHOULD BE THE ONLY Thing that needs to be a class and which dispatches to redux</p>
 
         <Debug data={gameData}/>
