@@ -53,13 +53,13 @@ class Home extends Component {
         
         <p>TODO build header component</p>
         
-        <p>{'process.env.PUBLIC_URL = '+process.env.PUBLIC_URL+'🤡'}</p>
+        <p>{'process.env.PUBLIC_URL = '+process.env.PUBLIC_URL}</p>
         <RoomImage path ={'/assets/'+assetsFolder+'/images/'} image={image}/>
         <RoomDescription description={description}/>
         
       
         <p>TODO build message component</p>
-        <p>TODO build inventory component</p>
+        <p>🤡 TODO build inventory component - check anguar code - where are inventory items stored - in a room ? 0? -1? 🌈</p>
         <p>TODO build map component</p>
         <p>TODO build commands component SHOULD BE THE ONLY Thing that needs to be a class and which dispatches to redux</p>
 
