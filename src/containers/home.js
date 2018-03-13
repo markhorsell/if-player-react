@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import RoomDescription from '../components/RoomDescription';
 import RoomImage from '../components/RoomImage';
+import Debug from '../components/Debug';
 
 import './Home.css';
 
@@ -23,9 +24,11 @@ For example, add this to build it for GitHub Pages:
 
 
 class Home extends Component {
+  /*
   constructor(props) {
     super(props)
   }
+  */
   getDescription(roomData){
     return roomData.desc;
   }
@@ -50,8 +53,8 @@ class Home extends Component {
         
         <p>TODO build header component</p>
         
-        <p>{'process.env.PUBLIC_URL = '+process.env.PUBLIC_URL}</p>
-        <RoomImage imageURL ={'/assets/'+assetsFolder+'/images/'+image}/>
+        <p>{'process.env.PUBLIC_URL = '+process.env.PUBLIC_URL+'🤡'}</p>
+        <RoomImage path ={'/assets/'+assetsFolder+'/images/'} image={image}/>
         <RoomDescription description={description}/>
         
       
@@ -59,6 +62,8 @@ class Home extends Component {
         <p>TODO build inventory component</p>
         <p>TODO build map component</p>
         <p>TODO build commands component SHOULD BE THE ONLY Thing that needs to be a class and which dispatches to redux</p>
+
+        <Debug data={gameData}/>
         
       </div>
     )

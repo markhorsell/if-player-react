@@ -16,13 +16,15 @@ import {
 
 class App extends Component {
 
+  /*
     constructor(props) {
         super(props)
 
     }
+    */
     componentWillMount() {
         //Inital state
-      
+
         this.props.dispatch(initData(data))
     }
 

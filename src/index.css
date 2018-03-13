@@ -58,6 +58,7 @@ html {
 }
 body {
 	font-family: sans-serif;
+	background-color: black;
 
 	
 }
@@ -66,7 +67,7 @@ body {
 }
 div {
 	/*for debug */
-	border: 1px dotted red;
+	/*border: 1px dotted red;*/
 }
 
 
