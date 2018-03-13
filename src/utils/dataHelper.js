@@ -5,3 +5,8 @@ export const getRoomData = (roomId,rooms) => {
     return roomData; 
   }
 
+  export const getInventory = (objects) => {
+    const inventory = objects.filter(object => object.loc==='INV').map(object => object.obj);
+    return inventory.join(',');
+  }
+

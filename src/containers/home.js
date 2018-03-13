@@ -9,7 +9,7 @@ import Debug from '../components/Debug';
 
 import './Home.css';
 
-import { getRoomData } from '../utils/dataHelper';
+import { getRoomData,getInventory  } from '../utils/dataHelper';
 
 /*
 The project was built assuming it is hosted at the server root.
@@ -44,6 +44,7 @@ class Home extends Component {
     const currentRoomData = getRoomData(gameData.room,gameData.rooms);
     const description = this.getDescription(currentRoomData);
     const image = this.getImage(currentRoomData);
+    const inventory = getInventory(gameData.objects);
 
     //TODO assets folder will be switchable later
     const assetsFolder='theshivers';
@@ -63,6 +64,7 @@ class Home extends Component {
       
         <p>TODO build message component</p>
         <p>TODO build inventory component - check anguar code - where are inventory items stored - in a room ? 0? -1?</p>
+        <p>{inventory}</p>
         <WorldMap discoveredPaths={'this will be a discovered paths list'}/>
         <p>TODO build commands component SHOULD BE THE ONLY Thing that needs to be a class and which dispatches to redux</p>
 

@@ -1,5 +1,6 @@
 
 {
+	
 	"gameTitle":"The Shivers",
 	"score":0,
 	"money":0,
@@ -208,9 +209,12 @@
 
 
 
-    ],
+	],
+	
+	"_object_comment": "inventory item are :loc === 'INV'",
 	
 	"objects":[
+	{"obj":"BOOK","loc":"INV","desc":"A book, but you don't recognise the language."},	
 	{"obj":"FROG","loc":"","desc":"A large warty frog"},
 	{"obj":"GOLDEN_APPLE","loc":"","desc":"A golden apple"},
 	{"obj":"INV_TRIGGER1","loc":"44","desc":"invisible","show":false},
