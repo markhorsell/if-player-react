@@ -2,8 +2,12 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 
+
+import Header from '../components/Header';
 import RoomDescription from '../components/RoomDescription';
 import RoomImage from '../components/RoomImage';
+import Inventory from '../components/Inventory';
+import Commands from '../components/Commands';
 import WorldMap from '../components/WorldMap';
 import Debug from '../components/Debug';
 
@@ -58,9 +62,9 @@ class Home extends Component {
 
     return (
       <div className='home'>
-        <h2>{gameData.gameTitle}</h2>
         
-        <p>TODO build header component</p>
+        
+        <Header title={gameData.gameTitle}/>
         
         <p>{'process.env.PUBLIC_URL = '+process.env.PUBLIC_URL}</p>
         <RoomImage path ={'/assets/'+assetsFolder+'/images/'} image={image}/>
@@ -69,10 +73,11 @@ class Home extends Component {
         
       
         <p>TODO build message component</p>
-        <p>TODO build inventory component - check anguar code - where are inventory items stored - in a room ? 0? -1?</p>
-        <p>{inventory}</p>
+        
+        <Inventory items={inventory}/>
+        <Commands/>
         <WorldMap discoveredPaths={'this will be a discovered paths list'}/>
-        <p>TODO build commands component SHOULD BE THE ONLY Thing that needs to be a class and which dispatches to redux</p>
+        
 
         <Debug data={gameData}/>
         
