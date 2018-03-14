@@ -41,6 +41,12 @@ class Home extends Component {
   render() {
     console.log(process.env.PUBLIC_URL);
     const { gameData } = this.props;
+
+    //Dont Allow rendering if data is empty as will break
+    if(Object.keys(gameData).length === 0) {
+      return <p>NOT LOADED</p>
+
+    }
     const currentRoomData = getRoomData(gameData.room,gameData.rooms);
     const description = this.getDescription(currentRoomData);
     const image = this.getImage(currentRoomData);
