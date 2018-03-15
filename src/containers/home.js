@@ -92,7 +92,7 @@ class Home extends Component {
         <WorldMap discoveredPaths={'this will be a discovered paths list'}/>
         
 
-        <Debug data={gameData}/>
+        {/*<Debug data={gameData}/>*/}
         
       </div>
     )

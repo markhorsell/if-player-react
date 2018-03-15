@@ -2,16 +2,16 @@
 	text-align: center;
 	margin:0 auto;
 	width:50%;
-	background-color:white;
+	background-color:grey;
 }
 
 .home > p {
 	font-size:12px;
-	background-color: yellow;
+	/*background-color: yellow;*/
 	
 }
 .home > div {
 	font-size:12px;
-	background-color: pink;
+	/*background-color: pink;*/
 
 }

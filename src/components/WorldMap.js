@@ -16,13 +16,13 @@ class WorldMap extends Component{
     	console.log(this.props.discoveredPaths)
         const ctx = this.refs.canvas.getContext('2d');
         ctx.fillStyle='lightgreen';
-        ctx.fillRect(0,0, 300, 150);
+        ctx.fillRect(0,0, 150, 75);
     }
 
 render(){
 	
 	return (
-		<canvas ref="canvas"></canvas>
+		<canvas ref="canvas" width='150px' height='75px'></canvas>
 		)
 	}	
 }
