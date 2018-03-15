@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 
 
 
-class Commands extends Component{
+class Actions extends Component{
 	/*
 	  constructor(props) {
     	super(props)
@@ -17,9 +17,9 @@ class Commands extends Component{
 render(){
 	
 	return (
-		<p>AVAILABLE COMMANDS WILL GO HERE</p>
+		<p>AVAILABLE ACTIONS WILL GO HERE</p>
 		)
 	}	
 }
 
-export default Commands;
+export default Actions;

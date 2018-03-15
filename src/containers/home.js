@@ -7,13 +7,13 @@ import Header from '../components/Header';
 import RoomDescription from '../components/RoomDescription';
 import RoomImage from '../components/RoomImage';
 import Inventory from '../components/Inventory';
-import Commands from '../components/Commands';
+import Actions from '../components/Actions';
 import WorldMap from '../components/WorldMap';
 import Debug from '../components/Debug';
 
 import './Home.css';
 
-import { getRoomData,getInventory  } from '../utils/dataHelper';
+import { getRoomData,getInventory,getAllowedActions  } from '../utils/dataHelper';
 
 /*
 The project was built assuming it is hosted at the server root.
@@ -43,7 +43,7 @@ class Home extends Component {
   
 
   render() {
-    console.log(process.env.PUBLIC_URL);
+    
     const { gameData } = this.props;
 
     //Dont Allow rendering if data is empty as will break
@@ -51,10 +51,17 @@ class Home extends Component {
       return <p>NOT LOADED</p>
 
     }
-    const currentRoomData = getRoomData(gameData.room,gameData.rooms);
+    const rooms = gameData.rooms;
+    const room = gameData.room;
+    const objects = gameData.objects;
+    const actions = gameData.actions;
+    const money = gameData.money;
+    const currentRoomData = getRoomData(room,rooms);
     const description = this.getDescription(currentRoomData);
     const image = this.getImage(currentRoomData);
-    const inventory = getInventory(gameData.objects);
+    const inventory = getInventory(objects);
+    const allowedActions = getAllowedActions(objects,actions,room,money);
+    console.log(allowedActions);
 
     //TODO assets folder will be switchable later
     const assetsFolder='theshivers';
@@ -75,7 +82,7 @@ class Home extends Component {
         <p>TODO build message component</p>
         
         <Inventory items={inventory}/>
-        <Commands/>
+        <Actions/>
         <WorldMap discoveredPaths={'this will be a discovered paths list'}/>
         
 
