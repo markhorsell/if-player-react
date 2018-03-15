@@ -82,7 +82,7 @@ class Home extends Component {
         <p>TODO build message component</p>
         
         <Inventory items={inventory}/>
-        <Actions/>
+        <Actions allowableActions={allowedActions}/>
         <WorldMap discoveredPaths={'this will be a discovered paths list'}/>
         
 

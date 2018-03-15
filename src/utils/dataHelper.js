@@ -46,19 +46,18 @@ export const getAllowedActions = (objects,actions,room,money) => {
 			}
 			// Room Contains Condition
 			if (condition.hasOwnProperty('roomContains')) {
-				let roomContains = false;
+				let roomContains = 0;
 				for (let j = 0; j < objects.length; j++) {
-					
-					//TODO why is it only checking the 0 index of roomContains?
-					//Comment this method fully
-					
-					if (condition.roomContains[0] === objects[j].obj) {
-						if (objects[j].loc === room) {
-							roomContains = true;
+					for (let k = 0; k < condition.roomContains.length; k++) {
+						if (condition.roomContains[k] === objects[j].obj) {
+							if (objects[j].loc === room) {
+								roomContains++;
+							}
 						}
 					}
 				}
-				if (roomContains === false) {
+				
+				if (roomContains !== condition.roomContains.length) {
 					allowed = false;
 				}
 			}
