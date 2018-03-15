@@ -9,19 +9,13 @@ export const getInventory = (objects) => {
     const inventory = objects.filter(object => object.loc==='INV').map(object => object.obj);
     return inventory;
 }
+export const getLocationObjects= (roomId,objects) => {
+	const locObjects = objects.filter(object => object.loc===roomId).map(object => object.obj);
+    return locObjects;
+}
 export const getAllowedActions = (objects,actions,room,money) => {
 
 	let allowableActions= [];
-
-	/*
-	console.log(money);
-	console.log(room);
-	console.log(actions);
-	console.log(objects);
-	*/
-
-	
-	
 		let actionsToCheck = actions;
 		// ONLY return actions that meet the conditions
 		for (let i = 0; i < actions.length; i++) {

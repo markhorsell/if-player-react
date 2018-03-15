@@ -8,8 +8,8 @@ import {
 
 export function gameData(state = {}, action) {
 
-  console.log('io.js - categories');
-  console.log(action.type);
+
+  console.log('Action = '+action.type);
   switch (action.type) {
     case INIT_DATA:
       return {

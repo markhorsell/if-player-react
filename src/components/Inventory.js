@@ -7,7 +7,7 @@ const Inventory = ({ items=[] }) => {
 
 	const inventory = items.join(",");
 	return (
-	<div>{inventory}</div>
+	<div>You are carrying : {inventory}</div>
 	)
 	}
 
