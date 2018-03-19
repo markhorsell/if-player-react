@@ -40,7 +40,7 @@ class Home extends Component {
   }
   */
   getDescription(roomData){
-    return roomData.desc;
+    return roomData.desc[0];
   }
   getImage(roomData){
     return roomData.image;
@@ -71,7 +71,8 @@ class Home extends Component {
     //TODO assets folder will be switchable later
     const assetsFolder='theshivers';
 
-
+    //stateless functional component where possible
+    //
     return (
       <div className='home'>
         
@@ -89,7 +90,7 @@ class Home extends Component {
         
         <Inventory items={inventory}/>
         <Actions allowableActions={allowableActions}/>
-        <WorldMap discoveredPaths={'this will be a discovered paths list'}/>
+        <WorldMap discoveredPaths={[]}/>
         
 
         {/*<Debug data={gameData}/>*/}
