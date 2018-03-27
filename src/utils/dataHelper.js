@@ -13,6 +13,17 @@ export const getLocationObjects= (roomId,objects) => {
 	const locObjects = objects.filter(object => object.loc===roomId).map(object => object.obj);
     return locObjects;
 }
+
+export const getAllowedExits =(roomData) => {
+	const allowedExits=[];
+	Object.keys(roomData.exits).forEach(function(key) {
+		var val = roomData.exits[key];
+		if(val!=='0'){
+			allowedExits.push(key);
+		}
+	  });
+	return(allowedExits);
+}
 export const getAllowedActions = (objects,actions,room,money) => {
 
 	let allowableActions= [];
@@ -82,7 +93,4 @@ export const getAllowedActions = (objects,actions,room,money) => {
 			
 	}	
 		return allowableActions;
-
-   
-   
 }

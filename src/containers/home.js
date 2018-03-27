@@ -17,6 +17,7 @@ import './Home.css';
 import { getRoomData,
   getInventory,
   getAllowedActions,
+  getAllowedExits,
   getLocationObjects 
  } from '../utils/dataHelper';
 
@@ -57,16 +58,17 @@ class Home extends Component {
 
     }
     const rooms = gameData.rooms;
-    const room = gameData.room;
+    const roomId = gameData.room;
     const objects = gameData.objects;
     const actions = gameData.actions;
     const money = gameData.money;
-    const currentRoomData = getRoomData(room,rooms);
+    const currentRoomData = getRoomData(roomId,rooms);
     const description = this.getDescription(currentRoomData);
-    const locationObjects = getLocationObjects(room,objects);
+    const locationObjects = getLocationObjects(roomId,objects);
     const image = this.getImage(currentRoomData);
     const inventory = getInventory(objects);
-    const allowableActions = getAllowedActions(objects,actions,room,money);
+    const allowableExits = getAllowedExits(currentRoomData);
+    const allowableActions = getAllowedActions(objects,actions,roomId,money);
 
     //TODO assets folder will be switchable later
     const assetsFolder='theshivers';
@@ -80,7 +82,7 @@ class Home extends Component {
         <Header title={gameData.gameTitle}/>
         
         <p>{'process.env.PUBLIC_URL = '+process.env.PUBLIC_URL}</p>
-        <p>Room = {room}</p>
+        <p>Room = {roomId}</p>
         <RoomImage path ={'/assets/'+assetsFolder+'/images/'} image={image}/>
         <RoomDescription description={description}/>
         <LocationObjects items={locationObjects}/>
@@ -89,7 +91,7 @@ class Home extends Component {
         <p>TODO build message component</p>
         
         <Inventory items={inventory}/>
-        <Actions allowableActions={allowableActions}/>
+        <Actions allowableExits={allowableExits} allowableActions={allowableActions}/>
         <WorldMap discoveredPaths={[]}/>
         
 
