@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Header from '../components/Header';
 import RoomDescription from '../components/RoomDescription';
 import RoomImage from '../components/RoomImage';
+import Message from '../components/Message';
 import LocationObjects from '../components/LocationObjects';
 import Inventory from '../components/Inventory';
 import Actions from '../components/Actions';
@@ -67,6 +68,7 @@ class Home extends Component {
     const locationObjects = getLocationObjects(roomId,objects);
     const image = this.getImage(currentRoomData);
     const inventory = getInventory(objects);
+    const message ="messages come from the results of actions";
     const allowableExits = getAllowedExits(currentRoomData);
     const allowableActions = getAllowedActions(objects,actions,roomId,money);
 
@@ -87,8 +89,8 @@ class Home extends Component {
         <RoomDescription description={description}/>
         <LocationObjects items={locationObjects}/>
         
-      
-        <p>TODO build message component</p>
+        <Message message={message}/>
+        
         
         <Inventory items={inventory}/>
         <Actions allowableExits={allowableExits} allowableActions={allowableActions}/>
