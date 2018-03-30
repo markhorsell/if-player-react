@@ -13,7 +13,7 @@ import Actions from '../components/Actions';
 import WorldMap from '../components/WorldMap';
 //import Debug from '../components/Debug';
 
-import './Home.css';
+//import './Home.css';
 
 import { getRoomData,
   getInventory,
@@ -79,7 +79,7 @@ class Home extends Component {
     //
     return (
       <React.StrictMode>
-      <div className='home'>
+      <div>
         
         
         <Header title={gameData.gameTitle}/>

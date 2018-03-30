@@ -58,17 +58,110 @@ html {
 }
 body {
 	font-family: sans-serif;
-	background-color: black;
+	background-color: #F4F4F4;
 
 	
 }
 *, *:before, *:after {
   box-sizing: inherit;
 }
+/*for debug */
+/*
 div {
-	/*for debug */
-	/*border: 1px dotted red;*/
+	
+	border: 1px dotted red;
+	
+}*/
+
+.main {
+
+	margin:0 auto;
+	
 }
+ 
+@import url(https://fonts.googleapis.com/css?family=Jacques+Francois+Shadow|Rye|Yesteryear|VT323);
+body {
+	font-family: 'VT323', monospace;
+}
+
+/*INCLUDES CONSOLE!!!*/
+
+@media only screen and (min-width: 321px) {
+    .main {
+		/*background-color: #080f50;*/
+		width:90%;
+	}
+}
+@media only screen and (min-width: 700px) {
+    .main {
+		/*background-color: #50082a;*/
+		width:630px;
+	}
+}
+
+@media only screen and (max-width: 320px) {
+    .main {
+		/*background-color: #08502c;*/
+		width:100%;
+	}
+}
+
+div .header {
+    
+    font-family: 'Yesteryear', cursive;
+   
+    color:gold;
+    text-align:center;
+    font-size:40px;
+    
+}
+.room-description {
+	position: relative;
+	display:inline-block;
+	width:100%;
+	height:60px;
+	/*color:white;*/
+	/*background-color: Black;*/
+	
+}
+.nav {
+    display:inline-block;
+    max-width: 320px; 
+    /*background-color: lightgrey;*/
+    margin:10px;
+}
+
+
+.nav >li {
+    display: inline-block;
+    font-size: 16px;
+
+    margin:5px;
+    margin-right:10px;
+    
+}
+
+.nav >li >a {
+	color: darkgray;
+}
+
+.nav >li >a:link, .nav >li >a:visited {
+	color: darkgray
+}
+ 
+
+.nav >li >a:hover, .nav >li >a:active {
+    color: black;
+}
+.debug {
+    font-style:monospace;
+    background-color: black;
+    color:white;
+    text-align:left;
+    font-size:10px;
+    font-weight:100;
+}
+
 
 
 

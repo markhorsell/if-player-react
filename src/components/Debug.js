@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Debug.css';
+
 
 const Debug = ({ data}) => {
 
