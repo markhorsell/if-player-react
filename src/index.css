@@ -79,9 +79,10 @@ div {
 	
 }
  
-@import url(https://fonts.googleapis.com/css?family=Jacques+Francois+Shadow|Rye|Yesteryear|VT323);
+@import url(https://fonts.googleapis.com/css?family=Jacques+Francois+Shadow|Rye|Yesteryear|VT323|Lato);
 body {
 	font-family: 'VT323', monospace;
+	font-family: 'Lato', sans-serif;
 }
 
 /*INCLUDES CONSOLE!!!*/
