@@ -161,6 +161,13 @@ div .header {
     font-size:10px;
     font-weight:100;
 }
+div .buttons >p {
+	display:inline-block;
+	/*trbl*/
+	padding:2px 5px 2px 5px;
+	background-color:gold !important;
+	color:black;
+}
 
 
 

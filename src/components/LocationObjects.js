@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const LocationObjects = ({ items = [] }) => {
 	const locationObjects = items.join(",");
 	return (
-		<div>In this place are : {locationObjects}</div>
+		<div>In this place : {locationObjects}</div>
 	)
 }
 LocationObjects.propTypes = {

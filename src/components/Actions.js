@@ -24,8 +24,12 @@ class Actions extends Component {
 		})
 		return (
 			<Fragment>
-			<p>{allowableExits}</p>
-			<p>{allowableActions}</p>
+				<div class='buttons'>
+				{allowableExits.length > 0 &&	
+			<p>{allowableExits}</p>}
+			{allowableActions.length > 0 &&	
+			<p>{allowableActions}</p>}
+			</div>
 			</Fragment>
 		)
 	}

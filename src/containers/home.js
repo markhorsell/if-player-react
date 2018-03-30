@@ -88,13 +88,10 @@ class Home extends Component {
         
         <p>{'process.env.PUBLIC_URL = '+process.env.PUBLIC_URL}</p>
         <p>Room = {roomId}</p>
+        <Message message={message}/>
         <RoomImage path ={'/assets/'+assetsFolder+'/images/'} image={image}/>
         <RoomDescription description={description}/>
         <LocationObjects items={locationObjects}/>
-        
-        <Message message={message}/>
-        
-        
         <Inventory items={inventory}/>
         <Actions allowableExits={allowableExits} allowableActions={allowableActions}/>
         <WorldMap discoveredPaths={[]}/>
