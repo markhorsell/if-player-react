@@ -11,7 +11,7 @@ import LocationObjects from '../components/LocationObjects';
 import Inventory from '../components/Inventory';
 import Actions from '../components/Actions';
 import WorldMap from '../components/WorldMap';
-import Debug from '../components/Debug';
+//import Debug from '../components/Debug';
 
 import './Home.css';
 
@@ -78,10 +78,13 @@ class Home extends Component {
     //stateless functional component where possible
     //
     return (
+      <React.StrictMode>
       <div className='home'>
         
         
         <Header title={gameData.gameTitle}/>
+
+        <p>TODO https://popmotion.io/pose/</p>
         
         <p>{'process.env.PUBLIC_URL = '+process.env.PUBLIC_URL}</p>
         <p>Room = {roomId}</p>
@@ -100,6 +103,8 @@ class Home extends Component {
         {/*<Debug data={gameData}/>*/}
         
       </div>
+      </React.StrictMode>
+    
     )
   }
 }
