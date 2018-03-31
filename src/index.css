@@ -85,7 +85,6 @@ body {
 	font-family: 'Lato', sans-serif;
 }
 
-/*INCLUDES CONSOLE!!!*/
 
 @media only screen and (min-width: 321px) {
     .main {
@@ -162,12 +161,16 @@ div .header {
     font-size:10px;
     font-weight:100;
 }
-div .buttons >p {
+.actions >Button {
 	display:inline-block;
 	/*trbl*/
 	padding:2px 5px 2px 5px;
+	border: none;
 	background-color:gold !important;
 	color:black;
+}
+.message{
+	background-color: cornflowerblue;
 }
 
 

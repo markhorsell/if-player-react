@@ -17,8 +17,8 @@ import WorldMap from '../components/WorldMap';
 
 import { getRoomData,
   getInventory,
-  getAllowedActions,
-  getAllowedExits,
+  //getAllowedActions,
+  //getAllowedExits,
   getLocationObjects 
  } from '../utils/dataHelper';
 
@@ -61,16 +61,15 @@ class Home extends Component {
     const rooms = gameData.rooms;
     const roomId = gameData.room;
     const objects = gameData.objects;
-    const actions = gameData.actions;
-    const money = gameData.money;
+    //const actions = gameData.actions;
+    //const money = gameData.money;
     const currentRoomData = getRoomData(roomId,rooms);
     const description = this.getDescription(currentRoomData);
     const locationObjects = getLocationObjects(roomId,objects);
     const image = this.getImage(currentRoomData);
     const inventory = getInventory(objects);
     const message ="messages come from the results of actions";
-    const allowableExits = getAllowedExits(currentRoomData);
-    const allowableActions = getAllowedActions(objects,actions,roomId,money);
+    
 
     //TODO assets folder will be switchable later
     const assetsFolder='theshivers';
@@ -78,7 +77,7 @@ class Home extends Component {
     //stateless functional component where possible
     //
     return (
-      <React.StrictMode>
+     
       <div>
         
         
@@ -93,14 +92,16 @@ class Home extends Component {
         <RoomDescription description={description}/>
         <LocationObjects items={locationObjects}/>
         <Inventory items={inventory}/>
-        <Actions allowableExits={allowableExits} allowableActions={allowableActions}/>
+      
+        <Actions/>
+       
         <WorldMap discoveredPaths={[]}/>
         
 
         {/*<Debug data={gameData}/>*/}
         
       </div>
-      </React.StrictMode>
+    
     
     )
   }

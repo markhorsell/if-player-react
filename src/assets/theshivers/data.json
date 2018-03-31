@@ -39,7 +39,7 @@
 	],
 	"actions":[
 		{"action":"Testing the button layout",
-		"conditions":{"areCarrying":["this is for debug - remove this object if need extra btn for testing"]},
+		"conditions":{"roomContains":["BRANDY"]},
 		"results":{"message":"nothing happened its just a test button"}},
 		
 		{"action":"Drink the schnapps",

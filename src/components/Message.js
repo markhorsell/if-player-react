@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 
 const Message = ({ message }) => (
-	<div className="room-description">{message}</div>
+	<div className="message">{message}</div>
 	)
 
     Message.propTypes = {
