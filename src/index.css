@@ -165,9 +165,11 @@ div .header {
 	display:inline-block;
 	/*trbl*/
 	padding:2px 5px 2px 5px;
+	margin:4px;
 	border: none;
 	background-color:gold !important;
 	color:black;
+	cursor:pointer;
 }
 .message{
 	background-color: cornflowerblue;

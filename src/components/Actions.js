@@ -33,7 +33,7 @@ class Actions extends Component {
 			return a.action===action	
 		})[0].results;
 		console.log(results);
-		console.log('Those results now need to be parsed and then the state needs to be updated');
+		console.log('Those results now need to be parsed ( should the reducer have the logic for this?) and then the state needs to be updated');
 		console.log('TODO - this needs to make an action dispatch ');
 		
 		console.log('So retreive action results and update state');
