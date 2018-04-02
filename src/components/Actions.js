@@ -6,11 +6,14 @@ import PropTypes from 'prop-types';
 
 import {
 	getRoomData,
-	//getInventory,
 	getAllowedActions,
 	getAllowedExits,
-	//getLocationObjects
 } from '../utils/dataHelper';
+
+import {
+    doAction,
+
+} from '../actions'
 
 
 
@@ -32,11 +35,14 @@ class Actions extends Component {
 		const results=actions.filter(a =>{
 			return a.action===action	
 		})[0].results;
+
+		this.props.dispatch(doAction(results));
+		/*
 		console.log(results);
 		console.log('Those results now need to be parsed ( should the reducer have the logic for this?) and then the state needs to be updated');
 		console.log('TODO - this needs to make an action dispatch ');
 		
-		console.log('So retreive action results and update state');
+		console.log('So retreive action results and update state');*/
 
 	}
 
