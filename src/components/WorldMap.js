@@ -11,11 +11,11 @@ class WorldMap extends Component {
 
     componentDidMount() {
         this.updateCanvas();
-       window.addEventListener("resize", this.updateCanvas.bind(this));
+        window.addEventListener("resize", this.updateCanvas.bind(this));
     }
-    
-    componentWillUnmount () {
-       window.removeEventListener("resize", this.updateCanvas.bind(this));
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.updateCanvas.bind(this));
     }
     updateCanvas() {
         console.log(this.props.discoveredPaths)
@@ -25,15 +25,18 @@ class WorldMap extends Component {
         //Keep as a square so use width for both
         this.canvasRef.current.width = width;
         this.canvasRef.current.height = width;
-        ctx.fillStyle = 'lightgreen';
-        ctx.fillRect(0, 0, width, width);
+        //ctx.fillStyle = '#FCF2D7';
+        //ctx.fillRect(0, 0, width, width);
         ctx.beginPath();
-        ctx.arc(width / 2, width / 2, width / 2, 0, 2 * Math.PI);
-        ctx.stroke();
+        ctx.arc(width / 2, width / 2, (width / 2)-20, 0, 2 * Math.PI);
+      
+        ctx.fillStyle ="rgba(99, 255, 99, 0.3)";
+        ctx.fill();
+        
     }
     render() {
         return (
-            <div ref={this.mapContainerRef}>
+            <div className='worldmap' ref={this.mapContainerRef}>
                 <canvas ref={this.canvasRef} ></canvas>
             </div>
         )
