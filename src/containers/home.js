@@ -48,6 +48,7 @@ class Home extends Component {
     return roomData.image;
   }
   
+  
 
   render() {
     
@@ -68,7 +69,7 @@ class Home extends Component {
     const locationObjects = getLocationObjects(roomId,objects);
     const image = this.getImage(currentRoomData);
     const inventory = getInventory(objects);
-    const message ="messages come from the results of actions";
+    const message =gameData.lastMessage;
     
 
     //TODO assets folder will be switchable later

@@ -11,7 +11,8 @@ import {
 } from '../utils/dataHelper';
 
 import {
-    doAction,
+	resultMessage,
+	resultScore,
 
 } from '../actions'
 
@@ -28,24 +29,42 @@ class Actions extends Component {
 	}
 	handleAction = (action) => (e) => {
 		e.preventDefault();
-		console.clear();
+		//console.clear();
 		const { gameData } = this.props;
 		const actions = gameData.actions;
 		console.log('if action was available then it must be valid - but i could double check? maybe i might need to do if game is restored from a saved');
-		const results=actions.filter(a =>{
-			return a.action===action	
+		const results = actions.filter(a => {
+			return a.action === action
 		})[0].results;
 
-		this.props.dispatch(doAction(results));
-		/*
-		console.log(results);
-		console.log('Those results now need to be parsed ( should the reducer have the logic for this?) and then the state needs to be updated');
-		console.log('TODO - this needs to make an action dispatch ');
-		
-		console.log('So retreive action results and update state');*/
+		//this.props.dispatch(doAction(results));
+
+		console.log('TODO dispath actions for each result');
+		for (var key of Object.keys(results)) {
+
+			this.dispatchResults(key, results[key])
+
+		}
 
 	}
-
+	dispatchResults(key, data) {
+		console.log(key + ": " + data);
+		switch (key) {
+			case 'message':
+			this.props.dispatch(resultMessage(data));
+				break;
+			case 'take':
+				console.log('TODO dispatch take  ' + data);
+				break;
+			case 'changeScore':
+				console.log('TODO dispatch changescore ' + data);
+				//TODO USE mapDispatchToProps
+				this.props.dispatch(resultScore(data));
+				break;
+			default:
+				console.log('WARNING result = [' + key + '] is not being processed!');
+		}
+	}
 
 	render() {
 		const { gameData } = this.props;
@@ -67,8 +86,8 @@ class Actions extends Component {
 		const allowableActions = getAllowedActions(objects, actions, roomId, money).map(action => {
 			return action.action;
 		});
-		
-	
+
+
 
 		return (
 			<Fragment>
@@ -109,4 +128,5 @@ function mapStateToProps(state) {
 
 	}
 }
+//mapDispatchToProps() is a utility which will help your component to fire an action event (dispatching action which may cause change of application state)
 export default connect(mapStateToProps)(Actions)
