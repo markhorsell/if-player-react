@@ -10,7 +10,8 @@ export const getInventory = (objects) => {
     return inventory;
 }
 export const getLocationObjects= (roomId,objects) => {
-	const locObjects = objects.filter(object => object.loc===roomId).map(object => object.obj);
+	//return the whole object as may want to filter on visibility later
+	const locObjects = objects.filter(object => object.loc===roomId).map(object => object);
     return locObjects;
 }
 

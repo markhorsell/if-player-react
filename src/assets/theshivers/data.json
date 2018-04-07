@@ -168,7 +168,7 @@
 		"createExit":{"dir":"e","toRoom":"66"}}
 		}
 		,
-		{"action":"Play horn",
+		{"action":"Play horn2",
 		"conditions":{"location":"66","areCarrying":["PLAYABLE_HORN"]},
 		"results":{"message":"The king seems very interested in the horn and offers you a golden apple in exchange.",
 		"drop":["GOLDEN_APPLE"],"changeRoomDesc":["You are inside the city. The king is here. The hunting horn contained a message about the king's son which has settled his mind."]}

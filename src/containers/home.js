@@ -113,7 +113,7 @@ Home.propTypes = {
 
 function mapStateToProps(state) {
   //has testObj and happens before 13
-  console.log(state.gameData);
+  //console.log(state.gameData);
  
   const { gameData } = state;
   return {
