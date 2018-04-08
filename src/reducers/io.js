@@ -45,7 +45,7 @@ export function gameData(state = {}, action) {
     case RESULT_TAKE:
       const updatedObjects = state.objects.map((obj) => {
         action.data.forEach(element => {
-          if (obj.obj == element) {
+          if (obj.obj === element) {
             obj.loc = 'INV'
           }
         });
@@ -58,7 +58,7 @@ export function gameData(state = {}, action) {
 
       const droppedObjects = state.objects.map((obj) => {
         action.data.forEach(element => {
-          if (obj.obj == element) {
+          if (obj.obj === element) {
             obj.loc = state.room;
           }
         });
@@ -74,7 +74,7 @@ export function gameData(state = {}, action) {
     case RESULT_DESTROY:
       const updatedDestroyObjects = state.objects.map((obj) => {
         action.data.forEach(element => {
-          if (obj.obj == element) {
+          if (obj.obj === element) {
             obj.loc = ''
           }
         });
@@ -92,7 +92,7 @@ export function gameData(state = {}, action) {
       }
     case RESULT_ROOM_DESC:
       const rooms = state.rooms.map((r) => {
-        if (r.id == state.room) {
+        if (r.id === state.room) {
           r.desc = action.data
         }
         return r;
@@ -104,9 +104,9 @@ export function gameData(state = {}, action) {
       console.log(action.data);
       //{dir: "e", toRoom: "66"}
       const roomExits = state.rooms.map((r) => {
-        if (r.id == state.room) {
+        if (r.id === state.room) {
 
-          if (action.data.dir == 'e') {
+          if (action.data.dir === 'e') {
             r.exits.e = action.data.toRoom;
           }
         }

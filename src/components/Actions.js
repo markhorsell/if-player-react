@@ -39,9 +39,9 @@ class Actions extends Component {
 	componentDidMount() {
 	}
 	handleMove = (exit) => (e) => {
-		const rooms = this.props.gameData.rooms;
-		const roomId = this.props.gameData.room;
-		const currentRoomExits = getRoomData(roomId, rooms).exits;
+		const { rooms,room,actions } = this.props;
+		
+		const currentRoomExits = getRoomData(room, rooms).exits;
 		e.preventDefault();
 		switch (exit) {
 			case 'Up':
@@ -75,12 +75,21 @@ class Actions extends Component {
 	handleAction = (action) => (e) => {
 		e.preventDefault();
 
-		const { gameData } = this.props;
-		const actions = gameData.actions;
-		console.log('if action was available then it must be valid - but i could double check? maybe i might need to do if game is restored from a saved');
-		const results = actions.filter(a => {
-			return a.action === action
+		const { objects,actions,room,money } = this.props;
+
+		const allowableActions = getAllowedActions(objects, actions, room, money).map(action => {
+			return action;
+		});
+		console.log(allowableActions);
+		const results = allowableActions.filter(a => {
+			console.log('Bug is here? is getting only the first Play Horn?');
+			console.log('DO I NEED TO CHECK CONDITIONS AGAIN?')
+
+			console.log(a.action+ ':'+ action);
+			return a.action === action;
 		})[0].results;
+		console.log(results)
+		
 
 		for (var key of Object.keys(results)) {
 
@@ -133,13 +142,16 @@ class Actions extends Component {
 	}
 
 	render() {
-		const { gameData } = this.props;
-		const rooms = gameData.rooms;
-		const roomId = gameData.room;
-		const objects = gameData.objects;
-		const actions = gameData.actions;
-		const money = gameData.money;
-		const currentRoomData = getRoomData(roomId, rooms);
+		const {objects, actions, rooms, room,money } = this.props;
+
+		console.log('ACTIONS.js RENDER CALLED');
+
+		console.log('room ='+room)
+		console.log('rooms = '+rooms);
+		const currentRoomData = getRoomData(room, rooms);
+
+		console.log(currentRoomData);
+
 		const unsortedExits = getAllowedExits(currentRoomData).map(exit => {
 			if (exit === 'n') return 'North';
 			if (exit === 's') return 'South';
@@ -164,7 +176,7 @@ class Actions extends Component {
 			return e==='Down';
 		}))))));
 		
-		const allowableActions = getAllowedActions(objects, actions, roomId, money).map(action => {
+		const allowableActions = getAllowedActions(objects, actions, room, money).map(action => {
 			return action.action;
 		});
 
@@ -199,12 +211,18 @@ Actions.propTypes = {
 
 
 function mapStateToProps(state) {
-	//has testObj and happens before 13
 
+	//const { gameData } = state;
+	const {objects, actions, rooms, room,money } = state.gameData;
 
-	const { gameData } = state;
+	
+	
 	return {
-		gameData,
+		objects,
+		actions,
+		rooms,
+		room,
+		money,
 
 
 	}
