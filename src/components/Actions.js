@@ -80,15 +80,9 @@ class Actions extends Component {
 		const allowableActions = getAllowedActions(objects, actions, room, money).map(action => {
 			return action;
 		});
-		console.log(allowableActions);
 		const results = allowableActions.filter(a => {
-			console.log('Bug is here? is getting only the first Play Horn?');
-			console.log('DO I NEED TO CHECK CONDITIONS AGAIN?')
-
-			console.log(a.action+ ':'+ action);
 			return a.action === action;
 		})[0].results;
-		console.log(results)
 		
 
 		for (var key of Object.keys(results)) {
@@ -99,7 +93,6 @@ class Actions extends Component {
 
 	}
 	dispatchResults(key, data) {
-		console.log(key + ": " + data);
 		switch (key) {
 			case 'message':
 				this.props.dispatch(resultMessage(data));
@@ -144,13 +137,10 @@ class Actions extends Component {
 	render() {
 		const {objects, actions, rooms, room,money } = this.props;
 
-		console.log('ACTIONS.js RENDER CALLED');
-
-		console.log('room ='+room)
-		console.log('rooms = '+rooms);
+	
 		const currentRoomData = getRoomData(room, rooms);
 
-		console.log(currentRoomData);
+	
 
 		const unsortedExits = getAllowedExits(currentRoomData).map(exit => {
 			if (exit === 'n') return 'North';

@@ -16,8 +16,7 @@ import {
 
 
 export function gameData(state = {}, action) {
-  console.log('find reduder for : ' + action.type);
-  console.log('passed data ' + action.data);
+
   switch (action.type) {
     case INIT_DATA:
       return {
@@ -101,8 +100,7 @@ export function gameData(state = {}, action) {
         ...state, rooms: [...rooms]
       }
     case RESULT_CREATE_EXIT:
-      console.log(action.data);
-      //{dir: "e", toRoom: "66"}
+     
       const roomExits = state.rooms.map((r) => {
         if (r.id === state.room) {
 
