@@ -62,6 +62,7 @@ class Home extends Component {
     const rooms = gameData.rooms;
     const roomId = gameData.room;
     const objects = gameData.objects;
+    const message =gameData.lastMessage;
     //const actions = gameData.actions;
     //const money = gameData.money;
     const currentRoomData = getRoomData(roomId,rooms);
@@ -69,7 +70,7 @@ class Home extends Component {
     const locationObjects = getLocationObjects(roomId,objects);
     const image = this.getImage(currentRoomData);
     const inventory = getInventory(objects);
-    const message =gameData.lastMessage;
+    
     
 
     //TODO assets folder will be switchable later

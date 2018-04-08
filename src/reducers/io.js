@@ -1,6 +1,6 @@
 
 import {
-  INIT_DATA,
+  //INIT_DATA,
   RESULT_MESSAGE,
   RESULT_SCORE,
   RESULT_TAKE,
@@ -10,17 +10,39 @@ import {
   RESULT_MONEY,
   RESULT_ROOM_DESC,
   RESULT_CREATE_EXIT,
+  RESTART,
 
 
-} from '../actions'
+} from '../actions';
+
+import initialData from '../assets/theshivers/data.json';
+
+
+
 
 
 export function gameData(state ={}, action) {
 
   switch (action.type) {
+    case RESTART:
+    //RestartData needs to be a copy not a reference! 
+    const restartData =JSON.parse(JSON.stringify(initialData));
+    return {...state,
+        gameTitle: restartData.gameTitle,
+        score: restartData.score,
+        money: restartData.money,
+        room: restartData.room,
+        lastMessage: restartData.lastMessage,
+        discoveredPaths: restartData.discoveredPaths,
+        move: restartData.move,
+        rooms: restartData.rooms,
+        actions: restartData.actions,
+        objects: restartData.objects,
+      
+    };
+    /*
     case INIT_DATA:
-    console.log('INIT DATA - RESET');
-    console.log(action.data.objects);
+    
       return {
       
         gameTitle: action.data.gameTitle,
@@ -34,7 +56,7 @@ export function gameData(state ={}, action) {
         actions: action.data.actions,
         objects: action.data.objects,
       }
-     
+     */
     case RESULT_MESSAGE:
       return {
         ...state, lastMessage: action.data

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route} from "react-router-dom";
 import { connect } from 'react-redux';
 
 
-import data from './assets/theshivers/data.json';
+//import data from './assets/theshivers/data.json';
 
 import Nav from './components/Nav';
 import Home from './containers/Home';
@@ -12,7 +12,8 @@ import About from './containers/About';
 
 
 import {
-    initData,
+   // initData,
+   restart,
 } from './actions'
 
 class App extends Component {
@@ -29,7 +30,8 @@ class App extends Component {
         //.. i want to put the json on the server
         //..but for now just import it
 
-       this.props.dispatch(initData(data))
+       //this.props.dispatch(initData(data));
+       this.props.dispatch(restart());
     }
 
     render() {

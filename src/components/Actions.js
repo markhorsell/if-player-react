@@ -24,6 +24,7 @@ import {
 	resultRoomDesc,
 	resultCreateExit,
 	initData,
+	restart,
 	
 
 } from '../actions';
@@ -131,8 +132,9 @@ class Actions extends Component {
 				break;
 			case 'restart':
 			console.log('INIT DATA SHOULDNT CHANGE!?');
-				console.log('CAN I REST TO initialData?')
-				//this.props.dispatch(initData());
+				console.log('CAN I RESET TO initialData?')
+				this.props.dispatch(restart());
+				//'@@redux/INIT'
 				
 				break;
 			default:

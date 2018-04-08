@@ -11,6 +11,14 @@ export const RESULT_DESTROY = 'RESULT_DESTROY';
 export const RESULT_MONEY ='RESULT_MONEY';
 export const RESULT_ROOM_DESC='RESULT_ROOM_DESC';
 export const RESULT_CREATE_EXIT='RESULT_CREATE_EXIT';
+export const RESTART='RESTART';
+
+export function restart(){
+    return {
+        type:RESTART,
+        
+    }
+}
 
 export function initData(data){
     return {
