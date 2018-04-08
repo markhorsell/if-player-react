@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import initdata from '../assets/theshivers/data.json';
+
+
+
 
 
 
@@ -24,7 +26,9 @@ import {
 	initData,
 	
 
-} from '../actions'
+} from '../actions';
+
+
 
 
 
@@ -126,8 +130,10 @@ class Actions extends Component {
 				this.props.dispatch(resultCreateExit(data));
 				break;
 			case 'restart':
-			
-				this.props.dispatch(initData(initdata));
+			console.log('INIT DATA SHOULDNT CHANGE!?');
+				console.log('CAN I REST TO initialData?')
+				//this.props.dispatch(initData());
+				
 				break;
 			default:
 				console.warn('WARNING result = [' + key + '] is not being processed!');
@@ -135,13 +141,9 @@ class Actions extends Component {
 	}
 
 	render() {
+		console.log('Actions rendered');
 		const {objects, actions, rooms, room,money } = this.props;
-
-	
 		const currentRoomData = getRoomData(room, rooms);
-
-	
-
 		const unsortedExits = getAllowedExits(currentRoomData).map(exit => {
 			if (exit === 'n') return 'North';
 			if (exit === 's') return 'South';
@@ -165,10 +167,16 @@ class Actions extends Component {
 		}).concat(unsortedExits.filter(e=>{
 			return e==='Down';
 		}))))));
+
+		console.log(room);
+		console.log(objects);
+		console.log(actions);
 		
 		const allowableActions = getAllowedActions(objects, actions, room, money).map(action => {
 			return action.action;
 		});
+
+		console.log(allowableActions);
 
 
 
@@ -201,20 +209,15 @@ Actions.propTypes = {
 
 
 function mapStateToProps(state) {
-
-	//const { gameData } = state;
 	const {objects, actions, rooms, room,money } = state.gameData;
 
-	
-	
+	console.log(actions);
 	return {
 		objects,
 		actions,
 		rooms,
 		room,
 		money,
-
-
 	}
 }
 //mapDispatchToProps() is a utility which will help your component to fire an action event (dispatching action which may cause change of application state)

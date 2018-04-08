@@ -15,10 +15,12 @@ import {
 } from '../actions'
 
 
-export function gameData(state = {}, action) {
+export function gameData(state ={}, action) {
 
   switch (action.type) {
     case INIT_DATA:
+    console.log('INIT DATA - RESET');
+    console.log(action.data.objects);
       return {
       
         gameTitle: action.data.gameTitle,
@@ -32,6 +34,7 @@ export function gameData(state = {}, action) {
         actions: action.data.actions,
         objects: action.data.objects,
       }
+     
     case RESULT_MESSAGE:
       return {
         ...state, lastMessage: action.data

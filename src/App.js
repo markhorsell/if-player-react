@@ -29,7 +29,7 @@ class App extends Component {
         //.. i want to put the json on the server
         //..but for now just import it
 
-        this.props.dispatch(initData(data))
+       this.props.dispatch(initData(data))
     }
 
     render() {
