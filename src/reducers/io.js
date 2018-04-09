@@ -40,23 +40,7 @@ export function gameData(state ={}, action) {
         objects: restartData.objects,
       
     };
-    /*
-    case INIT_DATA:
-    
-      return {
-      
-        gameTitle: action.data.gameTitle,
-        score: action.data.score,
-        money: action.data.money,
-        room: action.data.room,
-        lastMessage: action.data.lastMessage,
-        discoveredPaths: action.data.discoveredPaths,
-        move: action.data.move,
-        rooms: action.data.rooms,
-        actions: action.data.actions,
-        objects: action.data.objects,
-      }
-     */
+  
     case RESULT_MESSAGE:
       return {
         ...state, lastMessage: action.data
