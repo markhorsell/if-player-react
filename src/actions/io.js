@@ -52,7 +52,7 @@ export function resultDrop(data){
     }
 }
 
-resultDrop
+
 export function resultLocation(data){
     return {
         type:RESULT_LOCATION,

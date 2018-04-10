@@ -52,8 +52,9 @@ class Home extends Component {
 
   render() {
     
-    const { gameData } = this.props;
-
+    const {discoveredPaths, gameData } = this.props;
+    
+    
     //Dont Allow rendering if data is empty as will break
     if(Object.keys(gameData).length === 0) {
       return <p>NOT LOADED</p>
@@ -63,8 +64,7 @@ class Home extends Component {
     const roomId = gameData.room;
     const objects = gameData.objects;
     const message =gameData.lastMessage;
-    //const actions = gameData.actions;
-    //const money = gameData.money;
+ 
     const currentRoomData = getRoomData(roomId,rooms);
     const description = this.getDescription(currentRoomData);
     const locationObjects = getLocationObjects(roomId,objects);
@@ -84,22 +84,24 @@ class Home extends Component {
         
         
         <Header title={gameData.gameTitle}/>
-
+  <div style={{height:'80vh'}}>
         <p>TODO https://popmotion.io/pose/</p>
         
         <p>{'process.env.PUBLIC_URL = '+process.env.PUBLIC_URL}</p>
         <p>Room = {roomId}</p>
-        <Message message={message}/>
+        
         <RoomImage path ={'/assets/'+assetsFolder+'/images/'} image={image}/>
         <RoomDescription description={description}/>
+        <Message message={message}/>
         <LocationObjects items={locationObjects}/>
         <Inventory items={inventory}/>
       
         <Actions/>
+      </div>
+      <div style={{textAlign:'center', padding:'20px', backgroundColor:'red'}}> &darr; SCROLL FOR MAP </div>
        
-        <WorldMap discoveredPaths={[]}/>
-        
-
+        <WorldMap discoveredPaths={discoveredPaths} room={roomId} rooms={rooms}/>
+      
         {/*<Debug data={gameData}/>*/}
         
       </div>
@@ -116,8 +118,10 @@ function mapStateToProps(state) {
 
  
   const { gameData } = state;
+  const {discoveredPaths } =state.gameData;
   return {
     gameData,
+    discoveredPaths
 
 
   }

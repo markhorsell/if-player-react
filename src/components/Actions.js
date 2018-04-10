@@ -23,7 +23,7 @@ import {
 	resultMoney,
 	resultRoomDesc,
 	resultCreateExit,
-	initData,
+	//initData,
 	restart,
 	
 
@@ -44,7 +44,7 @@ class Actions extends Component {
 	componentDidMount() {
 	}
 	handleMove = (exit) => (e) => {
-		const { rooms,room,actions } = this.props;
+		const { rooms,room } = this.props;
 		
 		const currentRoomExits = getRoomData(room, rooms).exits;
 		e.preventDefault();
@@ -73,6 +73,9 @@ class Actions extends Component {
 				this.props.dispatch(resultLocation(currentRoomExits.e));
 				this.props.dispatch(resultMessage('You\'ve travelled East'));
 				break;
+			default:
+			console.warn('WARNING - EXIT = [' + exit + '] is not being processed!');
+		
 		}
 
 
@@ -131,10 +134,9 @@ class Actions extends Component {
 				this.props.dispatch(resultCreateExit(data));
 				break;
 			case 'restart':
-			console.log('INIT DATA SHOULDNT CHANGE!?');
-				console.log('CAN I RESET TO initialData?')
+		
 				this.props.dispatch(restart());
-				//'@@redux/INIT'
+			
 				
 				break;
 			default:
@@ -143,7 +145,7 @@ class Actions extends Component {
 	}
 
 	render() {
-		console.log('Actions rendered');
+		//console.log('Actions rendered');
 		const {objects, actions, rooms, room,money } = this.props;
 		const currentRoomData = getRoomData(room, rooms);
 		const unsortedExits = getAllowedExits(currentRoomData).map(exit => {
@@ -170,18 +172,13 @@ class Actions extends Component {
 			return e==='Down';
 		}))))));
 
-		console.log(room);
-		console.log(objects);
-		console.log(actions);
+		
 		
 		const allowableActions = getAllowedActions(objects, actions, room, money).map(action => {
 			return action.action;
 		});
 
-		console.log(allowableActions);
-
-
-
+	
 		return (
 			<Fragment>
 				<div className='actions'>
@@ -204,8 +201,11 @@ class Actions extends Component {
 	}
 }
 Actions.propTypes = {
-	//allowableActions: PropTypes.array.isRequired,
-	//allowableExits: PropTypes.array.isRequired,
+	objects:PropTypes.array.isRequired,
+	actions: PropTypes.array.isRequired,
+	rooms: PropTypes.array.isRequired,
+	room: PropTypes.string.isRequired,
+	money: PropTypes.number.isRequired,
 }
 
 
@@ -213,7 +213,7 @@ Actions.propTypes = {
 function mapStateToProps(state) {
 	const {objects, actions, rooms, room,money } = state.gameData;
 
-	console.log(actions);
+	//console.log(actions);
 	return {
 		objects,
 		actions,

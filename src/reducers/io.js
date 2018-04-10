@@ -76,8 +76,15 @@ export function gameData(state ={}, action) {
         ...state, objects: [...droppedObjects]
       }
     case RESULT_LOCATION:
+
+    const paths = state.discoveredPaths.concat();
+    if(paths.indexOf(action.data)===-1){ 
+      paths.push(action.data);
+    }
       return {
-        ...state, room: action.data
+        ...state, 
+        room: action.data,
+        discoveredPaths:paths
       }
     case RESULT_DESTROY:
       const updatedDestroyObjects = state.objects.map((obj) => {
@@ -122,6 +129,10 @@ export function gameData(state ={}, action) {
       return {
         ...state, rooms: [...roomExits]
       }
+    case (action.type.match(/^@@redux/) || {}).input: 
+    case (action.type.match(/^@@INIT/) || {}).input: 
+      console.log('BUILT IN '+action.type);
+      return state;
 
     default:
       console.log('REDUCER DIDNT PROCESS [' + action.type + ']');
