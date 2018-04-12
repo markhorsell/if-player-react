@@ -40,6 +40,7 @@ class WorldMap extends Component {
         if (!this.mapContainerRef.current) {
             return;
         }
+        const currentRoom = this.props.room;
 
         const width = this.mapContainerRef.current.offsetWidth;
         this.mapContainerRef.current.height = width;
@@ -48,99 +49,63 @@ class WorldMap extends Component {
         this.canvasRef.current.width = width;
         this.canvasRef.current.height = width;
        
-        //If a room has been visited add it
+   
         //Only worry about rooms with numbers
-        //Named rooms are not supposed to be maps
-        //Room xy or yx?
+        //Named rooms are not supposed to be mapped
+       
         const spacing = width / 10;
-
-        const visitedGrids = this.props.discoveredPaths.map((room) => {
+        const allGrids= new Array(10);
+        for (var i = 0; i < 10; i++) {
+            allGrids[i] = new Array(10);
+        }
+        for (const room of this.props.discoveredPaths) {
             const grid = parseInt(room, 10);
             if (grid > 10) {
                 const x = Math.floor(grid / 10);
                 const y = grid % 10;
-                return { x: x, y: y };
+                allGrids[x][y]='VISITED';
             }
-            return null;
-        }).filter((grid) => {
-            return grid !== null;
-        });
-        const roomGrid = parseInt(this.props.room, 10);
-        visitedGrids.forEach(grid => {
-            //const exits =
-            this.props.rooms.map(room => {
-                if (room.id === grid.x.toString() + grid.y.toString()) {
+          }
+        
 
-                    for (var key in room.exits) {
-
-                        const exitgrid = parseInt(room.exits[key], 10);
-                        if (exitgrid > 10) {
-                            const x = Math.floor(exitgrid / 10);
-                            const y = exitgrid % 10;
-
-                            ctx.beginPath();
-                            ctx.moveTo(grid.x * spacing, grid.y * spacing);
-                            ctx.lineTo(x * spacing, y * spacing);
-                            ctx.stroke();
-                        }
+        for(var x=0;x<10;x++){
+            for(var y=0;y<10;y++){
+                //console.log(allGrids[x][y]);
+                if(allGrids[x][y]==='VISITED'){
+                    ctx.strokeStyle="#000000";
+                    //NOTE IF I DONT WANT AJACENT VISITED ROOMS TO ALWAYS BE ACCESIBLE..
+                    //..I COULD ADD AN EXIT CHECK AS WELL
+                    if(allGrids[x-1][y]==='VISITED'){ 
+                        ctx.beginPath();
+                        ctx.moveTo((x * spacing)+(spacing/2), (y * spacing)+(spacing/2));
+                        ctx.lineTo(((x-1) * spacing)+(spacing/2), (y * spacing)+(spacing/2));
+                        ctx.stroke();
                     }
+                    if(allGrids[x][y+1]==='VISITED'){
+                        ctx.beginPath();
+                        ctx.moveTo((x * spacing)+(spacing/2), (y * spacing)+(spacing/2));
+                        ctx.lineTo((x * spacing)+(spacing/2), ((y+1) * spacing)+(spacing/2));
+                        ctx.stroke();
+                    }
+
+                }else{
+                    ctx.save();
+                    ctx.shadowBlur=30;
+                    ctx.shadowColor="black";
+                    ctx.fillStyle = 'rgba(0, 0, 0,0.1)';
+                    ctx.fillRect(x*spacing, y*spacing, spacing, spacing);
+                    ctx.restore();    
                 }
-            })
+            }
         }
-        );
-        /*
-        visitedGrids.forEach(grid => {
+        if (currentRoom > 10) { 
+            const x = Math.floor(currentRoom / 10);
+            const y = currentRoom % 10;
             ctx.beginPath();
-            ctx.arc(grid.x * spacing, grid.y * spacing, spacing / 5, 0, 2 * Math.PI);
-            ctx.fillStyle = "rgba(255, 255, 255, 1)";
-            ctx.fill();
-        })*/
-        if (roomGrid > 10) {
-            const x = Math.floor(roomGrid / 10);
-            const y = roomGrid % 10;
-            ctx.beginPath();
-            ctx.arc(x * spacing, y * spacing, spacing / 8, 0, 2 * Math.PI);
+            ctx.arc(x * spacing+(spacing/2), y * spacing+(spacing/2), spacing / 8, 0, 2 * Math.PI);
             ctx.fillStyle = "rgba(255, 0, 0, 1)";
             ctx.fill();
-        }
-        //XYR,XYR
-        var grad = ctx.createRadialGradient(50, 50, 50, 50, 50, 0);
-        grad.addColorStop(0, "transparent");
-        grad.addColorStop(0.33, "rgba(0,0,0,1)");	// extra point to control "fall-off"
-        grad.addColorStop(1, "black");
-
-        ctx.fillStyle = grad;
-        ctx.filter = "blur(8px)";
-
-      /*
-       
-        for(var x=-1;x<11;x++){
-         
-            for(var y=-1;y<11;y++){
-                
-               // if(xGrids.indexOf(x)!==-1 || yGrids.indexOf(y)!==-1){
-               const visited=visitedGrids.filter(grid=>{
-                  // console.log(grid.x , x , grid.y ,y)
-                   if(grid.x == x && grid.y ==y){
-                       //console.log('xxx')
-                       
-                       return true;
-                   }
-                   return false;
-               })
-               
-               if(!visited.length){
-                   //90
-                    ctx.fillRect((x-0.7)*spacing, (y-0.7)*spacing, 90, 90);
-               }
-                
-               // }
-            }
-        }*/
-
-
-
-
+        } 
     }
     render() {
         this.updateCanvas();
