@@ -83,6 +83,10 @@ div {
 body {
 	font-family: 'VT323', monospace;
 	font-family: 'Lato', sans-serif;
+	font-size:20px;
+	line-height: 24px;
+	background-color: black;
+	color:white;
 }
 
 
@@ -106,53 +110,62 @@ body {
 	}
 }
 
+
+/* HEADER COMP */
 div .header {
-    
+	position:fixed;
+	background-color:black;
+	
+	
+	left:10px;
     font-family: 'Yesteryear', cursive;
    
     color:gold;
-    text-align:center;
+	text-align:center;
+	margin:20px;
     font-size:40px;
     
 }
+/* DESCRIPTION COMPONENT */
 .room-description {
 	position: relative;
 	display:inline-block;
 	width:100%;
 	height:60px;
-	/*color:white;*/
-	/*background-color: Black;*/
+	
 	
 }
-.nav {
-    display:inline-block;
-    max-width: 320px; 
-    /*background-color: lightgrey;*/
+/*NAV COMPONENT */
+
+div.nav  {
+	position:fixed;
+	width:100%;
+	height:60px;
+	background-color: pink;
+}
+.nav >ul {
+	position:relative;
+	/*right:20px;*/
+    /*display:inline-block;*/
+    width: 100%; 
+   /* background-color: black;*/
     margin:10px;
 }
-
-
-.nav >li {
+.nav > ul>li {
     display: inline-block;
-    font-size: 16px;
-
     margin:5px;
-    margin-right:10px;
-    
+    margin-right:10px;   
 }
-
-.nav >li >a {
+.nav >ul>li >a {
 	color: darkgray;
 }
-
-.nav >li >a:link, .nav >li >a:visited {
+.nav >ul >li >a:link, .nav >li >a:visited {
 	color: darkgray
 }
- 
-
-.nav >li >a:hover, .nav >li >a:active {
+.nav >ul >li >a:hover, .nav >li >a:active {
     color: black;
 }
+/*
 .debug {
     font-style:monospace;
     background-color: black;
@@ -161,23 +174,29 @@ div .header {
     font-size:10px;
     font-weight:100;
 }
+*/
+
+/* MESSAGE COMPONENT */
+.message{
+	/*background-color: cornflowerblue;*/
+	font-weight:bold;
+}
+
+/* ACTIONS COMPONENT */
 .actions >Button {
 	display:inline-block;
 	/*trbl*/
 	padding:2px 5px 2px 5px;
 	margin:4px;
 	border: none;
-	background-color:gold !important;
+	background-color:gold;
+	font-size:inherit;
 	color:black;
 	cursor:pointer;
 }
-.message{
-	background-color: cornflowerblue;
-}
+/* WORLDMAP COMPONENT */
 .worldmap canvas{
 	background-image: url('assets/theshivers/images/game_bg.jpg');
-	
-
 }
 
 

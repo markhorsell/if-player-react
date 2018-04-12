@@ -7,8 +7,8 @@ import React  from "react";
 
 const Nav = () => (
 
-       
-          <ul className='nav'>
+       <div className="nav">
+          <ul>
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -16,7 +16,7 @@ const Nav = () => (
               <Link to="/about">About</Link>
             </li>
           </ul>
-          
+        </div>
   )
 
 export default Nav;

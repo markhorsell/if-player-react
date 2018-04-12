@@ -1,12 +1,29 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+//TODO debounce could be in utils
+function debounce(func, wait, immediate) {
+    var timeout;
+    return function() {
+        var context = this, args = arguments;
+        var later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+};
+
 class WorldMap extends Component {
 
     constructor(props) {
         super(props);
         this.canvasRef = React.createRef();
         this.mapContainerRef = React.createRef();
+        this.updateCanvas = debounce(this.updateCanvas,100);
     }
 
     componentDidMount() {
@@ -17,24 +34,20 @@ class WorldMap extends Component {
     componentWillUnmount() {
         window.removeEventListener("resize", this.updateCanvas.bind(this));
     }
+   
     updateCanvas() {
+        //TODO debounce
         if (!this.mapContainerRef.current) {
             return;
         }
-        console.log('DISCOVERED PATHS');
-        console.log(this.props.discoveredPaths)
+
         const width = this.mapContainerRef.current.offsetWidth;
         this.mapContainerRef.current.height = width;
         const ctx = this.canvasRef.current.getContext('2d');
-        //Keep as a square so use width for both
+       
         this.canvasRef.current.width = width;
         this.canvasRef.current.height = width;
-
-        ctx.beginPath();
-        ctx.arc(width / 2, width / 2, (width / 2) - 20, 0, 2 * Math.PI);
-
-        ctx.fillStyle = "rgba(99, 255, 99, 0.3)";
-        ctx.fill();
+       
         //If a room has been visited add it
         //Only worry about rooms with numbers
         //Named rooms are not supposed to be maps
@@ -54,18 +67,17 @@ class WorldMap extends Component {
         });
         const roomGrid = parseInt(this.props.room, 10);
         visitedGrids.forEach(grid => {
-            const exits = this.props.rooms.map(room => {
+            //const exits =
+            this.props.rooms.map(room => {
                 if (room.id === grid.x.toString() + grid.y.toString()) {
-                    console.log('Room has been discovered ' + room.id);
-                    //console.log(room.exits);
-                    // room.exits.
+
                     for (var key in room.exits) {
-                        console.log(room.exits[key]);
+
                         const exitgrid = parseInt(room.exits[key], 10);
                         if (exitgrid > 10) {
                             const x = Math.floor(exitgrid / 10);
                             const y = exitgrid % 10;
-                            console.log(x, y);
+
                             ctx.beginPath();
                             ctx.moveTo(grid.x * spacing, grid.y * spacing);
                             ctx.lineTo(x * spacing, y * spacing);
@@ -74,20 +86,15 @@ class WorldMap extends Component {
                     }
                 }
             })
-           
-
-
         }
         );
+        /*
         visitedGrids.forEach(grid => {
             ctx.beginPath();
             ctx.arc(grid.x * spacing, grid.y * spacing, spacing / 5, 0, 2 * Math.PI);
             ctx.fillStyle = "rgba(255, 255, 255, 1)";
             ctx.fill();
-
-       
-        })
-
+        })*/
         if (roomGrid > 10) {
             const x = Math.floor(roomGrid / 10);
             const y = roomGrid % 10;
@@ -96,6 +103,43 @@ class WorldMap extends Component {
             ctx.fillStyle = "rgba(255, 0, 0, 1)";
             ctx.fill();
         }
+        //XYR,XYR
+        var grad = ctx.createRadialGradient(50, 50, 50, 50, 50, 0);
+        grad.addColorStop(0, "transparent");
+        grad.addColorStop(0.33, "rgba(0,0,0,1)");	// extra point to control "fall-off"
+        grad.addColorStop(1, "black");
+
+        ctx.fillStyle = grad;
+        ctx.filter = "blur(8px)";
+
+      /*
+       
+        for(var x=-1;x<11;x++){
+         
+            for(var y=-1;y<11;y++){
+                
+               // if(xGrids.indexOf(x)!==-1 || yGrids.indexOf(y)!==-1){
+               const visited=visitedGrids.filter(grid=>{
+                  // console.log(grid.x , x , grid.y ,y)
+                   if(grid.x == x && grid.y ==y){
+                       //console.log('xxx')
+                       
+                       return true;
+                   }
+                   return false;
+               })
+               
+               if(!visited.length){
+                   //90
+                    ctx.fillRect((x-0.7)*spacing, (y-0.7)*spacing, 90, 90);
+               }
+                
+               // }
+            }
+        }*/
+
+
+
 
     }
     render() {

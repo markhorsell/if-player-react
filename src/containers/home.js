@@ -84,12 +84,12 @@ class Home extends Component {
         
         
         <Header title={gameData.gameTitle}/>
-  <div style={{height:'80vh'}}>
-        <p>TODO https://popmotion.io/pose/</p>
-        
+
+       {/*} <p>TODO https://popmotion.io/pose/</p>
+      
         <p>{'process.env.PUBLIC_URL = '+process.env.PUBLIC_URL}</p>
         <p>Room = {roomId}</p>
-        
+    */}
         <RoomImage path ={'/assets/'+assetsFolder+'/images/'} image={image}/>
         <RoomDescription description={description}/>
         <Message message={message}/>
@@ -97,9 +97,8 @@ class Home extends Component {
         <Inventory items={inventory}/>
       
         <Actions/>
-      </div>
-      <div style={{textAlign:'center', padding:'20px', backgroundColor:'red'}}> &darr; SCROLL FOR MAP </div>
-       
+     
+     
         <WorldMap discoveredPaths={discoveredPaths} room={roomId} rooms={rooms}/>
       
         {/*<Debug data={gameData}/>*/}
