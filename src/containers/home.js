@@ -63,8 +63,9 @@ class Home extends Component {
         
         <RoomImage path ={'/assets/'+assetsFolder+'/images/'} image={image}/>
         <div className='text-panel'>
-        <RoomDescription description={description}/>
         <Message message={lastMessage}/>
+        <RoomDescription description={description}/>
+        
         <LocationObjects items={locationObjects}/>
         <Inventory items={inventory} money={money}/>
       

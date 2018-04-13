@@ -87,7 +87,7 @@ body {
 	letter-spacing: 1px;
 	line-height: 22px;
 	background-color: black;
-	color:white;
+	color:#ddd;
 	/* GOOD IDEA TO MAKE TEXT UNSELECTABLE?? */
 	-webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
