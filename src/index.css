@@ -122,9 +122,9 @@ div .header {
     color:gold;
 	text-align:left;
 	top:0px;
-	height:60px;
+	height:80px;
 	font-size:60px;
-	line-height:80px;
+	line-height:90px;
     
 }
 
@@ -135,7 +135,7 @@ div.nav  {
 	z-index:2;
 	width: inherit;
 	top:10px;
-	height:60px;
+	height:80px;
 	
 
 	
@@ -151,8 +151,8 @@ div.nav  {
 /*lvhfa*/
 .nav > ul>li {
     display: inline-block;
-    margin:5px;
-	margin-right:10px;   
+    margin-top:5px;
+	margin-right:20px;   
 	
 }
 
@@ -179,7 +179,7 @@ div.nav  {
 
 /* PAGES */
 .home, .about {
-	margin-top:60px;
+	margin-top:80px;
 }
 /*
 .debug {
@@ -220,8 +220,17 @@ div.nav  {
 	cursor:pointer;
 }
 /* WORLDMAP COMPONENT */
+.worldmap{
+	/*margin:0 auto;*/
+	/*display: inline-block;*/
+/*	border: 4px dotted red;*/
+width: 100%;
+   text-align:right;
+}
 .worldmap canvas{
+	display:inline;
 	background-image: url('assets/theshivers/images/game_bg.jpg');
+	
 }
 
 

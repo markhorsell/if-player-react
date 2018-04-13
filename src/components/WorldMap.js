@@ -42,8 +42,10 @@ class WorldMap extends Component {
         }
         const currentRoom = this.props.room;
 
-        const width = this.mapContainerRef.current.offsetWidth;
+        const width = Math.min(this.mapContainerRef.current.offsetWidth,200);
+        //const width =this.mapContainerRef.current.offsetWidth;
         this.mapContainerRef.current.height = width;
+       
         const ctx = this.canvasRef.current.getContext('2d');
        
         this.canvasRef.current.width = width;
