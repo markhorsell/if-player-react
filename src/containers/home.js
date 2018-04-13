@@ -52,7 +52,7 @@ class Home extends Component {
 
   render() {
     
-    const {discoveredPaths, gameData } = this.props;
+    const {money,discoveredPaths, gameData } = this.props;
     
     
     //Dont Allow rendering if data is empty as will break
@@ -94,7 +94,7 @@ class Home extends Component {
         <RoomDescription description={description}/>
         <Message message={message}/>
         <LocationObjects items={locationObjects}/>
-        <Inventory items={inventory}/>
+        <Inventory items={inventory} money={money}/>
       
         <Actions/>
      
@@ -117,10 +117,11 @@ function mapStateToProps(state) {
 
  
   const { gameData } = state;
-  const {discoveredPaths } =state.gameData;
+  const {discoveredPaths, money } =state.gameData;
   return {
     gameData,
-    discoveredPaths
+    discoveredPaths,
+    money,
 
 
   }

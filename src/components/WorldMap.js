@@ -47,6 +47,8 @@ class WorldMap extends Component {
         this.mapContainerRef.current.height = width;
        
         const ctx = this.canvasRef.current.getContext('2d');
+
+        
        
         this.canvasRef.current.width = width;
         this.canvasRef.current.height = width;
@@ -68,7 +70,15 @@ class WorldMap extends Component {
                 allGrids[x][y]='VISITED';
             }
           }
-        
+        //Cutout circle
+        ctx.fillStyle='#000000';
+        ctx.fillRect(0, 0, width, width);
+        ctx.save();
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.beginPath();
+        ctx.arc(width/2, width/2, width/2, 0, Math.PI * 2, true);  
+        ctx.fill();
+        ctx.restore(); 
 
         for(var x=0;x<10;x++){
             for(var y=0;y<10;y++){
@@ -108,6 +118,8 @@ class WorldMap extends Component {
             ctx.fillStyle = "rgba(255, 0, 0, 1)";
             ctx.fill();
         } 
+
+       
     }
     render() {
         this.updateCanvas();
