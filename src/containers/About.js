@@ -28,13 +28,19 @@ render(){
   
   <React.StrictMode>
     <div  className='about' ref={this.divRef}>
-      <h2>About</h2>
-      <p>A game engine for Interactive fiction</p>
-      <p>An editor is available here ------</p>
+     
+      <p>A game engine for Interactive fiction.</p>
+      <p>A React / Redux application.</p>
+      <p>By Mark Horsell</p>
+      <p>Version 1.0.0</p>
+      <p>April 2018</p>
+      <br/>
       <p>W:{windowWidth} | H:{windowHeight}</p>
       <p>React Version : {React.version} </p>
+  {/*
+      <p>An editor is available here ------</p>
       <p>Strict mode wraps Home and About - Wrapping App will create warnings as either Provider or Router Libraries are not Strict as yet</p>
-      <p>{React.About}</p>
+  */}
     </div>
     </React.StrictMode>
     )

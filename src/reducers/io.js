@@ -17,10 +17,6 @@ import {
 
 import initialData from '../assets/theshivers/data.json';
 
-
-
-
-
 export function gameData(state ={}, action) {
 
   switch (action.type) {
@@ -132,11 +128,11 @@ export function gameData(state ={}, action) {
       }
     case (action.type.match(/^@@redux/) || {}).input: 
     case (action.type.match(/^@@INIT/) || {}).input: 
-      console.log('BUILT IN '+action.type);
+     // console.log('BUILT IN '+action.type);
       return state;
 
     default:
-      console.log('REDUCER DIDNT PROCESS [' + action.type + ']');
+    //  console.log('REDUCER DIDNT PROCESS [' + action.type + ']');
       return state
   }
 }

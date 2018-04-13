@@ -70,8 +70,8 @@ body {
 div >div >div {
 	
 	border: 1px dotted red;
-	
-}*/
+}
+*/
 
 .main {
 	
@@ -83,9 +83,9 @@ div >div >div {
 body {
 	font-family: 'VT323', monospace;
 	font-family: 'Lato', sans-serif;
-	font-size:20px;
+	font-size:18px;
 	letter-spacing: 1px;
-	line-height: 24px;
+	line-height: 22px;
 	background-color: black;
 	color:white;
 	/* GOOD IDEA TO MAKE TEXT UNSELECTABLE?? */
@@ -106,14 +106,17 @@ body {
 div .header {
 	position:fixed;
 	z-index:1;
-	background-color:rgba(0,0,0,.7);
-	width: inherit;
+	/*background-color:rgba(99,0,0,.7);*/
+	display:inline-block;
+	width:inherit;
+	max-width:1000px;
 	
 	margin:0 auto;
     font-family: 'Yesteryear', cursive;
     color:gold;
 	text-align:left;
 	top:0px;
+	
 	height:80px;
 	font-size:60px;
 	line-height:90px;
@@ -127,7 +130,7 @@ div.nav  {
 	position:fixed;
 	z-index:2;
 	width: inherit;
-	top:10px;
+	top:0px;
 	height:80px;
 	
 	
@@ -141,7 +144,7 @@ div.nav  {
 	width: 100%; 
 	
   
-   top:-10px;
+   top:50px;
 }
 /*lvhfa*/
 .nav > ul>li {
@@ -192,6 +195,11 @@ div.nav  {
 	margin-top:10px;
 	/*margin-bottom:10px;*/
 }
+.text-panel{
+	display:inline-block;
+	vertical-align: top;
+	width:70%;
+}
 /* DESCRIPTION COMPONENT */
 .room-description {
 	position: relative;
@@ -223,7 +231,7 @@ div.nav  {
 /* ACTIONS COMPONENT */
 .actions {
 	display:inline-block;
-	width:50%;
+	/*width:50%;*/
 	vertical-align: top;
 }
 .actions >Button {
@@ -242,12 +250,12 @@ div.nav  {
 }
 /* WORLDMAP COMPONENT */
 .worldmap{
-	
 	display: inline-block;
-
-width: 50%;
-   /*text-align:right;*/
-   text-align:center;
+	width: 30%;
+   	/*text-align:right;*/
+	   text-align:center;
+	   padding-top:20px;
+	  /* padding:10px;*/
 }
 .worldmap canvas{
 	display:inline;
@@ -272,11 +280,14 @@ width: 50%;
 	}
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 600px) {
     .main {
 		/*MOBILE*/
 		width:100%;
 		/*background-color: pink;*/
+	}
+	.text-panel {
+		width:100%;
 	}
 	.actions {
 		width:100%;
@@ -293,6 +304,9 @@ width: 50%;
 		margin-left:5px; 
 		 
 		
+	}
+	.nav >ul {  
+	   top:10px;
 	}
 }
 

@@ -1,9 +1,6 @@
 
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-
-
-
 import RoomDescription from '../components/RoomDescription';
 import RoomImage from '../components/RoomImage';
 import Message from '../components/Message';
@@ -44,18 +41,12 @@ class Home extends Component {
     return roomData.image;
   }
   
-
-  render() {
-    
-    const {money,discoveredPaths, rooms, gameData,room,objects,message } = this.props;
-    
-    //Dont Allow rendering if data is empty as will break
-    if(rooms.length === 0) {
+  render() { 
+    const {money,discoveredPaths, rooms, room,objects,lastMessage} = this.props;
+    //Dont Allow rendering if data is empty
+    if(rooms.length === 0 ) {
       return <p>NOT LOADED</p>
-
     }
-
- 
     const currentRoomData = getRoomData(room,rooms);
     const description = this.getDescription(currentRoomData);
     const locationObjects = getLocationObjects(room,objects);
@@ -70,21 +61,15 @@ class Home extends Component {
      
       <div className='home'>
         
-        
-       
-
-       {/*} <p>TODO https://popmotion.io/pose/</p>
-      
-        <p>{'process.env.PUBLIC_URL = '+process.env.PUBLIC_URL}</p>
-        <p>Room = {roomId}</p>
-    */}
         <RoomImage path ={'/assets/'+assetsFolder+'/images/'} image={image}/>
+        <div className='text-panel'>
         <RoomDescription description={description}/>
-        <Message message={message}/>
+        <Message message={lastMessage}/>
         <LocationObjects items={locationObjects}/>
         <Inventory items={inventory} money={money}/>
       
         <Actions/>
+        </div>
      
      
         <WorldMap discoveredPaths={discoveredPaths} room={room} rooms={rooms}/>
@@ -101,9 +86,9 @@ Home.propTypes = {
 
 function mapStateToProps(state) {
 
-  const {discoveredPaths, money,rooms,room,objects,message  } =state.gameData;
+  const {discoveredPaths, money,rooms,room,objects,lastMessage  } =state.gameData;
   return {
-    discoveredPaths, money,rooms,room,objects,message,
+    discoveredPaths, money,rooms,room,objects,lastMessage,
   }
 }
 export default connect(mapStateToProps)(Home)

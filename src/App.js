@@ -41,7 +41,6 @@ class App extends Component {
     render() {
       const {gameTitle } = this.props;
       if(gameTitle){
-      console.log(gameTitle)
       }else{
         return <div>NOT READY</div>
       }

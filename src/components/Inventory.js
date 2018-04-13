@@ -1,16 +1,10 @@
-import React, { Fragment} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const Inventory = ({ items = [],money=0 }) => {
-
-	
-
 	const inventory = items.map((item=>{
-		console.log(item)
 		return item.desc;
-	})).join(",")+' and '+money+' coins.';
-	
-	
+	})).join(", ")+' and '+money+' coins.';
 	
 	return (
 	
