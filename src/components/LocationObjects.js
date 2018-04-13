@@ -7,9 +7,9 @@ const LocationObjects = ({ items = [] }) => {
 		return item.show!==false;
 	}).map((item)=>{
 		return item.desc;
-	}).join(",");
+	}).join(", ");
 	return (
-		<div>In this place : {locationObjects}</div>
+		<div className='location-objects'>In this place : {locationObjects}.</div>
 	)
 }
 LocationObjects.propTypes = {

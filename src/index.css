@@ -84,6 +84,7 @@ body {
 	font-family: 'VT323', monospace;
 	font-family: 'Lato', sans-serif;
 	font-size:20px;
+	letter-spacing: 1px;
 	line-height: 24px;
 	background-color: black;
 	color:white;
@@ -191,31 +192,49 @@ div.nav  {
     font-weight:100;
 }
 */
+.room-image {
+	margin-top:10px;
+	margin-bottom:10px;
+}
 /* DESCRIPTION COMPONENT */
 .room-description {
 	position: relative;
 	display:inline-block;
 	width:100%;
 	height:60px;
-	
+	margin-top:10px;
+	margin-bottom:10px;
 	
 }
 
 /* MESSAGE COMPONENT */
 .message{
 	/*background-color: cornflowerblue;*/
-	font-weight:bold;
+	/*font-weight:bold;*/
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.inventory{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.location-objects {
+	margin-top:10px;
+	margin-bottom:10px;
 }
 
 /* ACTIONS COMPONENT */
 .actions >Button {
 	display:inline-block;
 	/*trbl*/
-	padding:2px 5px 2px 5px;
+	padding:3px 6px 3px 6px;
 	margin:4px;
 	border: none;
+	border-radius:2px;
 	background-color:gold;
+	font-weight:bold;
 	font-size:inherit;
+	letter-spacing: inherit;
 	color:black;
 	cursor:pointer;
 }

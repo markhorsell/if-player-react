@@ -6,8 +6,9 @@ import PropTypes from 'prop-types';
 
 const RoomImage = ({ path,image }) => (
 	<React.Fragment>
-		{/*<div className="room-image">{path+image}</div>*/}
+		<div className="room-image">
 		<img src={path+image} width='100%'  alt={image}/>
+		</div>
 	</React.Fragment>
 	)
 

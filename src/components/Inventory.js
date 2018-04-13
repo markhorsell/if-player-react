@@ -5,7 +5,7 @@ const Inventory = ({ items = [] }) => {
 
 	const inventory = items.join(",");
 	return (
-		<div>You are carrying : {inventory}</div>
+		<div className='inventory'>You are carrying : {inventory}</div>
 	)
 }
 Inventory.propTypes = {
