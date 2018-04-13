@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { Fragment} from 'react';
 import PropTypes from 'prop-types';
 
 const Inventory = ({ items = [],money=0 }) => {
 
-	const inventory = items.join(",")+' and '+money+' coins';
+	
+
+	const inventory = items.map((item=>{
+		console.log(item)
+		return item.desc;
+	})).join(",")+' and '+money+' coins.';
+	
+	
+	
 	return (
-		<div className='inventory'>You are carrying : {inventory}</div>
+	
+		<div className='inventory'>
+		<div>You are carrying :</div>
+		<div>{inventory}</div>
+		</div>
+	
 	)
 }
 Inventory.propTypes = {

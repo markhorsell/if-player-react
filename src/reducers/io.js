@@ -89,7 +89,8 @@ export function gameData(state ={}, action) {
     case RESULT_DESTROY:
       const updatedDestroyObjects = state.objects.map((obj) => {
         action.data.forEach(element => {
-          if (obj.obj === element) {
+         
+          if (obj.obj === element || element==='ALL') {
             obj.loc = ''
           }
         });

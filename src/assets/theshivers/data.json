@@ -198,7 +198,7 @@
 		{"action":"Kiss frog",
 		"conditions":{"areCarrying":["FROG"]},
 		"results":{"message":"What's happened, where are you? You're back in your plane seat. Book in hand 'Children's and Household Tales' by The Brothers Grimm.",
-		"changeLocation":"EndPlane","destroys":["ALL"]}
+		"changeLocation":"EndPlane","destroys":["ALL"],"take":["BOOK"]}
 		}
 		,
 		{"action":"PLAY AGAIN",
@@ -208,7 +208,7 @@
 		}
 		,
 		{"action":"PLAY AGAIN",
-		"conditions":{"location":"Tree"},
+		"conditions":{"location":"A TESTING LOCATION such as Tree"},
 		"results":{
 		"restart":"true"}
 		}
@@ -220,7 +220,7 @@
 	"_object_comment": "inventory item are :loc === 'INV'",
 	
 	"objects":[
-	{"obj":"BOOK","loc":"INV","desc":"A book, but you don't recognise the language."},	
+	{"obj":"BOOK","loc":"INV","desc":"A book, but you don't recognise the language"},	
 	{"obj":"FROG","loc":"","desc":"A large warty frog"},
 	{"obj":"GOLDEN_APPLE","loc":"","desc":"A golden apple"},
 	{"obj":"INV_TRIGGER1","loc":"44","desc":"invisible","show":false},

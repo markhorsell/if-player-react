@@ -6,7 +6,7 @@ export const getRoomData = (roomId,rooms) => {
   }
 
 export const getInventory = (objects) => {
-    const inventory = objects.filter(object => object.loc==='INV').map(object => object.obj);
+    const inventory = objects.filter(object => object.loc==='INV').map(object => object);
     return inventory;
 }
 export const getLocationObjects= (roomId,objects) => {

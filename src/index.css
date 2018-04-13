@@ -67,14 +67,14 @@ body {
 }
 /*for debug */
 /*
-div {
+div >div >div {
 	
 	border: 1px dotted red;
 	
 }*/
 
 .main {
-
+	
 	margin:0 auto;
 	
 }
@@ -91,25 +91,7 @@ body {
 }
 
 
-@media only screen and (min-width: 321px) {
-    .main {
-		/*background-color: #080f50;*/
-		width:90%;
-	}
-}
-@media only screen and (min-width: 700px) {
-    .main {
-		/*background-color: #50082a;*/
-		width:630px;
-	}
-}
 
-@media only screen and (max-width: 320px) {
-    .main {
-		/*background-color: #08502c;*/
-		width:100%;
-	}
-}
 
 
 /* HEADER COMP */
@@ -118,6 +100,7 @@ div .header {
 	z-index:1;
 	background-color:rgba(0,0,0,.7);
 	width: inherit;
+	
 	margin:0 auto;
     font-family: 'Yesteryear', cursive;
     color:gold;
@@ -132,11 +115,13 @@ div .header {
 /*NAV COMPONENT */
 /* COVERS ALL PAGES */
 div.nav  {
+	max-width:1000px;
 	position:fixed;
 	z-index:2;
 	width: inherit;
 	top:10px;
 	height:80px;
+	
 	
 
 	
@@ -145,15 +130,18 @@ div.nav  {
 .nav >ul {
 	position:relative;
 	text-align:right;
-    width: 100%; 
+	width: 100%; 
+	
   
-   top:10px;
+   top:-10px;
 }
 /*lvhfa*/
 .nav > ul>li {
     display: inline-block;
-    margin-top:5px;
-	margin-right:20px;   
+    
+	margin-right:5px; 
+	margin-left:30px; 
+	 
 	
 }
 
@@ -194,16 +182,16 @@ div.nav  {
 */
 .room-image {
 	margin-top:10px;
-	margin-bottom:10px;
+	/*margin-bottom:10px;*/
 }
 /* DESCRIPTION COMPONENT */
 .room-description {
 	position: relative;
 	display:inline-block;
 	width:100%;
-	height:60px;
+	/*height:60px;*/
 	margin-top:10px;
-	margin-bottom:10px;
+	/*margin-bottom:10px;*/
 	
 }
 
@@ -212,18 +200,24 @@ div.nav  {
 	/*background-color: cornflowerblue;*/
 	/*font-weight:bold;*/
 	margin-top:10px;
+	/*margin-bottom:10px;*/
+}
+
+.location-objects {
+	margin-top:10px;
 	margin-bottom:10px;
 }
 .inventory{
 	margin-top:10px;
 	margin-bottom:10px;
 }
-.location-objects {
-	margin-top:10px;
-	margin-bottom:10px;
-}
 
 /* ACTIONS COMPONENT */
+.actions {
+	display:inline-block;
+	width:50%;
+	vertical-align: top;
+}
 .actions >Button {
 	display:inline-block;
 	/*trbl*/
@@ -240,16 +234,58 @@ div.nav  {
 }
 /* WORLDMAP COMPONENT */
 .worldmap{
-	/*margin:0 auto;*/
-	/*display: inline-block;*/
-/*	border: 4px dotted red;*/
-width: 100%;
-   text-align:right;
+	
+	display: inline-block;
+
+width: 50%;
+   /*text-align:right;*/
+   text-align:center;
 }
 .worldmap canvas{
 	display:inline;
 	background-image: url('assets/theshivers/images/game_bg.jpg');
 	
+}
+/*DESKTOP by default */
+
+@media only screen and (min-width: 800px) {
+    .main {
+		
+		/*background-color: blue;*/
+		width:80%;
+		max-width:1000px;
+	}
+}
+@media only screen and (max-width: 800px) {
+    .main {
+		/*TABLET*/
+		/*background-color: red;*/
+		width:90%;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+    .main {
+		/*MOBILE*/
+		width:100%;
+		/*background-color: pink;*/
+	}
+	.actions {
+		width:100%;
+		
+	}
+	.worldmap{
+		width:100%;
+		
+	}
+	.nav > ul>li {
+		display: inline-block;
+		
+		margin-right:5px; 
+		margin-left:5px; 
+		 
+		
+	}
 }
 
 
