@@ -36,11 +36,7 @@ For example, add this to build it for GitHub Pages:
 
 
 class Home extends Component {
-  /*
-  constructor(props) {
-    super(props)
-  }
-  */
+
   getDescription(roomData){
     return roomData.desc[0];
   }
@@ -48,36 +44,28 @@ class Home extends Component {
     return roomData.image;
   }
   
-  
 
   render() {
     
-    const {money,discoveredPaths, gameData } = this.props;
-    
+    const {money,discoveredPaths, rooms, gameData,room,objects,message } = this.props;
     
     //Dont Allow rendering if data is empty as will break
-    if(Object.keys(gameData).length === 0) {
+    if(rooms.length === 0) {
       return <p>NOT LOADED</p>
 
     }
-    const rooms = gameData.rooms;
-    const roomId = gameData.room;
-    const objects = gameData.objects;
-    const message =gameData.lastMessage;
+
  
-    const currentRoomData = getRoomData(roomId,rooms);
+    const currentRoomData = getRoomData(room,rooms);
     const description = this.getDescription(currentRoomData);
-    const locationObjects = getLocationObjects(roomId,objects);
+    const locationObjects = getLocationObjects(room,objects);
     const image = this.getImage(currentRoomData);
     const inventory = getInventory(objects);
     
-    
-
     //TODO assets folder will be switchable later
     const assetsFolder='theshivers';
 
-    //stateless functional component where possible
-    //
+  
     return (
      
       <div className='home'>
@@ -99,9 +87,7 @@ class Home extends Component {
         <Actions/>
      
      
-        <WorldMap discoveredPaths={discoveredPaths} room={roomId} rooms={rooms}/>
-      
-        {/*<Debug data={gameData}/>*/}
+        <WorldMap discoveredPaths={discoveredPaths} room={room} rooms={rooms}/>
         
       </div>
     
@@ -115,15 +101,9 @@ Home.propTypes = {
 
 function mapStateToProps(state) {
 
- 
-  const { gameData } = state;
-  const {discoveredPaths, money } =state.gameData;
+  const {discoveredPaths, money,rooms,room,objects,message  } =state.gameData;
   return {
-    gameData,
-    discoveredPaths,
-    money,
-
-
+    discoveredPaths, money,rooms,room,objects,message,
   }
 }
 export default connect(mapStateToProps)(Home)
