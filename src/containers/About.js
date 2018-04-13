@@ -27,7 +27,7 @@ render(){
   return(
   
   <React.StrictMode>
-    <div ref={this.divRef}>
+    <div  className='about' ref={this.divRef}>
       <h2>About</h2>
       <p>A game engine for Interactive fiction</p>
       <p>An editor is available here ------</p>

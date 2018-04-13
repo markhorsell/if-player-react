@@ -1,5 +1,5 @@
  
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import React  from "react";
 
@@ -10,10 +10,10 @@ const Nav = () => (
        <div className="nav">
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink to="/home" activeStyle={{ color: 'white' }}>HOME</NavLink>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <NavLink to="/about" activeStyle={{ color: 'white' }}>ABOUT</NavLink>
             </li>
           </ul>
         </div>

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 
 
-import Header from '../components/Header';
+
 import RoomDescription from '../components/RoomDescription';
 import RoomImage from '../components/RoomImage';
 import Message from '../components/Message';
@@ -80,10 +80,10 @@ class Home extends Component {
     //
     return (
      
-      <div>
+      <div className='home'>
         
         
-        <Header title={gameData.gameTitle}/>
+       
 
        {/*} <p>TODO https://popmotion.io/pose/</p>
       

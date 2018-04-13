@@ -114,56 +114,72 @@ body {
 /* HEADER COMP */
 div .header {
 	position:fixed;
-	background-color:black;
-	
-	
-	left:10px;
+	z-index:1;
+	background-color:rgba(0,0,0,.7);
+	width: inherit;
+	margin:0 auto;
     font-family: 'Yesteryear', cursive;
-   
     color:gold;
-	text-align:center;
-	margin:20px;
-    font-size:40px;
+	text-align:left;
+	top:0px;
+	height:60px;
+	font-size:60px;
+	line-height:80px;
     
 }
-/* DESCRIPTION COMPONENT */
-.room-description {
-	position: relative;
-	display:inline-block;
-	width:100%;
-	height:60px;
-	
-	
-}
-/*NAV COMPONENT */
 
+/*NAV COMPONENT */
+/* COVERS ALL PAGES */
 div.nav  {
 	position:fixed;
-	width:100%;
+	z-index:2;
+	width: inherit;
+	top:10px;
 	height:60px;
-	background-color: pink;
+	
+
+	
+	
 }
 .nav >ul {
 	position:relative;
-	/*right:20px;*/
-    /*display:inline-block;*/
+	text-align:right;
     width: 100%; 
-   /* background-color: black;*/
-    margin:10px;
+  
+   top:10px;
 }
+/*lvhfa*/
 .nav > ul>li {
     display: inline-block;
     margin:5px;
-    margin-right:10px;   
+	margin-right:10px;   
+	
 }
-.nav >ul>li >a {
+
+.nav >ul >li >a {
 	color: darkgray;
+	font-size:14px;
+	text-decoration: none;
 }
-.nav >ul >li >a:link, .nav >li >a:visited {
+
+.nav >ul >li >a:link, .nav >ul >li >a:visited{
 	color: darkgray
 }
-.nav >ul >li >a:hover, .nav >li >a:active {
-    color: black;
+.nav >ul >li >a:hover{ 
+    color: white;
+}
+/* See component NavLink
+.nav >ul >li >a:active {
+	color: white;
+}
+*/
+
+
+
+
+/* PAGES */
+.home, .about {
+	margin-top:60px;
 }
 /*
 .debug {
@@ -175,6 +191,15 @@ div.nav  {
     font-weight:100;
 }
 */
+/* DESCRIPTION COMPONENT */
+.room-description {
+	position: relative;
+	display:inline-block;
+	width:100%;
+	height:60px;
+	
+	
+}
 
 /* MESSAGE COMPONENT */
 .message{
