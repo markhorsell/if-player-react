@@ -55,9 +55,9 @@ class App extends Component {
               <Nav/>
               <Header title={gameTitle}/>
               <Switch>
-              <Route exact path="/game" component={Home} />
-              <Route exact path="/about" component={About} />
-              <Redirect from="/" to="game" />
+              <Route exact path="/shivers-react/game" component={Home} />
+              <Route exact path="/shivers-react/about" component={About} />
+              <Redirect from="/shivers-react/" to="/shivers-react/game" />
               </Switch>
             
             </div>

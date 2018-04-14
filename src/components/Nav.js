@@ -10,10 +10,10 @@ const Nav = () => (
        <div className="nav">
           <ul>
             <li>
-              <NavLink to="/game" activeStyle={{ color: 'white' }}>GAME</NavLink>
+              <NavLink to="/shivers-react/game" activeStyle={{ color: 'white' }}>GAME</NavLink>
             </li>
             <li>
-              <NavLink to="/about" activeStyle={{ color: 'white' }}>ABOUT</NavLink>
+              <NavLink to="/shivers-react/about" activeStyle={{ color: 'white' }}>ABOUT</NavLink>
             </li>
           </ul>
         </div>

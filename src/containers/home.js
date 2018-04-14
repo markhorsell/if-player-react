@@ -61,7 +61,7 @@ class Home extends Component {
      
       <div className='home'>
         
-        <RoomImage path ={'/assets/'+assetsFolder+'/images/'} image={image}/>
+        <RoomImage path ={'/shivers-react/assets/'+assetsFolder+'/images/'} image={image}/>
         <div className='text-panel'>
         <Message message={lastMessage}/>
         <RoomDescription description={description}/>

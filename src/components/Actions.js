@@ -63,7 +63,7 @@ class Actions extends Component {
 				break;
 			case 'South':
 				this.props.dispatch(resultLocation(currentRoomExits.s));
-				this.props.dispatch(resultMessage('You\'ve travelled North'));
+				this.props.dispatch(resultMessage('You\'ve travelled South'));
 				break;
 			case 'West':
 				this.props.dispatch(resultLocation(currentRoomExits.w));
