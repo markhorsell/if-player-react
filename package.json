@@ -2,7 +2,7 @@
   "name": "if-player-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://markhorsell.com/shivers-react",
+  "homepage": "https://markhorsell.com/shivers-react",
   "dependencies": {
     "prop-types": "^15.6.1",
     "react": "^16.3.0",
