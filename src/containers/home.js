@@ -12,12 +12,13 @@ import WorldMap from '../components/WorldMap';
 
 //import './Home.css';
 
-import { getRoomData,
+import {
+  getRoomData,
   getInventory,
   //getAllowedActions,
   //getAllowedExits,
-  getLocationObjects 
- } from '../utils/dataHelper';
+  getLocationObjects
+} from '../utils/dataHelper';
 
 /*
 The project was built assuming it is hosted at the server root.
@@ -34,50 +35,57 @@ For example, add this to build it for GitHub Pages:
 
 class Home extends Component {
 
-  getDescription(roomData){
+  getDescription(roomData) {
     return roomData.desc[0];
   }
-  getImage(roomData){
+  getImage(roomData) {
     return roomData.image;
   }
-  
-  render() { 
-    const {money,discoveredPaths, rooms, room,objects,lastMessage} = this.props;
+
+  render() {
+    const { money, discoveredPaths, rooms, room, objects, lastMessage } = this.props;
     //Dont Allow rendering if data is empty
-    if(rooms.length === 0 ) {
+    if (rooms.length === 0) {
       return <p>NOT LOADED</p>
     }
-    const currentRoomData = getRoomData(room,rooms);
+    const currentRoomData = getRoomData(room, rooms);
     const description = this.getDescription(currentRoomData);
-    const locationObjects = getLocationObjects(room,objects);
+    const locationObjects = getLocationObjects(room, objects);
     const image = this.getImage(currentRoomData);
     const inventory = getInventory(objects);
-    
-    //TODO assets folder will be switchable later
-    const assetsFolder='theshivers';
 
-  
+    //TODO assets folder will be switchable later
+    const assetsFolder = 'theshivers';
+
+    const isLocal = window.location.href.substr(7, 9) === 'localhost';
+
     return (
-     
+
       <div className='home'>
-        
-        <RoomImage path ={'/shivers-react/assets/'+assetsFolder+'/images/'} image={image}/>
+
+        {isLocal ? (
+          <RoomImage path={'../assets/' + assetsFolder + '/images/'} image={image} />
+        ) : (
+            <RoomImage path={'/shivers-react/assets/' + assetsFolder + '/images/'} image={image} />
+          )}
+
+
         <div className='text-panel'>
-        <Message message={lastMessage}/>
-        <RoomDescription description={description}/>
-        
-        <LocationObjects items={locationObjects}/>
-        <Inventory items={inventory} money={money}/>
-      
-        <Actions/>
+          <Message message={lastMessage} />
+          <RoomDescription description={description} />
+
+          <LocationObjects items={locationObjects} />
+          <Inventory items={inventory} money={money} />
+
+          <Actions />
         </div>
-     
-     
-        <WorldMap discoveredPaths={discoveredPaths} room={room} rooms={rooms}/>
-        
+
+
+        <WorldMap discoveredPaths={discoveredPaths} room={room} rooms={rooms} />
+
       </div>
-    
-    
+
+
     )
   }
 }
@@ -87,9 +95,9 @@ Home.propTypes = {
 
 function mapStateToProps(state) {
 
-  const {discoveredPaths, money,rooms,room,objects,lastMessage  } =state.gameData;
+  const { discoveredPaths, money, rooms, room, objects, lastMessage } = state.gameData;
   return {
-    discoveredPaths, money,rooms,room,objects,lastMessage,
+    discoveredPaths, money, rooms, room, objects, lastMessage,
   }
 }
 export default connect(mapStateToProps)(Home)

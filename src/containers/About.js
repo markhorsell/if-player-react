@@ -32,9 +32,10 @@ render(){
       <p>A game engine for Interactive fiction.</p>
       <p>A React / Redux application.</p>
       <p>By Mark Horsell</p>
-      <p>Version 1.0.1</p>
+      <p>Version 1.0.2</p>
       <p>April 2018</p>
       <br/>
+      <p>{window.location.href}</p>
       <p>W:{windowWidth} | H:{windowHeight}</p>
       <p>React Version : {React.version} </p>
   {/*

@@ -99,14 +99,11 @@ body {
 }
 
 
-
-
-
 /* HEADER COMP */
 div .header {
 	position:fixed;
 	z-index:1;
-	/*background-color:rgba(99,0,0,.7);*/
+	background-color:rgba(0,0,0,.7);
 	display:inline-block;
 	width:inherit;
 	max-width:1000px;
@@ -238,7 +235,7 @@ div.nav  {
 	display:inline-block;
 	/*trbl*/
 	padding:3px 6px 3px 6px;
-	margin:4px;
+	margin:10px;
 	border: none;
 	border-radius:2px;
 	background-color:gold;
