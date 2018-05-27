@@ -20,11 +20,13 @@ import initialData from '../assets/theshivers/data.json';
 export function gameData(state ={}, action) {
 
   switch (action.type) {
+
     
     case RESTART:
     //RestartData needs to be a copy not a reference! 
     const restartData =JSON.parse(JSON.stringify(initialData));
     
+
     return {...state,
         gameTitle: restartData.gameTitle,
         score: restartData.score,

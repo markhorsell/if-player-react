@@ -29,6 +29,7 @@ class App extends Component {
     */
     componentDidMount() {
         //Inital state
+
         //TODO if redux-persist has data then i shouldnt need to call restart..
         //.. a new action such as resume();
 
@@ -39,7 +40,8 @@ class App extends Component {
         this.props.dispatch(restart());
        }
        
-   
+
+
     }
 
     render() {

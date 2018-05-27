@@ -17,6 +17,7 @@ render(
        <PersistGate loading={null} persistor={store.persistor}>
             <App/>
         </PersistGate>
+
     </Provider>, document.getElementById('root'));
 registerServiceWorker();
 
