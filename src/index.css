@@ -1,0 +1,314 @@
+
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+
+	
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* Meyer end */
+
+/*custom reset */
+html {
+  box-sizing: border-box;
+}
+body {
+	font-family: sans-serif;
+	background-color: #F4F4F4;
+
+	
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+/*for debug */
+/*
+div >div >div {
+	
+	border: 1px dotted red;
+}
+*/
+
+.main {
+	
+	margin:0 auto;
+	
+}
+ 
+@import url(https://fonts.googleapis.com/css?family=Jacques+Francois+Shadow|Rye|Yesteryear|VT323|Lato);
+body {
+	font-family: 'VT323', monospace;
+	font-family: 'Lato', sans-serif;
+	font-size:18px;
+	letter-spacing: 1px;
+	line-height: 22px;
+	background-color: black;
+	color:#ddd;
+	/* GOOD IDEA TO MAKE TEXT UNSELECTABLE?? */
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+
+/* HEADER COMP */
+div .header {
+	position:fixed;
+	z-index:1;
+	background-color:rgba(0,0,0,.7);
+	display:inline-block;
+	width:inherit;
+	max-width:1000px;
+	
+	margin:0 auto;
+    font-family: 'Yesteryear', cursive;
+    color:gold;
+	text-align:left;
+	top:0px;
+	
+	height:80px;
+	font-size:60px;
+	line-height:90px;
+    
+}
+
+/*NAV COMPONENT */
+/* COVERS ALL PAGES */
+div.nav  {
+	max-width:1000px;
+	position:fixed;
+	z-index:2;
+	width: inherit;
+	top:0px;
+	height:80px;
+	
+	
+
+	
+	
+}
+.nav >ul {
+	position:relative;
+	text-align:right;
+	width: 100%; 
+	
+  
+   top:50px;
+}
+/*lvhfa*/
+.nav > ul>li {
+    display: inline-block;
+    
+	margin-right:5px; 
+	margin-left:30px; 
+	 
+	
+}
+
+.nav >ul >li >a {
+	color: darkgray;
+	font-size:14px;
+	text-decoration: none;
+}
+
+.nav >ul >li >a:link, .nav >ul >li >a:visited{
+	color: darkgray
+}
+.nav >ul >li >a:hover{ 
+    color: white;
+}
+/* See component NavLink
+.nav >ul >li >a:active {
+	color: white;
+}
+*/
+
+
+
+
+/* PAGES */
+.home, .about {
+	margin-top:80px;
+}
+/*
+.debug {
+    font-style:monospace;
+    background-color: black;
+    color:white;
+    text-align:left;
+    font-size:10px;
+    font-weight:100;
+}
+*/
+.room-image {
+	margin-top:10px;
+	/*margin-bottom:10px;*/
+}
+.text-panel{
+	display:inline-block;
+	vertical-align: top;
+	width:70%;
+}
+/* DESCRIPTION COMPONENT */
+.room-description {
+	position: relative;
+	display:inline-block;
+	width:100%;
+	/*height:60px;*/
+	margin-top:10px;
+	/*margin-bottom:10px;*/
+	
+}
+
+/* MESSAGE COMPONENT */
+.message{
+	/*background-color: cornflowerblue;*/
+	/*font-weight:bold;*/
+	margin-top:10px;
+	/*margin-bottom:10px;*/
+}
+
+.location-objects {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.inventory{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+/* ACTIONS COMPONENT */
+.actions {
+	display:inline-block;
+	/*width:50%;*/
+	vertical-align: top;
+}
+.actions >Button {
+	display:inline-block;
+	/*trbl*/
+	padding:3px 6px 3px 6px;
+	margin:10px;
+	border: none;
+	border-radius:2px;
+	background-color:gold;
+	font-weight:bold;
+	font-size:inherit;
+	letter-spacing: inherit;
+	color:black;
+	cursor:pointer;
+}
+/* WORLDMAP COMPONENT */
+.worldmap{
+	display: inline-block;
+	width: 30%;
+   	/*text-align:right;*/
+	   text-align:center;
+	   padding-top:20px;
+	  /* padding:10px;*/
+}
+.worldmap canvas{
+	display:inline;
+	background-image: url('assets/theshivers/images/game_bg.jpg');
+	
+}
+/*DESKTOP by default */
+
+@media only screen and (min-width: 800px) {
+    .main {
+		
+		/*background-color: blue;*/
+		width:80%;
+		max-width:1000px;
+	}
+}
+@media only screen and (max-width: 800px) {
+    .main {
+		/*TABLET*/
+		/*background-color: red;*/
+		width:90%;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+    .main {
+		/*MOBILE*/
+		width:100%;
+		/*background-color: pink;*/
+	}
+	.text-panel {
+		width:100%;
+	}
+	.actions {
+		width:100%;
+		
+	}
+	.worldmap{
+		width:100%;
+		
+	}
+	.nav > ul>li {
+		display: inline-block;
+		
+		margin-right:5px; 
+		margin-left:5px; 
+		 
+		
+	}
+	.nav >ul {  
+	   top:10px;
+	}
+}
+
+
+
+
+
+
