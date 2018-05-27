@@ -20,6 +20,7 @@ import {
   getLocationObjects
 } from '../utils/dataHelper';
 
+
 /*
 The project was built assuming it is hosted at the server root.
 You can control this with the homepage field in your package.json.
