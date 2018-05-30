@@ -23,7 +23,6 @@ import {
 	resultMoney,
 	resultRoomDesc,
 	resultCreateExit,
-	//initData,
 	restart,
 	
 
