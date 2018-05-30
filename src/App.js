@@ -35,7 +35,7 @@ class App extends Component {
 
        if(this.props.gameTitle){
           //Alreay has gameTitle so must have come from persist
-          console.log('GameTitle');
+          console.log('game data from cache');
        }else{
         this.props.dispatch(restart());
        }
