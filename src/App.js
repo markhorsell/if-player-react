@@ -7,8 +7,9 @@ import { connect } from 'react-redux';
 
 import Nav from './components/Nav';
 import Header from './components/Header';
-import Home from './containers/Home';
-import About from './containers/About';
+import Home from './pages/Home';
+import About from './pages/About';
+import Todo from './pages/Todo';
 
 
 
@@ -63,6 +64,7 @@ class App extends Component {
               <Switch>
               <Route exact path="/shivers-react/game" component={Home} />
               <Route exact path="/shivers-react/about" component={About} />
+              <Route exact path="/shivers-react/todo" component={Todo} />
               <Redirect from="/shivers-react/" to="/shivers-react/game" />
               </Switch>
             

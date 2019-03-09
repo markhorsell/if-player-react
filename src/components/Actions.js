@@ -2,11 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-
-
-
-
-
 import {
 	getRoomData,
 	getAllowedActions,
@@ -28,16 +23,12 @@ import {
 
 } from '../actions';
 
-
-
-
-
 class Actions extends Component {
 
 	constructor(props) {
 		super(props);
-		this.handleAction = this.handleAction.bind(this);
-		this.handleMove = this.handleMove.bind(this);
+		//this.handleAction = this.handleAction.bind(this);
+		//this.handleMove = this.handleMove.bind(this);
 	}
 
 	componentDidMount() {
