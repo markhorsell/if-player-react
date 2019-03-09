@@ -16,6 +16,7 @@ class Todo extends Component {
       <div style={{ marginTop: "80px" }}>
         <p>Add styled-components</p>
         <p>Fix the styling - make iphone 5 compatible</p>
+        <p>Fix map connection rendering</p>
         <p style={{textDecoration: 'line-through'}}>Update to lastest packages</p>
         <p>Add Dice roll option to fight monster</p>
         <p>Add typein option for puzzles or riddle answers</p>

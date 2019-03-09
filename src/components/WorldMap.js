@@ -36,11 +36,13 @@ class WorldMap extends Component {
     }
    
     updateCanvas() {
+        console.log('drawing map')
         //TODO debounce
         if (!this.mapContainerRef.current) {
             return;
         }
         const currentRoom = this.props.room;
+        
 
         const width = Math.min(this.mapContainerRef.current.offsetWidth,250);
         //const width =this.mapContainerRef.current.offsetWidth;
@@ -82,18 +84,20 @@ class WorldMap extends Component {
 
         for(var x=0;x<10;x++){
             for(var y=0;y<10;y++){
-                //console.log(allGrids[x][y]);
+                console.log(allGrids[x][y]);
                 if(allGrids[x][y]==='VISITED'){
                     ctx.strokeStyle="#000000";
                     //NOTE IF I DONT WANT AJACENT VISITED ROOMS TO ALWAYS BE ACCESIBLE..
                     //..I COULD ADD AN EXIT CHECK AS WELL
                     if(allGrids[x-1][y]==='VISITED'){ 
+                        console.log('x')
                         ctx.beginPath();
                         ctx.moveTo((x * spacing)+(spacing/2), (y * spacing)+(spacing/2));
                         ctx.lineTo(((x-1) * spacing)+(spacing/2), (y * spacing)+(spacing/2));
                         ctx.stroke();
                     }
                     if(allGrids[x][y+1]==='VISITED'){
+                        console.log('y')
                         ctx.beginPath();
                         ctx.moveTo((x * spacing)+(spacing/2), (y * spacing)+(spacing/2));
                         ctx.lineTo((x * spacing)+(spacing/2), ((y+1) * spacing)+(spacing/2));
