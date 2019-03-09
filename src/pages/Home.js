@@ -1,13 +1,12 @@
-
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import RoomDescription from '../components/RoomDescription';
-import RoomImage from '../components/RoomImage';
-import Message from '../components/Message';
-import LocationObjects from '../components/LocationObjects';
-import Inventory from '../components/Inventory';
-import Actions from '../components/Actions';
-import WorldMap from '../components/WorldMap';
+import { connect } from "react-redux";
+import RoomDescription from "../components/RoomDescription";
+import RoomImage from "../components/RoomImage";
+import Message from "../components/Message";
+import LocationObjects from "../components/LocationObjects";
+import Inventory from "../components/Inventory";
+import Actions from "../components/Actions";
+import WorldMap from "../components/WorldMap";
 //import Debug from '../components/Debug';
 
 //import './Home.css';
@@ -18,8 +17,7 @@ import {
   //getAllowedActions,
   //getAllowedExits,
   getLocationObjects
-} from '../utils/dataHelper';
-
+} from "../utils/dataHelper";
 
 /*
 The project was built assuming it is hosted at the server root.
@@ -33,21 +31,34 @@ For example, add this to build it for GitHub Pages:
 //yarn - s serve
 //http://localhost:5000
 
-
 class Home extends Component {
-
   getDescription(roomData) {
-    return roomData.desc[0];
+    if (roomData && roomData.desc && roomData.desc.length) {
+      return roomData.desc[0];
+    } else {
+      console.log("NO roomData desc for " + roomData);
+    }
   }
   getImage(roomData) {
-    return roomData.image;
+    if (roomData && roomData.image) {
+      return roomData.image;
+    } else {
+      console.log("NO roomData image for " + roomData);
+    }
   }
 
   render() {
-    const { money, discoveredPaths, rooms, room, objects, lastMessage } = this.props;
+    const {
+      money,
+      discoveredPaths,
+      rooms,
+      room,
+      objects,
+      lastMessage
+    } = this.props;
     //Dont Allow rendering if data is empty
     if (rooms.length === 0) {
-      return <p>NOT LOADED</p>
+      return <p>NOT LOADED</p>;
     }
     const currentRoomData = getRoomData(room, rooms);
     const description = this.getDescription(currentRoomData);
@@ -56,22 +67,25 @@ class Home extends Component {
     const inventory = getInventory(objects);
 
     //TODO assets folder will be switchable later
-    const assetsFolder = 'theshivers';
+    const assetsFolder = "theshivers";
 
-    const isLocal = window.location.href.substr(7, 9) === 'localhost';
+    const isLocal = window.location.href.substr(7, 9) === "localhost";
 
     return (
-
-      <div className='home'>
-
+      <div className="home">
         {isLocal ? (
-          <RoomImage path={'../assets/' + assetsFolder + '/images/'} image={image} />
+          <RoomImage
+            path={"../assets/" + assetsFolder + "/images/"}
+            image={image}
+          />
         ) : (
-            <RoomImage path={'/shivers-react/assets/' + assetsFolder + '/images/'} image={image} />
-          )}
+          <RoomImage
+            path={"/shivers-react/assets/" + assetsFolder + "/images/"}
+            image={image}
+          />
+        )}
 
-
-        <div className='text-panel'>
+        <div className="text-panel">
           <Message message={lastMessage} />
           <RoomDescription description={description} />
 
@@ -81,24 +95,30 @@ class Home extends Component {
           <Actions />
         </div>
 
-
         <WorldMap discoveredPaths={discoveredPaths} room={room} rooms={rooms} />
-
       </div>
-
-
-    )
+    );
   }
 }
 
-Home.propTypes = {
-};
+Home.propTypes = {};
 
 function mapStateToProps(state) {
-
-  const { discoveredPaths, money, rooms, room, objects, lastMessage } = state.gameData;
+  const {
+    discoveredPaths,
+    money,
+    rooms,
+    room,
+    objects,
+    lastMessage
+  } = state.gameData;
   return {
-    discoveredPaths, money, rooms, room, objects, lastMessage,
-  }
+    discoveredPaths,
+    money,
+    rooms,
+    room,
+    objects,
+    lastMessage
+  };
 }
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps)(Home);

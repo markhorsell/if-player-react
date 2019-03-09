@@ -1,16 +1,24 @@
 
+
 {
-	
+	"DEV_COMMENT":"room will be 'Plane' but testing new ideas at 22",
+	"DEV_COMMENT2":"thomas kinkade - remember to clear persist",
+	"room":"22",
 	"gameTitle":"The Shivers",
 	"score":0,
 	"money":0,
-	"room":"Plane",
+	
 	"discoveredPaths":[],
 	"test":"dave",
 	"move":0,
-	"lastMessage":"You have just leant back in your seat. It's a beautiful night and you just gaze out the window.",
+	"lastMessage_RESTORE":"You have just leant back in your seat. It's a beautiful night and you just gaze out the window.",
+	"lastMessage":"",
 	"rooms":[
-	{"id":"","exits":null,"desc":["ERROR : This isnt a location its reserved for objects at 0 = inventory"]},
+	{"id":"22","image":"gloomy_forest.jpg","exits":{"s":"23"},"desc":["A dark and gloomy forest"]},
+	{"id":"23","image":"gloomy_forest.jpg","exits":{"s":"24"},"desc":["A dark and gloomy forest"]},
+	{"id":"24","image":"gloomy_forest.jpg","exits":{"e":"34"},"desc":["A dark and gloomy forest"]},
+	{"id":"34","image":"gloomy_forest.jpg","exits":{"e":"44"},"desc":["A dark and gloomy forest"]},
+	{"id":"","exits":{},"desc":["ERROR : This isnt a location its reserved for objects at 0 = inventory"]},
 	{"id":"36","image":"village.jpg","showOnMap":true,"exits":{"e":"46","s":"37"},"desc":["You're in a village, near a shop."]},
 	{"id":"37","image":"carver.jpg","showOnMap":true,"exits":{"n":"36"},"desc":["You're outside a workshop, the man here seems to be a skilled carver."]},
 	{"id":"38","image":"","showOnMap":true,"exits":{"n":"37","s":"39"},"desc":["."]},
