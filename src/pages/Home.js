@@ -95,7 +95,12 @@ class Home extends Component {
           <Actions />
         </div>
 
-        <WorldMap discoveredPaths={discoveredPaths} room={room} rooms={rooms} />
+        <WorldMap
+          discoveredPaths={discoveredPaths}
+   
+          room={room}
+          rooms={rooms}
+        />
       </div>
     );
   }

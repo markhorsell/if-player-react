@@ -3,13 +3,13 @@
 {
 	"DEV_COMMENT":"room will be 'Plane' but testing new ideas at 22",
 	"DEV_COMMENT2":"thomas kinkade - remember to clear persist",
-	"room":"22",
+	"room":"Plane",
 	"gameTitle":"The Shivers",
 	"score":0,
 	"money":0,
 	
-	"discoveredPaths":["22"],
-	"test":"dave",
+	"discoveredPaths":[],
+
 	"move":0,
 	"lastMessage_RESTORE":"You have just leant back in your seat. It's a beautiful night and you just gaze out the window.",
 	"lastMessage":"",
