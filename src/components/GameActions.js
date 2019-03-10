@@ -94,8 +94,8 @@ class Actions extends Component {
 		console.log(key,data)
 		switch (key) {
 			case 'message_roll':
-				this.props.dispatch(resultMessage("You rolled a "+Math.ceil(Math.random()*data)+" from a "+data));
-				this.props.dispatch(resultRoll(Math.ceil(Math.random()*data)));
+				this.props.dispatch(resultMessage("You rolled a "+Math.ceil(Math.random()*data.sides)+" from a "+data.sides));
+				this.props.dispatch(resultRoll(Math.ceil(Math.random()*data.sides)));
 				break;
 			case 'message':
 				this.props.dispatch(resultMessage(data));

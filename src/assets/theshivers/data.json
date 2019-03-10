@@ -1,17 +1,23 @@
 {
   "DEV_COMMENT": "room will be 'Plane' but testing new ideas at 22",
   "DEV_COMMENT2": "thomas kinkade - remember to clear persist",
-  "room": "22",
+  "room": "Plane",
   "gameTitle": "The Shivers",
   "score": 0,
   "money": 0,
 
-  "discoveredPaths": ["22"],
+  "discoveredPaths": [],
 
   "move": 0,
   "lastMessage_RESTORE": "You have just leant back in your seat. It's a beautiful night and you just gaze out the window.",
   "lastMessage": "",
   "rooms": [
+    {
+      "id": "12",
+      "image": "gloomy_forest.jpg",
+      "exits": { "e": "22" },
+      "desc": ["TODO write description for place where mouthpiece for horn can be found."]
+    },
     {
       "id": "22",
       "image": "gloomy_forest.jpg",
@@ -58,7 +64,7 @@
     },
     {
       "id": "37",
-      "image": "carver.jpg",
+      "image": "village_south.jpg",
       "showOnMap": true,
       "exits": { "n": "36" , "s":"38"},
       "desc": [
@@ -67,10 +73,10 @@
     },
     {
       "id": "38",
-      "image": "",
+      "image": "carver.jpg",
       "showOnMap": true,
       "exits": { "n": "37" },
-      "desc": ["There's a monster here. He wants you to roll a 6 on a die."]
+      "desc": ["You're outside a workshop, the man here seems to be a skilled carver."]
     },
     {
       "id": "39",
@@ -223,9 +229,10 @@
   ],
   "actions": [
     {
-      "action": "Roll a six sided Die",
-      "conditions": { "areCarrying": ["SIX_SIDED_DICE"] },
-      "results": { "message_roll": "6" }
+      "action": "Roll a six sided Dice",
+      "conditions": { "areCarrying": ["SIX_SIDED_DICE"], "location": "22" },
+      "results": {
+          "message_roll": {"sides":"6","target":"6"}, "createExit": { "dir": "w", "toRoom": "12" } }
     },
     {
       "action": "Testing the button layout",
@@ -361,14 +368,14 @@
 	},
 
 	{
-		"action": "Pick up six sided die",
+		"action": "Pick up six sided dice",
 		"conditions": { "roomContains": ["SIX_SIDED_DICE"] },
-		"results": { "message": "You have picked up the six sided die.", "take": ["SIX_SIDED_DICE"] }
+		"results": { "message": "You have picked up the six sided dice.", "take": ["SIX_SIDED_DICE"] }
 	  },
 	  {
-		"action": "Drop six sided die",
+		"action": "Drop six sided dice",
 		"conditions": { "areCarrying": ["SIX_SIDED_DICE"] },
-		"results": { "message": "You have dropped the die.", "drop": ["SIX_SIDED_DICE"] }
+		"results": { "message": "You have dropped the dice.", "drop": ["SIX_SIDED_DICE"] }
 	  },
     {
       "action": "Take silver key",
@@ -463,6 +470,22 @@
       }
     },
     {
+      "action": "Take playable horn",
+      "conditions": { "roomContains": ["PLAYABLE_HORN"] },
+      "results": {
+        "message": "You have picked up the hunting horn.",
+        "take": ["PLAYABLE_HORN"]
+      }
+    },
+    {
+      "action": "Drop playable horn",
+      "conditions": { "areCarrying": ["PLAYABLE_HORN"] },
+      "results": {
+        "message": "You have dropped the hunting horn.",
+        "drop": ["PLAYABLE_HORN"]
+      }
+    },
+    {
       "action": "Buy hunting horn for 5 talors",
       "conditions": {
         "location": "36",
@@ -479,14 +502,14 @@
     {
       "action": "Pay man to carve bone",
       "conditions": {
-        "location": "37",
+        "location": "38",
         "haveMoney": 5,
         "areCarrying": ["BONE"]
       },
       "results": {
-        "message": "You now have a mouthpiece for a horn.",
+        "message": "You now have a six sided dice.",
         "removeMoney": 5,
-        "take": ["MUSICAL_MOUTH_PIECE"],
+        "take": ["SIX_SIDED_DICE"],
         "destroys": ["BONE"]
       }
     },
@@ -498,7 +521,17 @@
         "take": ["PLAYABLE_HORN"],
         "destroys": ["MUSICAL_MOUTH_PIECE", "HUNTING_HORN"]
       }
+    },  {
+      "action": "Pick up mouthpiece",
+      "conditions": { "roomContains": ["MUSICAL_MOUTH_PIECE"] },
+      "results": { "message": "You have picked up the mouthpiece.", "take": ["MUSICAL_MOUTH_PIECE"] }
     },
+    {
+      "action": "Drop Mouthpiece",
+      "conditions": { "areCarrying": ["MUSICAL_MOUTH_PIECE"] },
+      "results": { "message": "You have dropped the mouthpiece.", "drop": ["MUSICAL_MOUTH_PIECE"] }
+    },
+
     {
       "action": "Play horn",
       "conditions": { "location": "56", "areCarrying": ["PLAYABLE_HORN"] },
@@ -588,7 +621,8 @@
   "_object_comment": "inventory item are :loc === 'INV'",
 
   "objects": [
-    { "obj": "SIX_SIDED_DICE", "loc": "22", "desc": "A six sided die" },
+    { "obj": "GAMBLER", "loc": "22", "desc": "A Gambler with madness in his eyes. He asks if you can roll a six?" },
+    { "obj": "SIX_SIDED_DICE", "loc": "22", "desc": "A six sided dice" },
     {
       "obj": "BOOK",
       "loc": "INV",
@@ -607,8 +641,8 @@
     { "obj": "BONE", "loc": "", "desc": "A small hollow bone" },
     {
       "obj": "MUSICAL_MOUTH_PIECE",
-      "loc": "",
-      "desc": "A small bone mouthpiece"
+      "loc": "12",
+      "desc": "A small musical mouthpiece"
     },
 
     { "obj": "BRANDY", "loc": "Plane", "desc": "A glass of Shnapps" },

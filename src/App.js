@@ -66,6 +66,7 @@ class App extends Component {
               <Route exact path="/shivers-react/about" component={About} />
               <Route exact path="/shivers-react/todo" component={Todo} />
               <Redirect from="/shivers-react/" to="/shivers-react/game" />
+              <Redirect from="/" to="/shivers-react/game" />
               </Switch>
             
             </div>

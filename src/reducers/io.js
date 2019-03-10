@@ -122,6 +122,15 @@ export function gameData(state = {}, action) {
           if (action.data.dir === "e") {
             r.exits.e = action.data.toRoom;
           }
+          if (action.data.dir === "w") {
+            r.exits.w = action.data.toRoom;
+          }
+          if (action.data.dir === "n") {
+            r.exits.n = action.data.toRoom;
+          }
+          if (action.data.dir === "s") {
+            r.exits.s = action.data.toRoom;
+          }
         }
         return r;
       });

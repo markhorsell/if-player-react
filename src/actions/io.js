@@ -30,7 +30,7 @@ export function initData(data){
 }
 
 export function resultRoll(data){
-    console.log("result roll",data)
+    console.log(data)
     return {
         type:RESULT_ROLL,
         
