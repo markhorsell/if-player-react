@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import styled  from "styled-components"
 
+const DoneP=styled.p`
+  text-decoration: line-through;
+`;
 
 
 class Todo extends Component {
@@ -14,10 +18,13 @@ class Todo extends Component {
   render() {
     return (
       <div style={{ marginTop: "80px" }}>
-        <p>Add styled-components</p>
+        <DoneP>Add styled-components</DoneP>
+        <p>Remove css and convert to styled-c</p>
         <p>Fix the styling - make iphone 5 compatible</p>
-        <p>Fix map connection rendering</p>
-        <p style={{textDecoration: 'line-through'}}>Update to lastest packages</p>
+        <DoneP>Add Typescripy</DoneP>
+        <p>Fully convert to typescript</p>
+        <DoneP>Fix map connection rendering</DoneP>
+        <DoneP>Update to lastest packages</DoneP>
         <p>Add Dice roll option to fight monster</p>
         <p>Add typein option for puzzles or riddle answers</p>
         <p>Add Health Meter</p>

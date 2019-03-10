@@ -60,7 +60,7 @@
       "id": "37",
       "image": "carver.jpg",
       "showOnMap": true,
-      "exits": { "n": "36" },
+      "exits": { "n": "36" , "s":"38"},
       "desc": [
         "You're outside a workshop, the man here seems to be a skilled carver."
       ]
@@ -69,8 +69,8 @@
       "id": "38",
       "image": "",
       "showOnMap": true,
-      "exits": { "n": "37", "s": "39" },
-      "desc": ["."]
+      "exits": { "n": "37" },
+      "desc": ["There's a monster here. He wants you to roll a 6 on a die."]
     },
     {
       "id": "39",
