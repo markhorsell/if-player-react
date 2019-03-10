@@ -18,6 +18,7 @@ class Todo extends Component {
   render() {
     return (
       <div style={{ marginTop: "80px" }}>
+       <p>Once rolled a 6 the monster shows you an exit so you can find the bone carver</p>
         <DoneP>Add styled-components</DoneP>
         <p>Remove css and convert to styled-c</p>
         <p>Fix the styling - make iphone 5 compatible</p>
