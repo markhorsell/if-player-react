@@ -5,7 +5,7 @@ import RoomImage from "../components/RoomImage";
 import Message from "../components/Message";
 import LocationObjects from "../components/LocationObjects";
 import Inventory from "../components/Inventory";
-import Actions from "../components/Actions";
+import Actions from "../components/GameActions";
 import WorldMap from "../components/WorldMap";
 //import Debug from '../components/Debug';
 
@@ -54,7 +54,8 @@ class Home extends Component {
       rooms,
       room,
       objects,
-      lastMessage
+      lastMessage,
+      roll,
     } = this.props;
     //Dont Allow rendering if data is empty
     if (rooms.length === 0) {
@@ -87,6 +88,7 @@ class Home extends Component {
 
         <div className="text-panel">
           <Message message={lastMessage} />
+         
           <RoomDescription description={description} />
 
           <LocationObjects items={locationObjects} />
@@ -115,7 +117,8 @@ function mapStateToProps(state) {
     rooms,
     room,
     objects,
-    lastMessage
+    lastMessage,
+    roll
   } = state.gameData;
   return {
     discoveredPaths,
@@ -123,7 +126,9 @@ function mapStateToProps(state) {
     rooms,
     room,
     objects,
-    lastMessage
+    lastMessage,
+    roll,
+
   };
 }
 export default connect(mapStateToProps)(Home);

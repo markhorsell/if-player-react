@@ -3,12 +3,12 @@
 {
 	"DEV_COMMENT":"room will be 'Plane' but testing new ideas at 22",
 	"DEV_COMMENT2":"thomas kinkade - remember to clear persist",
-	"room":"Plane",
+	"room":"22",
 	"gameTitle":"The Shivers",
 	"score":0,
 	"money":0,
 	
-	"discoveredPaths":[],
+	"discoveredPaths":["22"],
 
 	"move":0,
 	"lastMessage_RESTORE":"You have just leant back in your seat. It's a beautiful night and you just gaze out the window.",
@@ -47,6 +47,9 @@
 	{"id":"66","image":"city.jpg","showOnMap":true,"exits":{"w":"56"},"desc":["The king is here. His son has been missing for many months, and he is tormented by it."]}
 	],
 	"actions":[
+		{"action":"Roll a six sided Die",
+		"conditions":{"location":"22"},
+		"results":{"message_roll":"6"}},
 		{"action":"Testing the button layout",
 		"conditions":{"roomContains":["A TEST OBJECT"]},
 		"results":{"message":"nothing happened its just a test button"}},

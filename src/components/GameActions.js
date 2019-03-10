@@ -9,6 +9,7 @@ import {
 } from '../utils/dataHelper';
 
 import {
+	resultRoll,
 	resultMessage,
 	resultScore,
 	resultTake,
@@ -82,7 +83,6 @@ class Actions extends Component {
 			return a.action === action;
 		})[0].results;
 		
-
 		for (var key of Object.keys(results)) {
 
 			this.dispatchResults(key, results[key])
@@ -91,7 +91,12 @@ class Actions extends Component {
 
 	}
 	dispatchResults(key, data) {
+		console.log(key,data)
 		switch (key) {
+			case 'message_roll':
+				this.props.dispatch(resultMessage("You rolled a "+Math.ceil(Math.random()*data)+" from a "+data));
+				this.props.dispatch(resultRoll(Math.ceil(Math.random()*data)));
+				break;
 			case 'message':
 				this.props.dispatch(resultMessage(data));
 				break;

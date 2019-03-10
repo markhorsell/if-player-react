@@ -1,8 +1,10 @@
 
 //export * from './actions_reddit';
 //import fetch from 'isomorphic-fetch'
+
 export const INIT_DATA = 'INIT_DATA';
 export const RESULT_MESSAGE ='RESULT_MESSAGE';
+export const RESULT_ROLL= 'RESULT_ROLL';
 export const RESULT_SCORE ='RESULT_SCORE';
 export const RESULT_TAKE ='RESULT_TAKE';
 export const RESULT_DROP = 'RESULT_DROP';
@@ -24,6 +26,15 @@ export function initData(data){
     return {
         type:INIT_DATA,
         data: data,
+    }
+}
+
+export function resultRoll(data){
+    console.log("result roll",data)
+    return {
+        type:RESULT_ROLL,
+        
+        data:data,
     }
 }
 
