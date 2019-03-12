@@ -1,23 +1,36 @@
 import React from "react"
 import styled  from "styled-components"
+import Nav from "./Nav";
 
 const HeaderDiv = styled.div`
-  position: fixed;
-  z-index: 1;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: inline-block;
-  width: inherit;
-  max-width: 1000px;
 
-  margin: 0 auto;
-  font-family: "Yesteryear", cursive;
+  position: fixed;
+  top:0px;
+  z-index: 1;
+ 
+  display: inline-block;
+  width:100%;
+  
+ 
+  > div {
+    position:relative;
+    max-width: 600px;
+    margin:0 auto;
+    background-color: rgba(0, 0, 0,1);
+    height:60px;
+  }
+ 
+ 
+`;
+const TitleDiv = styled.div`
+position:absolute;
+top:30px;
+left:10px;
+font-family: "Yesteryear", cursive;
   color: gold;
   text-align: left;
-  top: 0px;
-
-  height: 80px;
-  font-size: 60px;
-  line-height: 90px;
+  font-size: 50px;
+  /*line-height: 90px;*/
 `;
 
 interface IProps {
@@ -25,7 +38,12 @@ interface IProps {
 }
 
 const Header: React.SFC<IProps> = props => {
-  return <HeaderDiv>{props.title}</HeaderDiv>;
+  return <HeaderDiv>
+    <div>
+    <TitleDiv>{props.title}</TitleDiv>
+    <Nav/>
+    </div>
+    </HeaderDiv>;
 };
 
 export default Header;

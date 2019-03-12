@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import styled from "styled-components";
 import RoomDescription from "../components/RoomDescription";
 import RoomImage from "../components/RoomImage";
 import Message from "../components/Message";
@@ -31,6 +32,49 @@ For example, add this to build it for GitHub Pages:
 //yarn - s serve
 //http://localhost:5000
 
+const HomeDiv = styled.div`
+  
+  max-width: 600px;
+
+  margin: 70px auto 0px auto;
+  @media only screen and (min-width: 600px) {
+    /* wider */
+   
+  }
+`;
+const TextPanelDiv = styled.div`
+  display: inline-block;
+ 
+  width: calc(100% - 20px);
+  margin-left: 10px;
+  margin-right: 10px;
+  max-width: 600px;
+  @media only screen and (min-width: 600px) {
+    /* wider */
+    max-width: 400px;
+   
+  }
+`;
+const MapContainerDiv = styled.div`
+  display: inline-block;
+ 
+  width:100%;
+  > div {
+    margin:10px auto 0px auto;
+    max-width:200px;
+  }
+ 
+  
+  
+ 
+  @media only screen and (min-width: 600px) {
+    /* wider */
+    vertical-align:top;
+    max-width: 170px;
+  
+  }
+`;
+
 class Home extends Component {
   getDescription(roomData) {
     if (roomData && roomData.desc && roomData.desc.length) {
@@ -55,7 +99,7 @@ class Home extends Component {
       room,
       objects,
       lastMessage,
-      roll,
+      roll
     } = this.props;
     //Dont Allow rendering if data is empty
     if (rooms.length === 0) {
@@ -73,7 +117,7 @@ class Home extends Component {
     const isLocal = window.location.href.substr(7, 9) === "localhost";
 
     return (
-      <div className="home">
+      <HomeDiv>
         {isLocal ? (
           <RoomImage
             path={"../assets/" + assetsFolder + "/images/"}
@@ -85,25 +129,26 @@ class Home extends Component {
             image={image}
           />
         )}
-
-        <div className="text-panel">
+        <TextPanelDiv>
           <Message message={lastMessage} />
-         
+
           <RoomDescription description={description} />
 
           <LocationObjects items={locationObjects} />
           <Inventory items={inventory} money={money} />
 
           <Actions />
-        </div>
-
-        <WorldMap
-          discoveredPaths={discoveredPaths}
-   
-          room={room}
-          rooms={rooms}
-        />
-      </div>
+        </TextPanelDiv>
+        <MapContainerDiv>
+          <div>
+          <WorldMap
+            discoveredPaths={discoveredPaths}
+            room={room}
+            rooms={rooms}
+          />
+          </div>
+        </MapContainerDiv>
+      </HomeDiv>
     );
   }
 }
@@ -127,8 +172,7 @@ function mapStateToProps(state) {
     room,
     objects,
     lastMessage,
-    roll,
-
+    roll
   };
 }
 export default connect(mapStateToProps)(Home);

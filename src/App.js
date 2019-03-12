@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 //import data from './assets/theshivers/data.json';
 
-import Nav from './components/Nav';
 import Header from './components/Header';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -55,11 +54,11 @@ class App extends Component {
            
            <Router>
              
-             <div className='main'>
+             <div>
              
              
             
-              <Nav/>
+          
               <Header title={gameTitle}/>
               <Switch>
               <Route exact path="/shivers-react/game" component={Home} />

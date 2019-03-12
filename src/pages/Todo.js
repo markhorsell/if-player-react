@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import styled  from "styled-components"
+import styled  from "styled-components";
+
+const PageDiv = styled.div`
+  max-width: 600px;
+
+  margin: 70px auto 0px auto;
+ padding:10px;
+`;
 
 const DoneP=styled.p`
   text-decoration: line-through;
@@ -17,7 +24,7 @@ class Todo extends Component {
 
   render() {
     return (
-      <div style={{ marginTop: "80px" }}>
+      <PageDiv>
       <p>The carver now makes a dice from the bone</p>
        <p>Once rolled a 6 the monster shows you an exit so you can find the mouthpiece</p>
         <DoneP>Add styled-components</DoneP>
@@ -35,7 +42,7 @@ class Todo extends Component {
           appear as Worth, Sest, Eouth, Nest and go in random directions
         </p>
         <p>bump up to version 2.0</p>
-      </div>
+      </PageDiv>
     );
   }
 }
