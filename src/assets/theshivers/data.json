@@ -231,7 +231,7 @@
     {
       "action": "Roll a six sided Dice",
       "conditions": { "areCarrying": ["SIX_SIDED_DICE"], "location": "22" },
-      "results": {
+      "results": {"message":"The Man points at a gap in the trees to the west",
           "message_roll": {"sides":"6","target":"6"}, "createExit": { "dir": "w", "toRoom": "12" } }
     },
     {
@@ -622,7 +622,7 @@
 
   "objects": [
     { "obj": "GAMBLER", "loc": "22", "desc": "A Gambler with madness in his eyes. He asks if you can roll a six?" },
-    { "obj": "SIX_SIDED_DICE", "loc": "22", "desc": "A six sided dice" },
+    { "obj": "SIX_SIDED_DICE", "loc": "", "desc": "A six sided dice" },
     {
       "obj": "BOOK",
       "loc": "INV",

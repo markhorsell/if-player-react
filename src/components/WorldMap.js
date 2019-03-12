@@ -88,6 +88,7 @@ class WorldMap extends Component {
     ctx.restore();
 
     ctx.strokeStyle = "#333";
+    //ctx.strokeStyle = "rgba(1, 1, 1, 255)";
     ctx.setLineDash([1, 5]);
     visitedRooms.map(room => {
       const grid = parseInt(room.id, 10);
@@ -105,16 +106,22 @@ class WorldMap extends Component {
           }
         });
       }
-      if (currentRoom > 10) {
-        //Player
-        const x = Math.floor(currentRoom / 10) * spacing + middle;
-        const y = (currentRoom % 10) * spacing + middle;
-        ctx.beginPath();
-        ctx.arc(x / 2, y / 2, spacing / 8, 0, 2 * Math.PI);
-        ctx.fillStyle = "rgba(255, 0, 0, 1)";
-        ctx.fill();
-      }
+     //--
     });
+    if (currentRoom > 10) {
+      //Player
+      const x = Math.floor(currentRoom / 10) * spacing + middle;
+      const y = (currentRoom % 10) * spacing + middle;
+      ctx.save();
+      
+      ctx.beginPath();
+      ctx.strokeStyle = "rgba(0, 0, 0, 0)";
+      ctx.arc(x / 2, y / 2, spacing / 6, 0, 2 * Math.PI);
+      ctx.fillStyle = "rgba(255, 0, 0, 1)";
+      ctx.stroke();
+      ctx.fill();
+      ctx.restore();
+    }
     for (var x = 0; x < 10; x++) {
       for (var y = 0; y < 10; y++) {
         const visited =
