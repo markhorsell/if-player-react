@@ -10,10 +10,11 @@ const DescDiv = styled.div`
 	
 `
 
+type Props = {
+	description:string
+}
 
-
-
-const RoomDescription = ({ description }) => (
+const RoomDescription = ({ description }:Props) => (
 	<DescDiv>{description}</DescDiv>
 	)
 
