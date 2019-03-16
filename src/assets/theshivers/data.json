@@ -17,7 +17,7 @@
       "image": "gloomy_forest.jpg",
       "exits": { "e": "22" },
       "desc": [
-        "TODO write description for place where mouthpiece for horn can be found."
+        "A small clearing in the trees."
       ]
     },
     {

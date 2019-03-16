@@ -3,17 +3,29 @@ import PropTypes from "prop-types";
 
 import styled from "styled-components";
 
+const isLocal = window.location.href.substr(7, 9) === "localhost";
 
 
-const WorldMapDiv = styled.div`
-  
+let WorldMapDiv: any;
 
+if (isLocal) {
+  WorldMapDiv = styled.div`
+    > canvas {
+      border-radius: 50%;
+      display: inline;
+      background-image: url("../assets/theshivers/images/game_bg.jpg");
+    }
+  `;
+}else{
+  WorldMapDiv = styled.div`
   > canvas {
-    border-radius:50%;
+    border-radius: 50%;
     display: inline;
-    background-image: url("../assets/theshivers/images/game_bg.jpg");
+    background-image: url("/shivers-react/assets/theshivers/images/game_bg.jpg");
   }
 `;
+
+}
 
 //TODO debounce could be in utils
 /*
@@ -22,25 +34,21 @@ type Props = {
   room:object;
 }
 */
-interface IProps{
-  room:any;
-  rooms:Array<any>;
-  discoveredPaths:Array<any>;
-};
-interface IState{};
+interface IProps {
+  room: any;
+  rooms: Array<any>;
+  discoveredPaths: Array<any>;
+}
+interface IState {}
 
-
-class WorldMap extends Component<IProps,IState> {
+class WorldMap extends Component<IProps, IState> {
   private canvasRef = React.createRef<any>();
   private mapContainerRef = React.createRef<any>();
 
-  constructor(props:IProps) {
+  constructor(props: IProps) {
     super(props);
-   
-    this.updateCanvas = this.debounce(this.updateCanvas, 100,false);
-   
 
-    
+    this.updateCanvas = this.debounce(this.updateCanvas, 100, false);
   }
 
   componentDidMount() {
@@ -51,12 +59,12 @@ class WorldMap extends Component<IProps,IState> {
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateCanvas.bind(this));
   }
-  debounce = ( func:Function, wait:number, immediate:boolean) => {
+  debounce = (func: Function, wait: number, immediate: boolean) => {
     console.log(this);
-    const _this=this;
-    var timeout:any;
+    const _this = this;
+    var timeout: any;
     return function() {
-      var context:any = _this,
+      var context: any = _this,
         args = arguments;
       var later = function() {
         timeout = null;
@@ -67,14 +75,13 @@ class WorldMap extends Component<IProps,IState> {
       timeout = setTimeout(later, wait);
       if (callNow) func.apply(context, args);
     };
-  }
+  };
 
-  updateCanvas=()=> {
-    
+  updateCanvas = () => {
     if (!this.mapContainerRef.current) {
       return;
     }
-    console.log('update canvas')
+    console.log("update canvas");
     const currentRoom = this.props.room;
 
     const width = Math.min(this.mapContainerRef.current.offsetWidth, 250);
@@ -119,7 +126,7 @@ class WorldMap extends Component<IProps,IState> {
       if (grid > 10) {
         const x = Math.floor(grid / 10) * spacing + middle;
         const y = (grid % 10) * spacing + middle;
-        Object.values(room.exits).map((exit:any) => {
+        Object.values(room.exits).map((exit: any) => {
           const exitVal = parseInt(exit, 10);
           if (exitVal > 10) {
             const xE = Math.floor(exitVal / 10) * spacing + middle;
@@ -130,14 +137,14 @@ class WorldMap extends Component<IProps,IState> {
           }
         });
       }
-     //--
+      //--
     });
     if (currentRoom > 10) {
       //Player
       const x = Math.floor(currentRoom / 10) * spacing + middle;
       const y = (currentRoom % 10) * spacing + middle;
       ctx.save();
-      
+
       ctx.beginPath();
       ctx.strokeStyle = "rgba(0, 0, 0, 0)";
       ctx.arc(x / 2, y / 2, spacing / 6, 0, 2 * Math.PI);
@@ -167,7 +174,7 @@ class WorldMap extends Component<IProps,IState> {
         }
       }
     }
-  }
+  };
   render() {
     this.updateCanvas();
 
@@ -178,6 +185,5 @@ class WorldMap extends Component<IProps,IState> {
     );
   }
 }
-
 
 export default WorldMap;
