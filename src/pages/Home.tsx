@@ -33,18 +33,16 @@ For example, add this to build it for GitHub Pages:
 //http://localhost:5000
 
 const HomeDiv = styled.div`
-  
   max-width: 600px;
 
   margin: 70px auto 0px auto;
   @media only screen and (min-width: 600px) {
     /* wider */
-   
   }
 `;
 const TextPanelDiv = styled.div`
   display: inline-block;
- 
+
   width: calc(100% - 20px);
   margin-left: 10px;
   margin-right: 10px;
@@ -52,38 +50,46 @@ const TextPanelDiv = styled.div`
   @media only screen and (min-width: 600px) {
     /* wider */
     max-width: 400px;
-   
   }
 `;
 const MapContainerDiv = styled.div`
   display: inline-block;
- 
-  width:100%;
+
+  width: 100%;
   > div {
-    margin:10px auto 0px auto;
-    max-width:200px;
+    margin: 10px auto 0px auto;
+    max-width: 200px;
   }
- 
-  
-  
- 
+
   @media only screen and (min-width: 600px) {
     /* wider */
-    vertical-align:top;
+    vertical-align: top;
     max-width: 170px;
-  
   }
 `;
 
-class Home extends Component {
-  getDescription(roomData) {
+interface IProps {
+  money: any;
+  discoveredPaths: any;
+  rooms: any;
+  room: any;
+  objects: any;
+  lastMessage: any;
+  roll: any;
+}
+
+class Home extends Component<IProps> {
+  constructor(props: IProps) {
+    super(props);
+  }
+  getDescription(roomData: any) {
     if (roomData && roomData.desc && roomData.desc.length) {
       return roomData.desc[0];
     } else {
       console.log("NO roomData desc for " + roomData);
     }
   }
-  getImage(roomData) {
+  getImage(roomData: any) {
     if (roomData && roomData.image) {
       return roomData.image;
     } else {
@@ -141,11 +147,11 @@ class Home extends Component {
         </TextPanelDiv>
         <MapContainerDiv>
           <div>
-          <WorldMap
-            discoveredPaths={discoveredPaths}
-            room={room}
-            rooms={rooms}
-          />
+            <WorldMap
+              discoveredPaths={discoveredPaths}
+              room={room}
+              rooms={rooms}
+            />
           </div>
         </MapContainerDiv>
       </HomeDiv>
@@ -153,9 +159,9 @@ class Home extends Component {
   }
 }
 
-Home.propTypes = {};
 
-function mapStateToProps(state) {
+
+function mapStateToProps(state:any) {
   const {
     discoveredPaths,
     money,

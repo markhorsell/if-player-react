@@ -6,7 +6,7 @@ import React from "react";
 const NavDiv = styled.div`
   position: absolute;
   top: 5px;
-  right:10px;
+  right:24px;
   > ul {
     text-align: right;
     width: 160px;

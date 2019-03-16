@@ -15,10 +15,7 @@ const DoneP=styled.p`
 
 
 class Todo extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+  
   componentDidMount() {}
   componentWillUnmount() {}
 

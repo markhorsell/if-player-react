@@ -8,14 +8,39 @@ const PageDiv = styled.div`
   max-width: 600px;
 
   margin: 70px auto 0px auto;
- padding:10px;
+  padding: 10px;
+`;
+const ActionsDiv = styled.div`
+  display: inline-block;
+  vertical-align: top;
+  >Button {
+	display:inline-block;
+	/*trbl*/
+	padding:3px 6px 3px 6px;
+	margin:10px;
+	border: none;
+	border-radius:2px;
+	background-color:gold;
+	font-weight:bold;
+	font-size:inherit;
+	letter-spacing: inherit;
+	color:black;
+	cursor:pointer;
+  }
 `;
 
-class About extends Component {
-  constructor(props) {
+interface IProps {
+  dispatch:Function;
+}
+interface IState {
+  width:number;
+  height:number;
+}
+
+class About extends Component<IProps,IState> {
+  constructor(props:IProps) {
     super(props);
     this.state = { width: 0, height: 0 };
-  
   }
 
   componentDidMount() {
@@ -26,13 +51,13 @@ class About extends Component {
     window.removeEventListener("resize", this.updateWindowDimensions);
   }
 
-  updateWindowDimensions=()=> {
+  updateWindowDimensions = () => {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
-  }
+  };
 
-  restart = (e) => {
+  restart = (e:any) => {
     e.preventDefault();
-    
+
     this.props.dispatch(restart());
   };
 
@@ -57,7 +82,7 @@ class About extends Component {
       <p>An editor is available here ------</p>
       <p>Strict mode wraps Home and About - Wrapping App will create warnings as either Provider or Router Libraries are not Strict as yet</p>
   */}
-          <div className="actions">
+          <ActionsDiv>
             <br />
             <br />
             <br />
@@ -66,7 +91,7 @@ class About extends Component {
               WARNING : RESETTING GAME WILL CLEAR ALL DATA AND IS NOT UNDOABLE
             </p>
             <button onClick={this.restart}>Reset game</button>
-          </div>
+          </ActionsDiv>
         </PageDiv>
       </React.StrictMode>
     );

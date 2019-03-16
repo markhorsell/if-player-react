@@ -1,5 +1,12 @@
 import React from 'react';
 
+import styled  from "styled-components"
+
+const DebugDiv= styled.div`
+
+
+`;
+
 
 
 const Debug = ({ data}) => {

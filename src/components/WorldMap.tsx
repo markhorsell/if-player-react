@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 import styled from "styled-components";
 
+
+
 const WorldMapDiv = styled.div`
   
 
@@ -14,28 +16,31 @@ const WorldMapDiv = styled.div`
 `;
 
 //TODO debounce could be in utils
-function debounce(func, wait, immediate) {
-  var timeout;
-  return function() {
-    var context = this,
-      args = arguments;
-    var later = function() {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    };
-    var callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
-  };
+/*
+type Props = {
+  description:string
+  room:object;
 }
+*/
+interface IProps{
+  room:any;
+  rooms:Array<any>;
+  discoveredPaths:Array<any>;
+};
+interface IState{};
 
-class WorldMap extends Component {
-  constructor(props) {
+
+class WorldMap extends Component<IProps,IState> {
+  private canvasRef = React.createRef<any>();
+  private mapContainerRef = React.createRef<any>();
+
+  constructor(props:IProps) {
     super(props);
-    this.canvasRef = React.createRef();
-    this.mapContainerRef = React.createRef();
-    this.updateCanvas = debounce(this.updateCanvas, 100);
+   
+    this.updateCanvas = this.debounce(this.updateCanvas, 100,false);
+   
+
+    
   }
 
   componentDidMount() {
@@ -46,11 +51,30 @@ class WorldMap extends Component {
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateCanvas.bind(this));
   }
+  debounce = ( func:Function, wait:number, immediate:boolean) => {
+    console.log(this);
+    const _this=this;
+    var timeout:any;
+    return function() {
+      var context:any = _this,
+        args = arguments;
+      var later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  }
 
-  updateCanvas() {
+  updateCanvas=()=> {
+    
     if (!this.mapContainerRef.current) {
       return;
     }
+    console.log('update canvas')
     const currentRoom = this.props.room;
 
     const width = Math.min(this.mapContainerRef.current.offsetWidth, 250);
@@ -95,7 +119,7 @@ class WorldMap extends Component {
       if (grid > 10) {
         const x = Math.floor(grid / 10) * spacing + middle;
         const y = (grid % 10) * spacing + middle;
-        Object.values(room.exits).map(exit => {
+        Object.values(room.exits).map((exit:any) => {
           const exitVal = parseInt(exit, 10);
           if (exitVal > 10) {
             const xE = Math.floor(exitVal / 10) * spacing + middle;
@@ -154,10 +178,6 @@ class WorldMap extends Component {
     );
   }
 }
-WorldMap.propTypes = {
-  discoveredPaths: PropTypes.array.isRequired,
-  room: PropTypes.string.isRequired,
-  rooms: PropTypes.array.isRequired
-};
+
 
 export default WorldMap;
