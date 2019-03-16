@@ -11,16 +11,19 @@ import About from './pages/About';
 import Todo from './pages/Todo';
 
 
-
-
-
 import {
    // initData,
    restart,
 } from './actions'
 
-class App extends Component {
+interface IProps {
+  gameTitle:string;
+  dispatch:Function
+  propTypes:any;
+}
 
+class App extends Component<IProps> {
+  static propTypes = {};
   /*
     constructor(props) {
         super(props)
@@ -74,11 +77,11 @@ class App extends Component {
     }
 }
 
-App.propTypes = {};
+
 /*
 export default connect()(App);
 */
-function mapStateToProps(state) {
+function mapStateToProps(state:any) {
 
  
  

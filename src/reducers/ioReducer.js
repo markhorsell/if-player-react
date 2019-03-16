@@ -15,6 +15,7 @@ import {
 
 import initialData from "../assets/theshivers/data.json";
 
+
 export function gameData(state = {}, action) {
   switch (action.type) {
     case RESTART:
@@ -41,6 +42,7 @@ export function gameData(state = {}, action) {
         lastMessage: action.data
       };
     case RESULT_ROLL: 
+    console.log('RESULT_ROLL'+action.data)
       return {
         ...state,
         roll: action.data

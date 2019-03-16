@@ -10,7 +10,7 @@ import {
   } from "../utils/dataHelper";
   
   import {
-	resultRoll,
+	resultSuccessRoll,
 	resultMessage,
 	resultScore,
 	resultTake,
@@ -113,17 +113,39 @@ class Actions extends Component {
   dispatchResults(key, data) {
     console.log(key, data);
     switch (key) {
-      case "message_roll":
-        this.props.dispatch(
-          resultMessage(
-            "You rolled a " +
-              Math.ceil(Math.random() * data.sides) +
-              " from a " +
-              data.sides
-          )
-        );
-        this.props.dispatch(resultRoll(Math.ceil(Math.random() * data.sides)));
+      case "createExitOnRollSuccess":
+      const roll=Math.ceil(Math.random() * data.sides);
+
+        
+       
+        console.log(roll, data.sides);
+        if(roll === data.sides){
+          this.props.dispatch(resultSuccessRoll(roll ===data.sides));
+        
+            this.props.dispatch(resultCreateExit(data));
+
+            //rollmMssage
+            this.props.dispatch(
+              resultMessage(
+                "You rolled a " +
+                  roll +
+                  " from a " +
+                  data.sides+" sided dice. "+data.rollMessage
+              )
+            );
+          
+        }else{
+          this.props.dispatch(
+            resultMessage(
+              "You rolled a " +
+                roll +
+                " from a " +
+                data.sides+" sided dice. "
+            ))
+        }
+        
         break;
+    
       case "message":
         this.props.dispatch(resultMessage(data));
         break;

@@ -16,7 +16,9 @@
       "id": "12",
       "image": "gloomy_forest.jpg",
       "exits": { "e": "22" },
-      "desc": ["TODO write description for place where mouthpiece for horn can be found."]
+      "desc": [
+        "TODO write description for place where mouthpiece for horn can be found."
+      ]
     },
     {
       "id": "22",
@@ -66,7 +68,7 @@
       "id": "37",
       "image": "village_south.jpg",
       "showOnMap": true,
-      "exits": { "n": "36" , "s":"38"},
+      "exits": { "n": "36", "s": "38" },
       "desc": [
         "You're outside a workshop, the man here seems to be a skilled carver."
       ]
@@ -76,7 +78,9 @@
       "image": "carver.jpg",
       "showOnMap": true,
       "exits": { "n": "37" },
-      "desc": ["You're outside a workshop, the man here seems to be a skilled carver."]
+      "desc": [
+        "You're outside a workshop, the man here seems to be a skilled carver."
+      ]
     },
     {
       "id": "39",
@@ -229,10 +233,18 @@
   ],
   "actions": [
     {
-      "action": "Roll a six sided Dice",
+      "action": "Roll a Dice",
       "conditions": { "areCarrying": ["SIX_SIDED_DICE"], "location": "22" },
-      "results": {"message":"The Man points at a gap in the trees to the west",
-          "message_roll": {"sides":"6","target":"6"}, "createExit": { "dir": "w", "toRoom": "12" } }
+      "results": {
+        "message": "You've rolled a dice.",
+        "createExitOnRollSuccess": {
+          "sides": 6,
+          "target": 6,
+          "dir": "w",
+          "toRoom": "12",
+          "rollMessage": "The Man points at a gap in the trees to the west"
+        }
+      }
     },
     {
       "action": "Testing the button layout",
@@ -365,18 +377,24 @@
       "action": "Pick up hook",
       "conditions": { "roomContains": ["HOOK"] },
       "results": { "message": "You have picked up the hook.", "take": ["HOOK"] }
-	},
+    },
 
-	{
-		"action": "Pick up six sided dice",
-		"conditions": { "roomContains": ["SIX_SIDED_DICE"] },
-		"results": { "message": "You have picked up the six sided dice.", "take": ["SIX_SIDED_DICE"] }
-	  },
-	  {
-		"action": "Drop six sided dice",
-		"conditions": { "areCarrying": ["SIX_SIDED_DICE"] },
-		"results": { "message": "You have dropped the dice.", "drop": ["SIX_SIDED_DICE"] }
-	  },
+    {
+      "action": "Pick up six sided dice",
+      "conditions": { "roomContains": ["SIX_SIDED_DICE"] },
+      "results": {
+        "message": "You have picked up the six sided dice.",
+        "take": ["SIX_SIDED_DICE"]
+      }
+    },
+    {
+      "action": "Drop six sided dice",
+      "conditions": { "areCarrying": ["SIX_SIDED_DICE"] },
+      "results": {
+        "message": "You have dropped the dice.",
+        "drop": ["SIX_SIDED_DICE"]
+      }
+    },
     {
       "action": "Take silver key",
       "conditions": { "roomContains": ["SILVER_KEY"] },
@@ -521,15 +539,22 @@
         "take": ["PLAYABLE_HORN"],
         "destroys": ["MUSICAL_MOUTH_PIECE", "HUNTING_HORN"]
       }
-    },  {
+    },
+    {
       "action": "Pick up mouthpiece",
       "conditions": { "roomContains": ["MUSICAL_MOUTH_PIECE"] },
-      "results": { "message": "You have picked up the mouthpiece.", "take": ["MUSICAL_MOUTH_PIECE"] }
+      "results": {
+        "message": "You have picked up the mouthpiece.",
+        "take": ["MUSICAL_MOUTH_PIECE"]
+      }
     },
     {
       "action": "Drop Mouthpiece",
       "conditions": { "areCarrying": ["MUSICAL_MOUTH_PIECE"] },
-      "results": { "message": "You have dropped the mouthpiece.", "drop": ["MUSICAL_MOUTH_PIECE"] }
+      "results": {
+        "message": "You have dropped the mouthpiece.",
+        "drop": ["MUSICAL_MOUTH_PIECE"]
+      }
     },
 
     {
@@ -621,7 +646,11 @@
   "_object_comment": "inventory item are :loc === 'INV'",
 
   "objects": [
-    { "obj": "GAMBLER", "loc": "22", "desc": "A Gambler with madness in his eyes. He asks if you can roll a six?" },
+    {
+      "obj": "GAMBLER",
+      "loc": "22",
+      "desc": "A Gambler with madness in his eyes. He asks if you can roll a six?"
+    },
     { "obj": "SIX_SIDED_DICE", "loc": "", "desc": "A six sided dice" },
     {
       "obj": "BOOK",

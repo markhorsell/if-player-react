@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import { gameData} from './io'
+import { gameData} from './ioReducer'
 
 const rootReducer = combineReducers({
   gameData,

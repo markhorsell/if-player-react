@@ -29,7 +29,7 @@ export function initData(data){
     }
 }
 
-export function resultRoll(data){
+export function resultSuccessRoll(data){
     console.log(data)
     return {
         type:RESULT_ROLL,
