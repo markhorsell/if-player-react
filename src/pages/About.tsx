@@ -10,7 +10,7 @@ const PageDiv = styled.div`
   margin: 70px auto 0px auto;
   padding: 10px;
   > P {
-    line-height:8px;
+    line-height:16px;
   }
 `;
 const ActionsDiv = styled.div`

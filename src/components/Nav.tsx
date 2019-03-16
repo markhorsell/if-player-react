@@ -5,9 +5,10 @@ import React from "react";
 
 const NavDiv = styled.div`
   position: absolute;
-  top: 5px;
+  top: 0px;
   right:24px;
   > ul {
+    margin:8px 0px 0px 0px;
     text-align: right;
     width: 160px;
     > li {
