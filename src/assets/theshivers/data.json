@@ -556,6 +556,23 @@
         "drop": ["MUSICAL_MOUTH_PIECE"]
       }
     },
+ 
+    {
+      "action": "Pick up golden apple",
+      "conditions": { "roomContains": ["GOLDEN_APPLE"] },
+      "results": {
+        "message": "You have picked up the golden apple.",
+        "take": ["GOLDEN_APPLE"]
+      }
+    },
+    {
+      "action": "Drop goldern apple",
+      "conditions": { "areCarrying": ["GOLDEN_APPLE"] },
+      "results": {
+        "message": "You have dropped the golden apple.",
+        "drop": ["GOLDEN_APPLE"]
+      }
+    },
 
     {
       "action": "Play horn",
