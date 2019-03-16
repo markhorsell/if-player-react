@@ -40,11 +40,13 @@ const Nav = () => (
           About
         </NavLink>
       </li>
+      {/*
       <li>
         <NavLink to="/shivers-react/todo" activeStyle={{ color: "white" }}>
           Todo
         </NavLink>
       </li>
+      */}
     </ul>
   </NavDiv>
 );

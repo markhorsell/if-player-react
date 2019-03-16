@@ -9,6 +9,9 @@ const PageDiv = styled.div`
 
   margin: 70px auto 0px auto;
   padding: 10px;
+  > P {
+    line-height:8px;
+  }
 `;
 const ActionsDiv = styled.div`
   display: inline-block;
@@ -70,8 +73,12 @@ class About extends Component<IProps,IState> {
           <p>A game engine for Interactive fiction.</p>
           <p>A React / Redux application.</p>
           <p>By Mark Horsell</p>
-          <p>Version 1.0.3</p>
-          <p>May 2018</p>
+          <br/>
+          <p>Version 1.0.3 May 2018</p>
+          <br/>
+          <p>Version 2 March 2018</p>
+          <p>Converted JS to TypeScript and CSS to Styled-components</p>
+          <p>Added forest and Dice Rolling</p>
           <br />
           <p>{window.location.href}</p>
           <p>
