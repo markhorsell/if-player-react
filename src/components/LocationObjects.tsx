@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import styled  from "styled-components"
+import styled  from "styled-components/macro"
 
 const LocationObjectsDiv = styled.div`
     	margin-top:10px;

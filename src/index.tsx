@@ -9,7 +9,7 @@ import store from "./store/configureStore";
 import { PersistGate } from "redux-persist/integration/react";
 //const store=store.store;// = configureStore();
 
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components/macro";
 
 const GlobalStyle = createGlobalStyle`
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import styled  from "styled-components";
+import styled  from "styled-components/macro";
 
 const PageDiv = styled.div`
   max-width: 600px;

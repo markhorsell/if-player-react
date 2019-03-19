@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled  from "styled-components"
+import styled  from "styled-components/macro"
 
 const InventoryDiv= styled.div`
 	margin-top:10px;
