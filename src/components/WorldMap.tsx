@@ -11,7 +11,7 @@ let WorldMapDiv: any;
 if (isLocal) {
   WorldMapDiv = styled.div`
     > canvas {
-      border-radius: 50%;
+      border-radius: 10px;
       display: inline;
       background-image: url("../assets/theshivers/images/game_bg.jpg");
     }
@@ -19,7 +19,7 @@ if (isLocal) {
 }else{
   WorldMapDiv = styled.div`
   > canvas {
-    border-radius: 50%;
+    border-radius: 10px;
     display: inline;
     background-image: url("/shivers-react/assets/theshivers/images/game_bg.jpg");
   }
@@ -110,16 +110,23 @@ class WorldMap extends Component<IProps, IState> {
     }
     //Cutout circle
     ctx.fillStyle = "#000000";
+   
+ 
     ctx.fillRect(0, 0, width, width);
     ctx.save();
     ctx.globalCompositeOperation = "destination-out";
     ctx.beginPath();
-    ctx.arc(width / 2, width / 2, width / 2, 0, Math.PI * 2, true);
+    
+    //Swap out if i want to revert to a circular map
+    //ctx.arc(width / 2, width / 2, width / 2, 0, Math.PI * 2, true);
+    ctx.fillRect(0,0,width,width);
+   
     ctx.fill();
+   
     ctx.restore();
 
     ctx.strokeStyle = "#333";
-    //ctx.strokeStyle = "rgba(1, 1, 1, 255)";
+  
     ctx.setLineDash([1, 5]);
     visitedRooms.map(room => {
       const grid = parseInt(room.id, 10);

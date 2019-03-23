@@ -21,7 +21,7 @@ const NavDiv = styled.div`
         text-decoration: none;
 
         &:hover {
-          color: white;
+          color: #1a1a1a;
         }
       }
     }
@@ -32,12 +32,12 @@ const Nav = () => (
   <NavDiv>
     <ul>
       <li>
-        <NavLink to="/shivers-react/game" activeStyle={{ color: "white" }}>
+        <NavLink to="/shivers-react/game" activeStyle={{ color: "#1a1a1a" }}>
           Game
         </NavLink>
       </li>
       <li>
-        <NavLink to="/shivers-react/about" activeStyle={{ color: "white" }}>
+        <NavLink to="/shivers-react/about" activeStyle={{ color: "#1a1a1a" }}>
           About
         </NavLink>
       </li>

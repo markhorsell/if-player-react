@@ -3,8 +3,17 @@ import PropTypes from 'prop-types';
 import styled  from "styled-components/macro"
 
 const ImageDiv = styled.div`
-margin:0px 10px 0px 10px;
-max-width:600px;
+
+	width: 100%;
+  	height: auto;
+	
+	padding-bottom:36.3%;
+	background-repeat:no-repeat;
+    background-size:contain;
+
+ > img {
+	
+ }
 `
 
 interface IProps {
@@ -14,10 +23,9 @@ interface IProps {
 
 
 const RoomImage :React.SFC<IProps> = ({ path,image }) => (
+		//const styleVal= "x"; //"url("+path+image+")";
+		<ImageDiv style={{backgroundImage:"url("+path+image+")"}}/>
 	
-		<ImageDiv>
-		<img src={path+image} width='100%'  alt={image}/>
-		</ImageDiv>
 
 	)
 

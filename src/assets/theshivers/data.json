@@ -525,7 +525,7 @@
         "areCarrying": ["BONE"]
       },
       "results": {
-        "message": "You now have a six sided dice.",
+        "message": "The old man has carved the bone into a six sided dice.",
         "removeMoney": 5,
         "take": ["SIX_SIDED_DICE"],
         "destroys": ["BONE"]
@@ -566,7 +566,7 @@
       }
     },
     {
-      "action": "Drop goldern apple",
+      "action": "Drop golden apple",
       "conditions": { "areCarrying": ["GOLDEN_APPLE"] },
       "results": {
         "message": "You have dropped the golden apple.",
@@ -587,7 +587,7 @@
       "conditions": { "location": "66", "areCarrying": ["PLAYABLE_HORN"] },
       "results": {
         "message": "The king seems very interested in the horn and offers you a golden apple in exchange.",
-        "drop": ["GOLDEN_APPLE"],
+        "drop": ["GOLDEN_APPLE_KINGS"],
         "changeRoomDesc": [
           "You are inside the city. The king is here. The hunting horn contained a message about the king's son which has settled his mind."
         ]
@@ -597,12 +597,12 @@
       "action": "Exchange horn for golden apple",
       "conditions": {
         "areCarrying": ["PLAYABLE_HORN"],
-        "roomContains": ["GOLDEN_APPLE"]
+        "roomContains": ["GOLDEN_APPLE_KINGS"]
       },
       "results": {
         "message": "The king gives you the apple and takes the hunting horn.",
         "take": ["GOLDEN_APPLE"],
-        "destroys": ["PLAYABLE_HORN"]
+        "destroys": ["PLAYABLE_HORN","GOLDEN_APPLE_KINGS"]
       }
     },
     {
@@ -676,6 +676,8 @@
     },
     { "obj": "FROG", "loc": "", "desc": "A large warty frog" },
     { "obj": "GOLDEN_APPLE", "loc": "", "desc": "A golden apple" },
+    { "obj": "GOLDEN_APPLE_KINGS", "loc": "", "desc": "A golden apple" },
+   
     { "obj": "INV_TRIGGER1", "loc": "44", "desc": "invisible", "show": false },
     {
       "obj": "UNPURCHASED_HUNTING_HORN",

@@ -43,9 +43,8 @@ const HomeDiv = styled.div`
 const TextPanelDiv = styled.div`
   display: inline-block;
 
-  width: calc(100% - 20px);
-  margin-left: 10px;
-  margin-right: 10px;
+ 
+ 
   max-width: 600px;
   @media only screen and (min-width: 600px) {
     /* wider */
@@ -54,19 +53,31 @@ const TextPanelDiv = styled.div`
 `;
 const MapContainerDiv = styled.div`
   display: inline-block;
-
-  width: 100%;
+  
+  width: 26%;
+  
+  vertical-align:top;
+  /*max-width: 120px;*/
+  /*margin:3px 0px 0px 0px;*/
+ 
+  /*
   > div {
     margin: 10px auto 0px auto;
-    max-width: 200px;
-  }
+   
+  }*/
 
   @media only screen and (min-width: 600px) {
     /* wider */
-    vertical-align: top;
-    max-width: 170px;
+    >div {
+  
+  
+    }
   }
 `;
+const ImageContainerDiv=styled.div`
+ display: inline-block;
+  width:72%;
+`
 
 interface IProps {
   money: any;
@@ -124,6 +135,8 @@ class Home extends Component<IProps> {
 
     return (
       <HomeDiv>
+        
+       <ImageContainerDiv>
         {isLocal ? (
           <RoomImage
             path={"../assets/" + assetsFolder + "/images/"}
@@ -135,16 +148,8 @@ class Home extends Component<IProps> {
             image={image}
           />
         )}
-        <TextPanelDiv>
-          <Message message={lastMessage} />
-
-          <RoomDescription description={description} />
-
-          <LocationObjects items={locationObjects} />
-          <Inventory items={inventory} money={money} />
-
-          <Actions />
-        </TextPanelDiv>
+        </ImageContainerDiv>
+        
         <MapContainerDiv>
           <div>
             <WorldMap
@@ -154,6 +159,22 @@ class Home extends Component<IProps> {
             />
           </div>
         </MapContainerDiv>
+       
+        <Actions />
+        <TextPanelDiv>
+       
+        
+       
+          <Message message={lastMessage} />
+
+          <RoomDescription description={description} />
+
+          <LocationObjects items={locationObjects} />
+          <Inventory items={inventory} money={money} />
+
+         
+        </TextPanelDiv>
+      
       </HomeDiv>
     );
   }

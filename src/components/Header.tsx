@@ -16,7 +16,7 @@ const HeaderDiv = styled.div`
     position:relative;
     max-width: 600px;
     margin:0 auto;
-    background-color: rgba(0, 0, 0,1);
+    background-color: #f1f1f1;
     height:60px;
   }
  
@@ -27,7 +27,7 @@ position:absolute;
 top:30px;
 left:10px;
 font-family: "Yesteryear", cursive;
-  color: gold;
+  color: #1a1a1a;
   text-align: left;
   font-size: 50px;
   /*line-height: 90px;*/

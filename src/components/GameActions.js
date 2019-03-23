@@ -4,24 +4,24 @@ import PropTypes from "prop-types";
 
 import styled from "styled-components/macro";
 import {
-	getRoomData,
-	getAllowedActions,
-	getAllowedExits
-  } from "../utils/dataHelper";
-  
-  import {
-	resultSuccessRoll,
-	resultMessage,
-	resultScore,
-	resultTake,
-	resultDrop,
-	resultLocation,
-	resultDestroy,
-	resultMoney,
-	resultRoomDesc,
-	resultCreateExit,
-	restart
-  } from "../actions";
+  getRoomData,
+  getAllowedActions,
+  getAllowedExits
+} from "../utils/dataHelper";
+
+import {
+  resultSuccessRoll,
+  resultMessage,
+  resultScore,
+  resultTake,
+  resultDrop,
+  resultLocation,
+  resultDestroy,
+  resultMoney,
+  resultRoomDesc,
+  resultCreateExit,
+  restart
+} from "../actions";
 
 const ActionsDiv = styled.div`
   /* ACTIONS COMPONENT */
@@ -32,20 +32,22 @@ const ActionsDiv = styled.div`
   > button {
     display: inline-block;
     /*trbl*/
-    padding: 3px 6px 3px 6px;
-    margin: 4px;
+    padding: 3px 4px 2px 4px;
+    margin: 3px 5.9px 3px 0px;
     border: none;
     border-radius: 2px;
-    background-color: gold;
+    background-color: #fff;
     font-weight: bold;
     font-size: inherit;
     letter-spacing: inherit;
     color: black;
     cursor: pointer;
+
+    &:disabled{
+      background-color:grey;
+    }
   }
 `;
-
-
 
 class Actions extends Component {
   constructor(props) {
@@ -114,38 +116,35 @@ class Actions extends Component {
     console.log(key, data);
     switch (key) {
       case "createExitOnRollSuccess":
-      const roll=Math.ceil(Math.random() * data.sides);
+        const roll = Math.ceil(Math.random() * data.sides);
 
-        
-       
         console.log(roll, data.sides);
-        if(roll === data.sides){
-          this.props.dispatch(resultSuccessRoll(roll ===data.sides));
-        
-            this.props.dispatch(resultCreateExit(data));
+        if (roll === data.sides) {
+          this.props.dispatch(resultSuccessRoll(roll === data.sides));
 
-            //rollmMssage
-            this.props.dispatch(
-              resultMessage(
-                "You rolled a " +
-                  roll +
-                  " from a " +
-                  data.sides+" sided dice. "+data.rollMessage
-              )
-            );
-          
-        }else{
+          this.props.dispatch(resultCreateExit(data));
+
+          //rollmMssage
           this.props.dispatch(
             resultMessage(
               "You rolled a " +
                 roll +
                 " from a " +
-                data.sides+" sided dice. "
-            ))
+                data.sides +
+                " sided dice. " +
+                data.rollMessage
+            )
+          );
+        } else {
+          this.props.dispatch(
+            resultMessage(
+              "You rolled a " + roll + " from a " + data.sides + " sided dice. "
+            )
+          );
         }
-        
+
         break;
-    
+
       case "message":
         this.props.dispatch(resultMessage(data));
         break;
@@ -184,54 +183,53 @@ class Actions extends Component {
         console.warn("WARNING result = [" + key + "] is not being processed!");
     }
   }
+  renderExits = currentRoomData => {
+    console.log(currentRoomData);
+    const unsortedExits = getAllowedExits(currentRoomData).map(exit => {
+      if (exit === "n") return "North";
+      if (exit === "e") return "East";
+      if (exit === "s") return "South";
+      if (exit === "w") return "West";
+      
+      if (exit === "u") return "Up";
+      if (exit === "d") return "Down";
+      return null;
+    });
+    //However the data arrive always show n,s,w,e,u,d
+    const potentialExits = ["North",  "East","South", "West", "Up", "Down"];
+    const allowableExits = unsortedExits.filter(e => {
+      //return e === "North";
+      console.log(e)
+      return potentialExits.includes(e);
+    });
+
+    console.log(allowableExits);
+    //if (allowableExits.length > 0) {
+    const renderExits = potentialExits.map((exit, index) => {
+      console.log(exit);
+      if (allowableExits.includes(exit)) {
+        return (
+          <button key={index} onClick={this.handleMove(exit)}>
+            {exit}
+          </button>
+        );
+      }else{
+        return (
+          <button key={index} disabled={true}>
+            {exit}
+          </button>
+        );
+
+      }
+    });
+    return renderExits;
+    //}
+  };
 
   render() {
     //console.log('Actions rendered');
     const { objects, actions, rooms, room, money } = this.props;
     const currentRoomData = getRoomData(room, rooms);
-    const unsortedExits = getAllowedExits(currentRoomData).map(exit => {
-      if (exit === "n") return "North";
-      if (exit === "s") return "South";
-      if (exit === "w") return "West";
-      if (exit === "e") return "East";
-      if (exit === "u") return "Up";
-      if (exit === "d") return "Down";
-      return null;
-    });
-    //Howerver the data arrive always show n,s,w,e,u,d
-    const allowableExits = unsortedExits
-      .filter(e => {
-        return e === "North";
-      })
-      .concat(
-        unsortedExits
-          .filter(e => {
-            return e === "South";
-          })
-          .concat(
-            unsortedExits
-              .filter(e => {
-                return e === "West";
-              })
-              .concat(
-                unsortedExits
-                  .filter(e => {
-                    return e === "East";
-                  })
-                  .concat(
-                    unsortedExits
-                      .filter(e => {
-                        return e === "Up";
-                      })
-                      .concat(
-                        unsortedExits.filter(e => {
-                          return e === "Down";
-                        })
-                      )
-                  )
-              )
-          )
-      );
 
     const allowableActions = getAllowedActions(
       objects,
@@ -245,6 +243,8 @@ class Actions extends Component {
     return (
       <Fragment>
         <ActionsDiv>
+          {this.renderExits(currentRoomData)}
+          {/*
           {allowableExits.length > 0 &&
             allowableExits.map((exit, index) => {
               return (
@@ -253,6 +253,7 @@ class Actions extends Component {
                 </button>
               );
             })}
+          */}
 
           {allowableActions.length > 0 &&
             allowableActions.map((action, index) => {
