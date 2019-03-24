@@ -57,7 +57,7 @@ class About extends Component<IProps, IState> {
        
           <p>Version 1.0.3 : May 2018</p>
     
-          <p>Version 2.0.0 : 24 March 2018</p>
+          <p>Version 2.0.0 : 24 March 2019</p>
           <p>Converted JS to TypeScript and CSS to Styled-components</p>
   
           <p>{window.location.href}</p>
