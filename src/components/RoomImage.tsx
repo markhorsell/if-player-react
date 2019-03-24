@@ -8,6 +8,7 @@ const ImageDiv = styled.div`
   padding-bottom: 36.3%;
   background-repeat: no-repeat;
   background-size: cover;
+  margin:0px 0px 10px 0px;
 `;
 interface IProps {
   path: string;
