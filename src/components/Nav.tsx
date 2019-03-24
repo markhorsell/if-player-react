@@ -8,15 +8,15 @@ import React from "react";
 const NavDiv = styled.div`
   position: absolute;
   top: 0px;
-  right:24px;
+  right:12px;
   > ul {
     margin:8px 0px 0px 0px;
-    text-align: right;
-    width: 160px;
+    text-align: left;
+    width: 60px;
     > li {
       display: inline-block;
 
-      margin-left: 10px;
+      margin:0px 0px 4px 10px;
       > a {
         color: darkgray;
         font-size: 14px;

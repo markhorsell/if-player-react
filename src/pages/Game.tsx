@@ -143,7 +143,7 @@ class Home extends Component<IProps> {
           />
         )}
         </ImageContainerDiv>
-        <div style={{display:'inline-block', width:'calc(100% - 130px)'}}>
+        <div style={{display:'inline-block', width:'calc(100% - 120px)'}}>
         <ExploreActions/>
         </div>
         <MapContainerDiv>
