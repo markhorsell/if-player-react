@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 //import data from './assets/theshivers/data.json';
 
 import Header from "./components/Header";
-import Home from "./pages/Home";
+import Home from "./pages/Game";
 import About from "./pages/About";
 import Todo from "./pages/Todo";
 

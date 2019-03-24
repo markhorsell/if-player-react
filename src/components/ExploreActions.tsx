@@ -7,22 +7,33 @@ import { ActionButton } from "../styled-constants";
 import { getRoomData, getAllowedExits } from "../utils/dataHelper";
 import { resultMessage, resultLocation } from "../actions";
 
-
-
 const ActionsDiv = styled.div`
   display: inline-block;
   vertical-align: top;
 `;
+interface IProps {
+  rooms: Array<string>;
+  room: any;
+  dispatch: Function;
+}
 
-class ExploreActions extends Component {
-  constructor(props) {
+class ExploreActions extends Component<IProps> {
+  static propTypes = {
+    rooms: PropTypes.array.isRequired,
+    room: PropTypes.string.isRequired
+  };
+  static defaultProps ={
+    rooms:[],
+    room:{},
+  }
+  constructor(props: any) {
     super(props);
     //this.handleAction = this.handleAction.bind(this);
     //this.handleMove = this.handleMove.bind(this);
   }
 
   componentDidMount() {}
-  handleMove = exit => e => {
+  handleMove = (exit: string) => (e: any) => {
     const { rooms, room } = this.props;
 
     const currentRoomExits = getRoomData(room, rooms).exits;
@@ -57,7 +68,7 @@ class ExploreActions extends Component {
     }
   };
 
-  renderExits = currentRoomData => {
+  renderExits = (currentRoomData: any) => {
     console.log(currentRoomData);
     const unsortedExits = getAllowedExits(currentRoomData).map(exit => {
       if (exit === "n") return "North";
@@ -71,11 +82,10 @@ class ExploreActions extends Component {
     });
     //However the data arrive always show n,s,w,e,u,d
     const potentialExits = ["North", "East", "South", "West", "Up", "Down"];
-    const allowableExits = unsortedExits.filter(e => {
-      return potentialExits.includes(e);
+    const allowableExits = unsortedExits.filter((exit: any) => {
+      return potentialExits.includes(exit);
     });
 
-   
     return (
       <ActionsDiv>
         <div
@@ -120,14 +130,14 @@ class ExploreActions extends Component {
     );
     //}
   };
-  renderOpenExit = exit => {
+  renderOpenExit = (exit: string) => {
     return (
       <ActionButton key={exit} onClick={this.handleMove(exit)}>
         {exit}
       </ActionButton>
     );
   };
-  renderClosedExit = exit => {
+  renderClosedExit = (exit: string) => {
     return (
       <ActionButton key={exit} disabled={true}>
         {exit}
@@ -137,29 +147,18 @@ class ExploreActions extends Component {
 
   render() {
     //console.log('Actions rendered');
-    const {rooms, room } = this.props;
+    const { rooms, room } = this.props;
     const currentRoomData = getRoomData(room, rooms);
 
     return <>{this.renderExits(currentRoomData)}</>;
   }
 }
-ExploreActions.propTypes = {
-  objects: PropTypes.array.isRequired,
-  actions: PropTypes.array.isRequired,
-  rooms: PropTypes.array.isRequired,
-  room: PropTypes.string.isRequired,
-  money: PropTypes.number.isRequired
-};
 
-function mapStateToProps(state) {
-  const { objects, actions, rooms, room, money } = state.gameData;
-
+function mapStateToProps(state: any) {
+  const { rooms, room } = state.gameData;
   return {
-    objects,
-    actions,
     rooms,
-    room,
-    money
+    room
   };
 }
 export default connect(mapStateToProps)(ExploreActions);

@@ -22,11 +22,32 @@ import {
   restart
 } from "../actions";
 
+interface IProps {
+  rooms: Array<string>;
+  room: any;
+  objects:Array<string>;
+  actions:Array<string>
+   money :number;
+  dispatch: Function;
+}
 
 
-
-class Actions extends Component {
-  constructor(props) {
+class Actions extends Component<IProps> {
+  static propTypes = {
+    objects: PropTypes.array.isRequired,
+    actions: PropTypes.array.isRequired,
+    rooms: PropTypes.array.isRequired,
+    room: PropTypes.string.isRequired,
+    money: PropTypes.number.isRequired
+  };
+  static defaultProps ={
+    objects:[],
+    actions:[],
+    rooms:[],
+    room:{},
+    money:0,
+  }
+  constructor(props:any) {
     super(props);
     //this.handleAction = this.handleAction.bind(this);
     //this.handleMove = this.handleMove.bind(this);
@@ -36,7 +57,7 @@ class Actions extends Component {
 
 
    
-  handleAction = action => e => {
+  handleAction = (action:string) => (e:any) => {
     e.preventDefault();
 
     const { objects, actions, room, money } = this.props;
@@ -57,8 +78,8 @@ class Actions extends Component {
       this.dispatchResults(key, results[key]);
     }
   };
-  dispatchResults(key, data) {
-    console.log(key, data);
+  dispatchResults(key:string, data:any) {
+    
     switch (key) {
       case "createExitOnRollSuccess":
         const roll = Math.ceil(Math.random() * data.sides);
@@ -159,15 +180,9 @@ class Actions extends Component {
     );
   }
 }
-Actions.propTypes = {
-  objects: PropTypes.array.isRequired,
-  actions: PropTypes.array.isRequired,
-  rooms: PropTypes.array.isRequired,
-  room: PropTypes.string.isRequired,
-  money: PropTypes.number.isRequired
-};
 
-function mapStateToProps(state) {
+
+function mapStateToProps(state:any) {
   const { objects, actions, rooms, room, money } = state.gameData;
 
   //console.log(actions);
