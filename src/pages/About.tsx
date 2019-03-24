@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components/macro";
+import theme from "../theme";
+import { ActionButton } from "../styled-constants";
 
 import { restart } from "../actions";
 
@@ -13,24 +15,7 @@ const PageDiv = styled.div`
     line-height:16px;
   }
 `;
-const ActionsDiv = styled.div`
-  display: inline-block;
-  vertical-align: top;
-  >Button {
-	display:inline-block;
-	/*trbl*/
-	padding:3px 6px 3px 6px;
-	margin:10px;
-	border: none;
-	border-radius:2px;
-	background-color:gold;
-	font-weight:bold;
-	font-size:inherit;
-	letter-spacing: inherit;
-	color:black;
-	cursor:pointer;
-  }
-`;
+
 
 interface IProps {
   dispatch:Function;
@@ -89,7 +74,7 @@ class About extends Component<IProps,IState> {
       <p>An editor is available here ------</p>
       <p>Strict mode wraps Home and About - Wrapping App will create warnings as either Provider or Router Libraries are not Strict as yet</p>
   */}
-          <ActionsDiv>
+          
             <br />
             <br />
             <br />
@@ -97,8 +82,8 @@ class About extends Component<IProps,IState> {
             <p>
               WARNING : RESETTING GAME WILL CLEAR ALL DATA AND IS NOT UNDOABLE
             </p>
-            <button onClick={this.restart}>Reset game</button>
-          </ActionsDiv>
+            <ActionButton onClick={this.restart}>Reset game</ActionButton>
+          
         </PageDiv>
       </React.StrictMode>
     );

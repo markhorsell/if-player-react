@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components/macro";
+import theme from "../theme";
+
 
 import React from "react";
 
@@ -21,7 +23,7 @@ const NavDiv = styled.div`
         text-decoration: none;
 
         &:hover {
-          color: #1a1a1a;
+          color: ${props => theme.HIGHLIGHT_COLOR};
         }
       }
     }
@@ -32,12 +34,12 @@ const Nav = () => (
   <NavDiv>
     <ul>
       <li>
-        <NavLink to="/shivers-react/game" activeStyle={{ color: "#1a1a1a" }}>
+        <NavLink to="/shivers-react/game" activeStyle={{ color: theme.HIGHLIGHT_COLOR }}>
           Game
         </NavLink>
       </li>
       <li>
-        <NavLink to="/shivers-react/about" activeStyle={{ color: "#1a1a1a" }}>
+        <NavLink to="/shivers-react/about" activeStyle={{ color: theme.HIGHLIGHT_COLOR }}>
           About
         </NavLink>
       </li>

@@ -7,6 +7,7 @@ import Message from "../components/Message";
 import LocationObjects from "../components/LocationObjects";
 import Inventory from "../components/Inventory";
 import Actions from "../components/GameActions";
+import ExploreActions from "../components/ExploreActions";
 import WorldMap from "../components/WorldMap";
 //import Debug from '../components/Debug';
 
@@ -41,42 +42,35 @@ const HomeDiv = styled.div`
   }
 `;
 const TextPanelDiv = styled.div`
+/*
   display: inline-block;
 
  
  
   max-width: 600px;
   @media only screen and (min-width: 600px) {
-    /* wider */
+
     max-width: 400px;
   }
+  */
 `;
 const MapContainerDiv = styled.div`
   display: inline-block;
-  
-  width: 26%;
-  
+  /*width: 26%;*/
+  width:120px;
   vertical-align:top;
-  /*max-width: 120px;*/
-  /*margin:3px 0px 0px 0px;*/
- 
-  /*
-  > div {
-    margin: 10px auto 0px auto;
-   
-  }*/
 
   @media only screen and (min-width: 600px) {
     /* wider */
     >div {
-  
   
     }
   }
 `;
 const ImageContainerDiv=styled.div`
  display: inline-block;
-  width:72%;
+  /*width:72%;*/
+  width:100%;
 `
 
 interface IProps {
@@ -149,7 +143,9 @@ class Home extends Component<IProps> {
           />
         )}
         </ImageContainerDiv>
-        
+        <div style={{display:'inline-block', width:'calc(100% - 130px)'}}>
+        <ExploreActions/>
+        </div>
         <MapContainerDiv>
           <div>
             <WorldMap
@@ -166,6 +162,7 @@ class Home extends Component<IProps> {
         
        
           <Message message={lastMessage} />
+        
 
           <RoomDescription description={description} />
 

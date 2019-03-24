@@ -10,6 +10,8 @@ import { PersistGate } from "redux-persist/integration/react";
 //const store=store.store;// = configureStore();
 
 import { createGlobalStyle } from "styled-components/macro";
+import theme from "./theme";
+
 
 const GlobalStyle = createGlobalStyle`
 
@@ -25,8 +27,8 @@ body {
 	font-size:14px;
 	letter-spacing: 1px;
 	line-height: 18px;
-	background-color: #f1f1f1;
-	color:#1a1a1a;
+	background-color: ${props => theme.BACKGROUND_COLOR};
+	color: ${props => theme.TEXT_COLOR};
 	/* GOOD IDEA TO MAKE TEXT UNSELECTABLE?? */
 	-webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */

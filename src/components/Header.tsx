@@ -1,6 +1,7 @@
 import React from "react"
 import styled  from "styled-components/macro"
 import Nav from "./Nav";
+import theme from "../theme";
 
 const HeaderDiv = styled.div`
 
@@ -16,7 +17,7 @@ const HeaderDiv = styled.div`
     position:relative;
     max-width: 600px;
     margin:0 auto;
-    background-color: #f1f1f1;
+    background-color:  ${props => theme.BACKGROUND_COLOR};
     height:60px;
   }
  
@@ -27,7 +28,7 @@ position:absolute;
 top:30px;
 left:10px;
 font-family: "Yesteryear", cursive;
-  color: #1a1a1a;
+  color:${props => theme.HIGHLIGHT_COLOR};
   text-align: left;
   font-size: 50px;
   /*line-height: 90px;*/
