@@ -30,7 +30,7 @@ const NavDiv = styled.div`
   }
 `;
 
-const Nav = () => (
+const Nav: React.SFC = () => (
   <NavDiv>
     <ul>
       <li>

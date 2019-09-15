@@ -7,8 +7,11 @@ const LocationObjectsDiv = styled.div`
     	margin-top:10px;
 	margin-bottom:10px;
 `;
+type IProps = {
+	items:any;
+}
 
-const LocationObjects = ({ items = [] }) => {
+const LocationObjects: React.SFC<IProps>   = ({ items = [] }) => {
   const locationObjects = items
     .filter((item: any) => {
       return item.show !== false;

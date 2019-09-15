@@ -2,16 +2,16 @@ import React from "react";
 
 import styled from "styled-components/macro";
 
-const DebugDiv = styled.div``;
+const DebugDiv = styled.div`
+background:white;
+color:black;
+`;
 
-type Props = {
-	data:any
-}
 
-const Debug = ({ data }:Props) => {
-  const stringified = JSON.stringify(data);
+const Debug: React.FC<any> = (props: any) => {
+  const stringified = JSON.stringify(props.data);
 
-  return <div className="debug">{stringified}</div>;
+  return <DebugDiv>{stringified}</DebugDiv>;
 };
 
 export default Debug;

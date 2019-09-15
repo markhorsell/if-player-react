@@ -9,7 +9,7 @@ import Inventory from "../components/Inventory";
 import Actions from "../components/GameActions";
 import ExploreActions from "../components/ExploreActions";
 import WorldMap from "../components/WorldMap";
-//import Debug from '../components/Debug';
+import Debug from '../components/Debug';
 
 //import './Home.css';
 
@@ -83,13 +83,7 @@ interface IProps {
   roll: any;
 }
 
-/*
-class Home extends Component<IProps> {
-  constructor(props: IProps) {
-    super(props);
-  }
-  */
-//const App: React.FC 
+
 const Home: React.FC = (data: any) => {
   const getDescription = (roomData: any) => {
     if (roomData && roomData.desc && roomData.desc.length) {
@@ -176,6 +170,7 @@ const Home: React.FC = (data: any) => {
 
 
       </TextPanelDiv>
+      <Debug data="TEST"/>
 
     </HomeDiv>
   );

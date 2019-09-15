@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect, Component } from "react";
 import PropTypes from "prop-types";
 
 import styled from "styled-components/macro";
@@ -16,7 +16,7 @@ if (isLocal) {
       background-image: url("../assets/theshivers/images/game_bg.jpg");
     }
   `;
-}else{
+} else {
   WorldMapDiv = styled.div`
   > canvas {
     border-radius: 10px;
@@ -41,28 +41,28 @@ interface IProps {
   rooms: Array<any>;
   discoveredPaths: Array<any>;
 }
-interface IState {}
+interface IState { };
 
-class WorldMap extends Component<IProps, IState> {
-  private canvasRef = React.createRef<any>();
-  private mapContainerRef = React.createRef<any>();
+//updateCanvas();
 
-  constructor(props: IProps) {
-    super(props);
+const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
 
-    this.updateCanvas = this.debounce(this.updateCanvas, 100, false);
-  }
+  const canvasRef = React.createRef<any>();
 
-  componentDidMount() {
-    this.updateCanvas();
-    window.addEventListener("resize", this.updateCanvas.bind(this));
-  }
+  const mapContainerRef = React.createRef<any>();
+  useEffect(() => {
+    window.addEventListener("resize", updateCanvas);
+    return () => {
+      window.removeEventListener("resize", updateCanvas);
+    }
+  }, [])
+  useEffect(() => {
+    updateCanvas();
+  }, [room])
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateCanvas.bind(this));
-  }
-  debounce = (func: Function, wait: number, immediate: boolean) => {
-    console.log(this);
+  /*
+  const debounce = (func: Function, wait: number, immediate: boolean) => {
+ 
     const _this = this;
     var timeout: any;
     return function() {
@@ -78,28 +78,32 @@ class WorldMap extends Component<IProps, IState> {
       if (callNow) func.apply(context, args);
     };
   };
+  */
 
-  updateCanvas = () => {
-    if (!this.mapContainerRef.current) {
+  const updateCanvas = () => {
+    console.log("map");
+ 
+    if (!mapContainerRef.current) {
       return;
     }
+  
     console.log("update canvas");
-    const currentRoom = this.props.room;
+    const currentRoom = room;
 
-    const width = Math.min(this.mapContainerRef.current.offsetWidth, 250);
+    const width = Math.min(mapContainerRef.current.offsetWidth, 250);
     //const width =this.mapContainerRef.current.offsetWidth;
-    this.mapContainerRef.current.height = width;
+    mapContainerRef.current.height = width;
 
-    const ctx = this.canvasRef.current.getContext("2d");
+    const ctx = canvasRef.current.getContext("2d");
 
-    const visitedRooms = this.props.rooms.filter(room => {
-      if (this.props.discoveredPaths.includes(room.id)) {
+    const visitedRooms = rooms.filter((room: any) => {
+      if (discoveredPaths.includes(room.id)) {
         return room;
       }
     });
     console.log(visitedRooms);
-    this.canvasRef.current.width = width;
-    this.canvasRef.current.height = width;
+    canvasRef.current.width = width;
+    canvasRef.current.height = width;
 
     //Only worry about rooms with numbers
     //Named rooms are not supposed to be mapped
@@ -112,23 +116,23 @@ class WorldMap extends Component<IProps, IState> {
     }
     //Cutout circle
     ctx.fillStyle = "#000000";
-   
- 
+
+
     ctx.fillRect(0, 0, width, width);
     ctx.save();
     ctx.globalCompositeOperation = "destination-out";
     ctx.beginPath();
-    
+
     //Swap out if i want to revert to a circular map
     //ctx.arc(width / 2, width / 2, width / 2, 0, Math.PI * 2, true);
-    ctx.fillRect(0,0,width,width);
-   
+    ctx.fillRect(0, 0, width, width);
+
     ctx.fill();
-   
+
     ctx.restore();
 
     ctx.strokeStyle = "#333";
-  
+
     ctx.setLineDash([1, 5]);
     visitedRooms.map(room => {
       const grid = parseInt(room.id, 10);
@@ -184,15 +188,16 @@ class WorldMap extends Component<IProps, IState> {
       }
     }
   };
-  render() {
-    this.updateCanvas();
 
-    return (
-      <WorldMapDiv ref={this.mapContainerRef}>
-        <canvas ref={this.canvasRef} />
-      </WorldMapDiv>
-    );
-  }
+  
+  return (
+    
+    <WorldMapDiv ref={mapContainerRef}>
+      <canvas ref={canvasRef} />
+    </WorldMapDiv>
+  );
+
 }
+
 
 export default WorldMap;

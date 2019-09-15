@@ -6,11 +6,11 @@ const MessageDiv = styled.div`
     margin-top:10px;
 `;
 
-type Props = {
+type IProps = {
 	message:string
 }
 
-const Message = ({ message }:Props) => (
+const Message: React.SFC<IProps>  = ({ message }) => (
 	<MessageDiv>{message}</MessageDiv>
 	)
 

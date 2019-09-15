@@ -6,8 +6,12 @@ const InventoryDiv= styled.div`
 	margin-top:10px;
 	margin-bottom:10px;
 `;
+type IProps = {
+	items:Array<any>;
+	money:number;
+}
 
-const Inventory = ({ items = [],money=0 }) => {
+const Inventory: React.SFC<IProps>  = ({ items = [],money=0 }) => {
 	const inventory = items.map((item:any)=>{
 		return item.desc;
 	}).join(", ")+' and '+money+' coins.';
