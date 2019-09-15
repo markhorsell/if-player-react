@@ -1,10 +1,8 @@
-import React, { useEffect, Component } from "react";
-import PropTypes from "prop-types";
+import React, { useEffect} from "react";
 
 import styled from "styled-components/macro";
 
 const isLocal = window.location.href.substr(7, 9) === "localhost";
-
 
 let WorldMapDiv: any;
 
@@ -55,7 +53,7 @@ const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
     return () => {
       window.removeEventListener("resize", updateCanvas);
     }
-  }, [])
+  })
   useEffect(() => {
     updateCanvas();
   }, [room])
@@ -98,7 +96,9 @@ const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
 
     const visitedRooms = rooms.filter((room: any) => {
       if (discoveredPaths.includes(room.id)) {
-        return room;
+        return true;//room;
+      }else{
+        return false;
       }
     });
     console.log(visitedRooms);

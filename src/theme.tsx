@@ -7,6 +7,7 @@ const blackGoldTheme = {
   BUTTON_ENABLED:"gold",
   BUTTON_DISABLED:"#666"
 };
+/*
 const silverTheme = {
     BACKGROUND_COLOR: "#e0e0e0",
     TEXT_COLOR: "#1a1a1a",
@@ -15,6 +16,7 @@ const silverTheme = {
     BUTTON_ENABLED:"#FFF",
     BUTTON_DISABLED:"#333"
   };
+  */
 
 const Theme = blackGoldTheme;
 

@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, {  } from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
+
 import styled from "styled-components/macro";
-import theme from "../theme";
+
 import { ActionButton } from "../styled-constants";
 import { getRoomData, getAllowedExits } from "../utils/dataHelper";
 import { resultMessage, resultLocation } from "../actions";

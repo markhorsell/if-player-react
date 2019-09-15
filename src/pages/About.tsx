@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components/macro";
-import theme from "../theme";
+
 import { ActionButton } from "../styled-constants";
 import { restart } from "../actions";
 

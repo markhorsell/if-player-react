@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {  } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components/macro";
 import RoomDescription from "../components/RoomDescription";
@@ -9,7 +9,7 @@ import Inventory from "../components/Inventory";
 import Actions from "../components/GameActions";
 import ExploreActions from "../components/ExploreActions";
 import WorldMap from "../components/WorldMap";
-import Debug from '../components/Debug';
+//import Debug from '../components/Debug';
 
 //import './Home.css';
 

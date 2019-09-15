@@ -1,11 +1,9 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import styled from "styled-components/macro";
-import theme from "../theme";
+
 import { ActionButton } from "../styled-constants";
 import {
-  getRoomData,
+  //getRoomData,
   getAllowedActions,
 } from "../utils/dataHelper";
 import {
@@ -157,7 +155,7 @@ const Actions: React.SFC<IProps> =({objects, actions, room, rooms, money, dispat
 
     //console.log('Actions rendered');
     //const { objects, actions, rooms, room, money } = this.props;
-    const currentRoomData = getRoomData(room, rooms);
+    //const currentRoomData = getRoomData(room, rooms);
 
     const allowableActions = getAllowedActions(
       objects,
