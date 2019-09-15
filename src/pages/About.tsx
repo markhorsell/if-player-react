@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components/macro";
 import theme from "../theme";
@@ -22,32 +22,33 @@ interface IState {
   height: number;
 }
 
-class About extends Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
-    this.state = { width: 0, height: 0 };
-  }
+const About: React.FC = (data: any) => {
 
-  componentDidMount() {
-    this.updateWindowDimensions();
-    window.addEventListener("resize", this.updateWindowDimensions);
-  }
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateWindowDimensions);
-  }
+    const [width,setWidth] = React.useState(0);
+    const [height,setHeight] = React.useState(0);
 
-  updateWindowDimensions = () => {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
-  };
+    const updateWindowDimensions = () => {
+  
+      setWidth(window.innerWidth);
+      setHeight(window.innerHeight);
+    };
+  
+  useEffect(()=>{
 
-  restart = (e: any) => {
+    window.addEventListener("resize", updateWindowDimensions);
+    return () => {
+      window.removeEventListener("resize", updateWindowDimensions);
+    }
+  },[])
+
+
+  const handleRestart = (e: any) => {
     e.preventDefault();
-    this.props.dispatch(restart());
+   //data.dispatch(restart);
+   console.log(data.dispatch(restart()))
   };
 
-  render() {
-    const windowWidth = this.state.width;
-    const windowHeight = this.state.height;
+
     return (
       <React.StrictMode>
         <PageDiv>
@@ -62,7 +63,7 @@ class About extends Component<IProps, IState> {
   
           <p>{window.location.href}</p>
           <p>
-            W:{windowWidth} | H:{windowHeight}
+            W:{width} | H:{height}
           </p>
           <p>React Version : {React.version} </p>
           {/*
@@ -74,12 +75,12 @@ class About extends Component<IProps, IState> {
           <p>
             WARNING : RESETTING GAME WILL CLEAR ALL DATA AND IS NOT UNDOABLE
           </p>
-          <ActionButton onClick={this.restart}>Reset game</ActionButton>
+          <ActionButton onClick={handleRestart}>Reset game</ActionButton>
         </PageDiv>
       </React.StrictMode>
     );
   }
-}
+
 
 //export default About;
 

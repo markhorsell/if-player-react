@@ -14,12 +14,9 @@ const DoneP=styled.p`
 `;
 
 
-class Todo extends Component {
+const Todo: React.FC = () => {
   
-  componentDidMount() {}
-  componentWillUnmount() {}
-
-  render() {
+  
     return (
       <PageDiv>
       <p>The carver now makes a dice from the bone</p>
@@ -42,6 +39,6 @@ class Todo extends Component {
       </PageDiv>
     );
   }
-}
+
 
 export default connect()(Todo);
