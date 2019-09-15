@@ -18,21 +18,7 @@ interface IProps {
 }
 
 const ExploreActions: React.SFC<IProps> = ({ room, rooms, dispatch }) => {
-  /*
-  static propTypes = {
-    rooms: PropTypes.array.isRequired,
-    room: PropTypes.string.isRequired
-  };
-  static defaultProps ={
-    rooms:[],
-    room:{},
-  }
-  constructor(props: any) {
-    super(props);
-    //this.handleAction = this.handleAction.bind(this);
-    //this.handleMove = this.handleMove.bind(this);
-  }
-  */
+
 
 
   const handleMove = (exit: string) => (e: any) => {
