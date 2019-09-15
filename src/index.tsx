@@ -41,7 +41,7 @@ body {
 `;
 
 render(
-  <Provider store={store.store}>
+  <Provider store={store.store as any}>
     <PersistGate loading={null} persistor={store.persistor}>
       <GlobalStyle />
       <App />

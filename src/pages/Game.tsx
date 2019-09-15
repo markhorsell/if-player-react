@@ -67,7 +67,7 @@ const MapContainerDiv = styled.div`
     }
   }
 `;
-const ImageContainerDiv=styled.div`
+const ImageContainerDiv = styled.div`
  display: inline-block;
   /*width:72%;*/
   width:100%;
@@ -83,18 +83,22 @@ interface IProps {
   roll: any;
 }
 
+/*
 class Home extends Component<IProps> {
   constructor(props: IProps) {
     super(props);
   }
-  getDescription(roomData: any) {
+  */
+//const App: React.FC 
+const Home: React.FC = (data: any) => {
+  const getDescription = (roomData: any) => {
     if (roomData && roomData.desc && roomData.desc.length) {
       return roomData.desc[0];
     } else {
       console.log("NO roomData desc for " + roomData);
     }
   }
-  getImage(roomData: any) {
+  const getImage = (roomData: any) => {
     if (roomData && roomData.image) {
       return roomData.image;
     } else {
@@ -102,84 +106,86 @@ class Home extends Component<IProps> {
     }
   }
 
-  render() {
-    const {
-      money,
-      discoveredPaths,
-      rooms,
-      room,
-      objects,
-      lastMessage,
-      roll
-    } = this.props;
-    //Dont Allow rendering if data is empty
-    if (rooms.length === 0) {
-      return <p>NOT LOADED</p>;
-    }
-    const currentRoomData = getRoomData(room, rooms);
-    const description = this.getDescription(currentRoomData);
-    const locationObjects = getLocationObjects(room, objects);
-    const image = this.getImage(currentRoomData);
-    const inventory = getInventory(objects);
 
-    //TODO assets folder will be switchable later
-    const assetsFolder = "theshivers";
+  const {
+    money,
+    discoveredPaths,
+    rooms,
+    room,
+    objects,
+    lastMessage,
+    roll
+  } = data;
 
-    const isLocal = window.location.href.substr(7, 9) === "localhost";
+  //Dont Allow rendering if data is empty
+  if (rooms.length === 0) {
+    return <p>NOT LOADED</p>;
+  }
+  const currentRoomData = getRoomData(room, rooms);
+  const description = getDescription(currentRoomData);
+  const locationObjects = getLocationObjects(room, objects);
+  const image = getImage(currentRoomData);
+  const inventory = getInventory(objects);
 
-    return (
-      <HomeDiv>
-        
-       <ImageContainerDiv>
+  //TODO assets folder will be switchable later
+  const assetsFolder = "theshivers";
+
+  const isLocal = window.location.href.substr(7, 9) === "localhost";
+
+  return (
+    <HomeDiv>
+
+      <ImageContainerDiv>
         {isLocal ? (
           <RoomImage
             path={"../assets/" + assetsFolder + "/images/"}
             image={image}
           />
         ) : (
-          <RoomImage
-            path={"/shivers-react/assets/" + assetsFolder + "/images/"}
-            image={image}
-          />
-        )}
-        </ImageContainerDiv>
-        <div style={{display:'inline-block', width:'calc(100% - 120px)'}}>
-        <ExploreActions/>
-        </div>
-        <MapContainerDiv>
-          <div>
-            <WorldMap
-              discoveredPaths={discoveredPaths}
-              room={room}
-              rooms={rooms}
+            <RoomImage
+              path={"/shivers-react/assets/" + assetsFolder + "/images/"}
+              image={image}
             />
-          </div>
-        </MapContainerDiv>
-       
-        <Actions />
-        <TextPanelDiv>
-       
-        
-       
-          <Message message={lastMessage} />
-        
+          )}
+      </ImageContainerDiv>
+      <div style={{ display: 'inline-block', width: 'calc(100% - 120px)' }}>
+        <ExploreActions />
+      </div>
+      <MapContainerDiv>
+        <div>
+          <WorldMap
+            discoveredPaths={discoveredPaths}
+            room={room}
+            rooms={rooms}
+          />
+        </div>
+      </MapContainerDiv>
 
-          <RoomDescription description={description} />
+      <Actions />
+      <TextPanelDiv>
 
-          <LocationObjects items={locationObjects} />
-          <Inventory items={inventory} money={money} />
 
-         
-        </TextPanelDiv>
-      
-      </HomeDiv>
-    );
-  }
+
+        <Message message={lastMessage} />
+
+
+        <RoomDescription description={description} />
+
+        <LocationObjects items={locationObjects} />
+        <Inventory items={inventory} money={money} />
+
+
+      </TextPanelDiv>
+
+    </HomeDiv>
+  );
+
 }
 
 
 
-function mapStateToProps(state:any) {
+function mapStateToProps(state: any) {
+
   const {
     discoveredPaths,
     money,
@@ -189,6 +195,7 @@ function mapStateToProps(state:any) {
     lastMessage,
     roll
   } = state.gameData;
+
   return {
     discoveredPaths,
     money,

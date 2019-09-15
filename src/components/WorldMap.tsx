@@ -21,7 +21,9 @@ if (isLocal) {
   > canvas {
     border-radius: 10px;
     display: inline;
-    background-image: url("/shivers-react/assets/theshivers/images/game_bg.jpg");
+   
+    /*background-image: url("/shivers-react/assets/theshivers/images/game_bg.jpg");*/
+    background-image: url("https://raw.githubusercontent.com/markhorsell/if-player-react/gh-pages/assets/theshivers/images/game_bg.jpg");
   }
 `;
 
