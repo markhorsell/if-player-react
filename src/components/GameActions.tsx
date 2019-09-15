@@ -30,9 +30,18 @@ interface IProps {
    money :number;
   dispatch: Function;
 }
+/*
+type IProps = {
+	items:Array<any>;
+	money:number;
+}
+*/
 
 
-class Actions extends Component<IProps> {
+
+
+const Actions: React.SFC<IProps> =({objects, actions, room, rooms, money, dispatch}) => {
+  /*
   static propTypes = {
     objects: PropTypes.array.isRequired,
     actions: PropTypes.array.isRequired,
@@ -47,20 +56,15 @@ class Actions extends Component<IProps> {
     room:{},
     money:0,
   }
-  constructor(props:any) {
-    super(props);
-    //this.handleAction = this.handleAction.bind(this);
-    //this.handleMove = this.handleMove.bind(this);
-  }
+  */
 
-  componentDidMount() {}
 
 
    
-  handleAction = (action:string) => (e:any) => {
+  const handleAction = (action:string) => (e:any) => {
     e.preventDefault();
 
-    const { objects, actions, room, money } = this.props;
+    //const { objects, actions, room, money } = this.props;
 
     const allowableActions = getAllowedActions(
       objects,
@@ -75,10 +79,10 @@ class Actions extends Component<IProps> {
     })[0].results;
 
     for (var key of Object.keys(results)) {
-      this.dispatchResults(key, results[key]);
+      dispatchResults(key, results[key]);
     }
   };
-  dispatchResults(key:string, data:any) {
+  const dispatchResults = (key:string, data:any)=> {
     
     switch (key) {
       case "createExitOnRollSuccess":
@@ -86,12 +90,12 @@ class Actions extends Component<IProps> {
 
         console.log(roll, data.sides);
         if (roll === data.sides) {
-          this.props.dispatch(resultSuccessRoll(roll === data.sides));
+          dispatch(resultSuccessRoll(roll === data.sides));
 
-          this.props.dispatch(resultCreateExit(data));
+         dispatch(resultCreateExit(data));
 
           //rollmMssage
-          this.props.dispatch(
+          dispatch(
             resultMessage(
               "You rolled a " +
                 roll +
@@ -102,7 +106,7 @@ class Actions extends Component<IProps> {
             )
           );
         } else {
-          this.props.dispatch(
+          dispatch(
             resultMessage(
               "You rolled a " + roll + " from a " + data.sides + " sided dice. "
             )
@@ -112,37 +116,37 @@ class Actions extends Component<IProps> {
         break;
 
       case "message":
-        this.props.dispatch(resultMessage(data));
+        dispatch(resultMessage(data));
         break;
       case "take":
-        this.props.dispatch(resultTake(data));
+        dispatch(resultTake(data));
         break;
       case "drop":
-        this.props.dispatch(resultDrop(data));
+       dispatch(resultDrop(data));
         break;
       case "changeScore":
-        this.props.dispatch(resultScore(data));
+        dispatch(resultScore(data));
         break;
       case "changeLocation":
-        this.props.dispatch(resultLocation(data));
+        dispatch(resultLocation(data));
         break;
       case "destroys":
-        this.props.dispatch(resultDestroy(data));
+        dispatch(resultDestroy(data));
         break;
       case "addMoney":
-        this.props.dispatch(resultMoney(data));
+        dispatch(resultMoney(data));
         break;
       case "removeMoney":
-        this.props.dispatch(resultMoney(-data));
+        dispatch(resultMoney(-data));
         break;
       case "changeRoomDesc":
-        this.props.dispatch(resultRoomDesc(data));
+        dispatch(resultRoomDesc(data));
         break;
       case "createExit":
-        this.props.dispatch(resultCreateExit(data));
+        dispatch(resultCreateExit(data));
         break;
       case "restart":
-        this.props.dispatch(restart());
+        dispatch(restart());
 
         break;
       default:
@@ -150,9 +154,9 @@ class Actions extends Component<IProps> {
     }
   }
   
-  render() {
+
     //console.log('Actions rendered');
-    const { objects, actions, rooms, room, money } = this.props;
+    //const { objects, actions, rooms, room, money } = this.props;
     const currentRoomData = getRoomData(room, rooms);
 
     const allowableActions = getAllowedActions(
@@ -170,7 +174,7 @@ class Actions extends Component<IProps> {
           {allowableActions.length > 0 &&
             allowableActions.map((action, index) => {
               return (
-                <ActionButton  key={index} onClick={this.handleAction(action)}>
+                <ActionButton  key={index} onClick={handleAction(action)}>
                   {action}
                 </ActionButton >
               );
@@ -179,7 +183,7 @@ class Actions extends Component<IProps> {
       </Fragment>
     );
   }
-}
+
 
 
 function mapStateToProps(state:any) {

@@ -17,7 +17,8 @@ interface IProps {
   dispatch: Function;
 }
 
-class ExploreActions extends Component<IProps> {
+const ExploreActions: React.SFC<IProps> = ({ room, rooms, dispatch }) => {
+  /*
   static propTypes = {
     rooms: PropTypes.array.isRequired,
     room: PropTypes.string.isRequired
@@ -31,44 +32,45 @@ class ExploreActions extends Component<IProps> {
     //this.handleAction = this.handleAction.bind(this);
     //this.handleMove = this.handleMove.bind(this);
   }
+  */
 
-  componentDidMount() {}
-  handleMove = (exit: string) => (e: any) => {
-    const { rooms, room } = this.props;
+
+  const handleMove = (exit: string) => (e: any) => {
+    //const { rooms, room } = this.props;
 
     const currentRoomExits = getRoomData(room, rooms).exits;
     e.preventDefault();
     switch (exit) {
       case "Up":
-        this.props.dispatch(resultLocation(currentRoomExits.u));
-        this.props.dispatch(resultMessage("You've travelled Up"));
+        dispatch(resultLocation(currentRoomExits.u));
+        dispatch(resultMessage("You've travelled Up"));
         break;
       case "Down":
-        this.props.dispatch(resultLocation(currentRoomExits.d));
-        this.props.dispatch(resultMessage("You've travelled Down"));
+        dispatch(resultLocation(currentRoomExits.d));
+        dispatch(resultMessage("You've travelled Down"));
         break;
       case "North":
-        this.props.dispatch(resultLocation(currentRoomExits.n));
-        this.props.dispatch(resultMessage("You've travelled North"));
+        dispatch(resultLocation(currentRoomExits.n));
+        dispatch(resultMessage("You've travelled North"));
         break;
       case "South":
-        this.props.dispatch(resultLocation(currentRoomExits.s));
-        this.props.dispatch(resultMessage("You've travelled South"));
+        dispatch(resultLocation(currentRoomExits.s));
+        dispatch(resultMessage("You've travelled South"));
         break;
       case "West":
-        this.props.dispatch(resultLocation(currentRoomExits.w));
-        this.props.dispatch(resultMessage("You've travelled West"));
+        dispatch(resultLocation(currentRoomExits.w));
+        dispatch(resultMessage("You've travelled West"));
         break;
       case "East":
-        this.props.dispatch(resultLocation(currentRoomExits.e));
-        this.props.dispatch(resultMessage("You've travelled East"));
+        dispatch(resultLocation(currentRoomExits.e));
+        dispatch(resultMessage("You've travelled East"));
         break;
       default:
         console.warn("WARNING - EXIT = [" + exit + "] is not being processed!");
     }
   };
 
-  renderExits = (currentRoomData: any) => {
+  const renderExits = (currentRoomData: any) => {
     console.log(currentRoomData);
     const unsortedExits = getAllowedExits(currentRoomData).map(exit => {
       if (exit === "n") return "North";
@@ -97,47 +99,47 @@ class ExploreActions extends Component<IProps> {
         >
           <div>
             {allowableExits.includes("North")
-              ? this.renderOpenExit("North")
-              : this.renderClosedExit("North")}
+              ? renderOpenExit("North")
+              : renderClosedExit("North")}
           </div>
           <div style={{ display: "inline-block", width: "40%" }}>
             {allowableExits.includes("West")
-              ? this.renderOpenExit("West")
-              : this.renderClosedExit("West")}
+              ? renderOpenExit("West")
+              : renderClosedExit("West")}
           </div>
           <div style={{ display: "inline-block", width: "40%" }}>
             {allowableExits.includes("East")
-              ? this.renderOpenExit("East")
-              : this.renderClosedExit("East")}
+              ? renderOpenExit("East")
+              : renderClosedExit("East")}
           </div>
           <div>
             {allowableExits.includes("South")
-              ? this.renderOpenExit("South")
-              : this.renderClosedExit("South")}
+              ? renderOpenExit("South")
+              : renderClosedExit("South")}
           </div>
           <div style={{ display: "inline-block", width: "40%" }}>
             {allowableExits.includes("Up")
-              ? this.renderOpenExit("Up")
-              : this.renderClosedExit("Up")}
+              ? renderOpenExit("Up")
+              : renderClosedExit("Up")}
           </div>
           <div style={{ display: "inline-block", width: "40%" }}>
             {allowableExits.includes("Down")
-              ? this.renderOpenExit("Down")
-              : this.renderClosedExit("Down")}
+              ? renderOpenExit("Down")
+              : renderClosedExit("Down")}
           </div>
         </div>
       </ActionsDiv>
     );
     //}
   };
-  renderOpenExit = (exit: string) => {
+  const renderOpenExit = (exit: string) => {
     return (
-      <ActionButton key={exit} onClick={this.handleMove(exit)}>
+      <ActionButton key={exit} onClick={handleMove(exit)}>
         {exit}
       </ActionButton>
     );
   };
-  renderClosedExit = (exit: string) => {
+  const renderClosedExit = (exit: string) => {
     return (
       <ActionButton key={exit} disabled={true}>
         {exit}
@@ -145,14 +147,14 @@ class ExploreActions extends Component<IProps> {
     );
   };
 
-  render() {
-    //console.log('Actions rendered');
-    const { rooms, room } = this.props;
-    const currentRoomData = getRoomData(room, rooms);
 
-    return <>{this.renderExits(currentRoomData)}</>;
+  const currentRoomData = getRoomData(room, rooms);
+
+  return (
+    <>{renderExits(currentRoomData)}</>
+    )
   }
-}
+
 
 function mapStateToProps(state: any) {
   const { rooms, room } = state.gameData;

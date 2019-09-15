@@ -108,7 +108,7 @@ const Home: React.FC = (data: any) => {
     room,
     objects,
     lastMessage,
-    roll
+    //roll
   } = data;
 
   //Dont Allow rendering if data is empty
@@ -170,7 +170,7 @@ const Home: React.FC = (data: any) => {
 
 
       </TextPanelDiv>
-      <Debug data="TEST"/>
+      {/*<Debug data="TEST"/>*/}
 
     </HomeDiv>
   );
