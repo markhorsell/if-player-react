@@ -1,5 +1,7 @@
 import React, { useEffect} from "react";
 
+import { debounce } from "lodash";
+
 import styled from "styled-components/macro";
 
 const isLocal = window.location.href.substr(7, 9) === "localhost";
@@ -27,13 +29,7 @@ if (isLocal) {
 
 }
 
-//TODO debounce could be in utils
-/*
-type Props = {
-  description:string
-  room:object;
-}
-*/
+
 interface IProps {
   room: any;
   rooms: Array<any>;
@@ -48,44 +44,29 @@ const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
   const canvasRef = React.createRef<any>();
 
   const mapContainerRef = React.createRef<any>();
+
+  
   useEffect(() => {
-    window.addEventListener("resize", updateCanvas);
+ 
+    window.addEventListener("resize", updateCanvasDebounce);
     return () => {
-      window.removeEventListener("resize", updateCanvas);
+      window.removeEventListener("resize", updateCanvasDebounce);
     }
-  })
-  useEffect(() => {
-    updateCanvas();
-  }, [room])
+  },[]);
 
-  /*
-  const debounce = (func: Function, wait: number, immediate: boolean) => {
- 
-    const _this = this;
-    var timeout: any;
-    return function() {
-      var context: any = _this,
-        args = arguments;
-      var later = function() {
-        timeout = null;
-        if (!immediate) func.apply(context, args);
-      };
-      var callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) func.apply(context, args);
-    };
-  };
-  */
+  useEffect(()=>{
+    updateCanvasCalc();
+  },[room]);
 
-  const updateCanvas = () => {
-    console.log("map");
- 
+  const updateCanvasDebounce = debounce((event:Event) => {
+    console.log(event.type)
+    updateCanvasCalc();
+  }, 200);
+
+  const updateCanvasCalc = () => {
     if (!mapContainerRef.current) {
       return;
     }
-  
-    console.log("update canvas");
     const currentRoom = room;
 
     const width = Math.min(mapContainerRef.current.offsetWidth, 250);
@@ -134,11 +115,13 @@ const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
     ctx.strokeStyle = "#333";
 
     ctx.setLineDash([1, 5]);
+    //REFACTOR - SHOULD BE FOR OF NOT MAP
     visitedRooms.map(room => {
       const grid = parseInt(room.id, 10);
       if (grid > 10) {
         const x = Math.floor(grid / 10) * spacing + middle;
         const y = (grid % 10) * spacing + middle;
+        //REFACTOR - SHOULD BE FOR OF NOT MAP
         Object.values(room.exits).map((exit: any) => {
           const exitVal = parseInt(exit, 10);
           if (exitVal > 10) {
@@ -148,9 +131,10 @@ const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
             ctx.lineTo(xE / 2, yE / 2);
             ctx.stroke();
           }
+          return exit;
         });
       }
-      //--
+      return room;
     });
     if (currentRoom > 10) {
       //Player
@@ -166,8 +150,8 @@ const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
       ctx.fill();
       ctx.restore();
     }
-    for (var x = 0; x < 10; x++) {
-      for (var y = 0; y < 10; y++) {
+    for (let x = 0; x < 10; x++) {
+      for (let y = 0; y < 10; y++) {
         const visited =
           visitedRooms.filter(room => {
             return parseInt(room.id) === x * 10 + y;
