@@ -28,36 +28,13 @@ interface IProps {
    money :number;
   dispatch: Function;
 }
-/*
-type IProps = {
-	items:Array<any>;
-	money:number;
-}
-*/
+
 
 
 
 
 const Actions: React.SFC<IProps> =({objects, actions, room, rooms, money, dispatch}) => {
-  /*
-  static propTypes = {
-    objects: PropTypes.array.isRequired,
-    actions: PropTypes.array.isRequired,
-    rooms: PropTypes.array.isRequired,
-    room: PropTypes.string.isRequired,
-    money: PropTypes.number.isRequired
-  };
-  static defaultProps ={
-    objects:[],
-    actions:[],
-    rooms:[],
-    room:{},
-    money:0,
-  }
-  */
-
-
-
+  
    
   const handleAction = (action:string) => (e:any) => {
     e.preventDefault();

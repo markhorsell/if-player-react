@@ -157,18 +157,10 @@ const Home: React.FC = (data: any) => {
 
       <Actions />
       <TextPanelDiv>
-
-
-
         <Message message={lastMessage} />
-
-
         <RoomDescription description={description} />
-
         <LocationObjects items={locationObjects} />
         <Inventory items={inventory} money={money} />
-
-
       </TextPanelDiv>
       {/*<Debug data="TEST"/>*/}
 
