@@ -1,7 +1,7 @@
 import React from "react"
 import styled  from "styled-components/macro"
 import Nav from "./Nav";
-import theme from "../theme";
+import { theme } from "../theme";
 
 const HeaderDiv = styled.div`
 

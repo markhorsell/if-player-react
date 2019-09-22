@@ -1,6 +1,6 @@
 import React, { useEffect} from "react";
 
-import { debounce } from "lodash";
+//import { debounce } from "lodash";
 
 import styled from "styled-components/macro";
 
@@ -37,7 +37,7 @@ interface IProps {
 }
 interface IState { };
 
-//updateCanvas();
+
 
 const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
 
@@ -46,23 +46,25 @@ const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
   const mapContainerRef = React.createRef<any>();
 
   
+  //DONT NEED TO CHECK RESIZE AS MAP NO LONGER SCALES.. BUT MIGHT INTRODUCE IT BACK SO LEAVE THIS COMMENTED FOR NOW
+  /*
   useEffect(() => {
- 
+    
     window.addEventListener("resize", updateCanvasDebounce);
     return () => {
       window.removeEventListener("resize", updateCanvasDebounce);
     }
   },[]);
 
-  useEffect(()=>{
-    updateCanvasCalc();
-  },[room]);
 
   const updateCanvasDebounce = debounce((event:Event) => {
     console.log(event.type)
     updateCanvasCalc();
   }, 200);
+  */
 
+  useEffect(()=>{
+    
   const updateCanvasCalc = () => {
     if (!mapContainerRef.current) {
       return;
@@ -82,7 +84,7 @@ const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
         return false;
       }
     });
-    console.log(visitedRooms);
+    //console.log(visitedRooms);
     canvasRef.current.width = width;
     canvasRef.current.height = width;
 
@@ -172,6 +174,9 @@ const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
       }
     }
   };
+    updateCanvasCalc();
+  });
+
 
   
   return (

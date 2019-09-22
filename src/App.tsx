@@ -1,4 +1,7 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
+
+import { GlobalStyles, theme } from "./theme";
+import /*styled,*/ { ThemeProvider } from "styled-components/macro";
 
 
 import {
@@ -13,7 +16,7 @@ import { connect } from "react-redux";
 //import data from './assets/theshivers/data.json';
 
 import Header from "./components/Header";
-import Home from "./pages/Game";
+import Game from "./pages/Game";
 import About from "./pages/About";
 import Todo from "./pages/Todo";
 
@@ -28,54 +31,52 @@ interface IProps {
   //propTypes: any;
 }
 
-class App extends Component<IProps> {
+//class App extends Component<IProps> {
+
+  const App: React.SFC<IProps> = ({gameTitle,dispatch}) => {
  
-  /*
-    constructor(props) {
-        super(props)
-
-    }
-    */
-  componentDidMount() {
-    //Inital state
-
-    //TODO if redux-persist has data then i shouldnt need to call restart..
-    //.. a new action such as resume();
-
-    if (this.props.gameTitle) {
-      //Alreay has gameTitle so must have come from persist
-      console.log("game data from cache");
-    } else {
-      this.props.dispatch(restart());
-    }
-  }
-
-  render() {
-    const { gameTitle } = this.props;
+  useEffect(()=>{
     if (gameTitle) {
+      //Alreay has gameTitle so must have come from persist
+      //console.log("game data from cache");
     } else {
-      return <div>NOT READY</div>;
+      dispatch(restart());
     }
-    return (
+
+  });
+
+
+  return(
+
+  
+      <ThemeProvider theme={theme}>
+      <>
+      <GlobalStyles/>
       <Router>
         <div>
+          {gameTitle &&
+          <>
           <Header title={gameTitle} />
           <Switch>
-            <Route exact path="/shivers-react/game" component={Home} />
+            <Route exact path="/shivers-react/game" component={Game} />
             <Route exact path="/shivers-react/about" component={About} />
             <Route exact path="/shivers-react/todo" component={Todo} />
             <Redirect from="/shivers-react/" to="/shivers-react/game" />
             <Redirect from="/" to="/shivers-react/game" />
           </Switch>
+          </>
+          }
+          {!gameTitle &&
+            <div>Not Loaded...</div>
+          }
+          
         </div>
       </Router>
+      </>
+      </ThemeProvider>
     );
   }
-}
 
-/*
-export default connect()(App);
-*/
 function mapStateToProps(state: any) {
   const { gameTitle } = state.gameData;
   return {

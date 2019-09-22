@@ -84,7 +84,7 @@ interface IProps {
 }
 
 
-const Home: React.FC = (data: any) => {
+const Game: React.FC = (data: any) => {
   const getDescription = (roomData: any) => {
     if (roomData && roomData.desc && roomData.desc.length) {
       return roomData.desc[0];
@@ -193,4 +193,4 @@ function mapStateToProps(state: any) {
     roll
   };
 }
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(Game);

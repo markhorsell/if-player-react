@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components/macro";
-import theme from "../theme";
+import { theme } from "../theme";
 
 
 import React from "react";

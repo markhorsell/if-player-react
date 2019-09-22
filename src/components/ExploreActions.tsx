@@ -57,7 +57,7 @@ const ExploreActions: React.SFC<IProps> = ({ room, rooms, dispatch }) => {
   };
 
   const renderExits = (currentRoomData: any) => {
-    console.log(currentRoomData);
+    //console.log(currentRoomData);
     const unsortedExits = getAllowedExits(currentRoomData).map(exit => {
       if (exit === "n") return "North";
       if (exit === "e") return "East";
