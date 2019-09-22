@@ -63,7 +63,7 @@ const Actions: React.SFC<IProps> =({objects, actions, room, rooms, money, dispat
       case "createExitOnRollSuccess":
         const roll = Math.ceil(Math.random() * data.sides);
 
-        console.log(roll, data.sides);
+        //console.log(roll, data.sides);
         if (roll === data.sides) {
           dispatch(resultSuccessRoll(roll === data.sides));
 

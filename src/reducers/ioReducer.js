@@ -42,7 +42,7 @@ export function gameData(state = {}, action) {
         lastMessage: action.data
       };
     case RESULT_ROLL: 
-    console.log('RESULT_ROLL'+action.data)
+    //console.log('RESULT_ROLL'+action.data)
       return {
         ...state,
         roll: action.data
