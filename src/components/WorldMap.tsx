@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import { debounce } from "lodash";
 
@@ -8,99 +8,65 @@ const isLocal = window.location.href.substr(7, 9) === "localhost";
 
 let WorldMapDiv: any;
 
-if (isLocal) {
-  WorldMapDiv = styled.div`
+const canvasPath = isLocal ? "url('../assets/theshivers/images/game_bg.jpg')" : "url('https://raw.githubusercontent.com/markhorsell/if-player-react/gh-pages/assets/theshivers/images/game_bg.jpg')";
+
+
+WorldMapDiv = styled.div`
     > canvas {
       border-radius: 10px;
       display: inline;
-      background-image: url("../assets/theshivers/images/game_bg.jpg");
+      background-image: ${canvasPath}
     }
   `;
-} else {
-  WorldMapDiv = styled.div`
-  > canvas {
-    border-radius: 10px;
-    display: inline;
-   
-    /*background-image: url("/shivers-react/assets/theshivers/images/game_bg.jpg");*/
-    background-image: url("https://raw.githubusercontent.com/markhorsell/if-player-react/gh-pages/assets/theshivers/images/game_bg.jpg");
-  }
-`;
-
-}
-
 
 interface IProps {
   room: any;
   rooms: Array<any>;
   discoveredPaths: Array<any>;
 }
-interface IState { };
-
-
 
 const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
 
-  const canvasRef = React.createRef<any>();
-
-  const mapContainerRef = React.createRef<any>();
-//todo should now be useRefs
-
+  const canvasRef = useRef<any>();
+  const mapContainerRef = useRef<any>();
   const [mapWidth, setMapWidth] = useState(0)
 
   useEffect(() => {
+    const updateCanvasDebounce = debounce(() => {
+      if (!mapContainerRef.current) {
+        //TODO why is mapContainerRef sometimes missing?
+        return;
+      }
+      setMapWidth(Math.max(Math.min(mapContainerRef.current.offsetWidth, 200), 100));
+    }, 40);
+
     updateCanvasDebounce()
     window.addEventListener("resize", updateCanvasDebounce);
     return () => {
       window.removeEventListener("resize", updateCanvasDebounce);
     }
-  });
-
-
-  const updateCanvasDebounce = debounce(() => {
-    if (!mapContainerRef.current) {
-      //TODO why is mapContainerRef sometimes missing?
-      return;
-    }
-  
-    setMapWidth(Math.max(Math.min(mapContainerRef.current.offsetWidth,200),100));
-  }, 40);
-
+  }, []);
 
   useEffect(() => {
-    console.log("useEffect width")
     const updateCanvasCalc = () => {
-   
-      const currentRoom = room;
-
-     
-
       const ctx = canvasRef.current.getContext("2d");
-
       const visitedRooms = rooms.filter((room: any) => {
         if (discoveredPaths.includes(room.id)) {
-          return true;//room;
+          return true;
         } else {
           return false;
         }
       });
-      //console.log(visitedRooms);
+
       canvasRef.current.width = mapWidth;
       canvasRef.current.height = mapWidth;
-
-      //Only worry about rooms with numbers
-      //Named rooms are not supposed to be mapped
+      //Named rooms are expected to be hidden. Only numbered rooms should appear on map
 
       const spacing = mapWidth / 5;
       const middle = spacing / 2;
-      const allGrids = new Array(10);
-      for (var i = 0; i < 10; i++) {
-        allGrids[i] = new Array(10);
-      }
+
       //Cutout circle
       ctx.fillStyle = "#000000";
-
-
       ctx.fillRect(0, 0, mapWidth, mapWidth);
       ctx.save();
       ctx.globalCompositeOperation = "destination-out";
@@ -109,24 +75,20 @@ const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
       //Swap out if i want to revert to a circular map
       //ctx.arc(width / 2, width / 2, width / 2, 0, Math.PI * 2, true);
       ctx.fillRect(0, 0, mapWidth, mapWidth);
-
       ctx.fill();
-
       ctx.restore();
-
       ctx.strokeStyle = "#333";
-
       ctx.setLineDash([1, 5]);
-      //
-      //REFACTOR - SHOULD BE FOR OF NOT MAP
-      //
-      visitedRooms.map(room => {
+
+      //DRAW ROOM LINKS
+
+      for (let room of visitedRooms) {
         const grid = parseInt(room.id, 10);
         if (grid > 10) {
           const x = Math.floor(grid / 10) * spacing + middle;
           const y = (grid % 10) * spacing + middle;
-          //REFACTOR - SHOULD BE FOR OF NOT MAP
-          Object.values(room.exits).map((exit: any) => {
+          const exits: Array<any> = Object.values(room.exits)
+          for (let exit of exits) {
             const exitVal = parseInt(exit, 10);
             if (exitVal > 10) {
               const xE = Math.floor(exitVal / 10) * spacing + middle;
@@ -135,17 +97,15 @@ const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
               ctx.lineTo(xE / 2, yE / 2);
               ctx.stroke();
             }
-            return exit;
-          });
+          };
         }
-        return room;
-      });
-      if (currentRoom > 10) {
+      };
+      //DRAW PLAYER POSTION
+      if (room > 10) {
         //Player
-        const x = Math.floor(currentRoom / 10) * spacing + middle;
-        const y = (currentRoom % 10) * spacing + middle;
+        const x = Math.floor(room / 10) * spacing + middle;
+        const y = (room % 10) * spacing + middle;
         ctx.save();
-
         ctx.beginPath();
         ctx.strokeStyle = "rgba(0, 0, 0, 0)";
         ctx.arc(x / 2, y / 2, spacing / 6, 0, 2 * Math.PI);
@@ -154,6 +114,7 @@ const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
         ctx.fill();
         ctx.restore();
       }
+      //DARKEN UNVISITED ROOMS
       for (let x = 0; x < 10; x++) {
         for (let y = 0; y < 10; y++) {
           const visited =
@@ -177,18 +138,13 @@ const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
       }
     };
     updateCanvasCalc();
-  }, [mapWidth]);
-
-
+  }, [mapWidth, room, canvasRef, discoveredPaths, rooms]);
 
   return (
-
     <WorldMapDiv ref={mapContainerRef}>
       <canvas ref={canvasRef} />
     </WorldMapDiv>
   );
-
 }
-
 
 export default WorldMap;

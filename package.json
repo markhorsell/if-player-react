@@ -27,7 +27,6 @@
     "typescript": "^3.6.3"
   },
   "devDependencies": {
-    "eslint-plugin-react-hooks": "^2.0.1",
     "gh-pages": "^2.1.1",
     "react-scripts": "^3.1.2",
     "redux-devtools": "^3.5.0"
