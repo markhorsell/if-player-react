@@ -56,8 +56,8 @@ const TextPanelDiv = styled.div`
 `;
 const MapContainerDiv = styled.div`
   display: inline-block;
-  /*width: 26%;*/
-  width:120px;
+  width: calc(100% - 150px);
+  /*width:120px;*/
   vertical-align:top;
 
   @media only screen and (min-width: 600px) {
@@ -142,11 +142,12 @@ const Game: React.FC = (data: any) => {
             />
           )}
       </ImageContainerDiv>
-      <div style={{ display: 'inline-block', width: 'calc(100% - 120px)' }}>
+     
+      <div style={{ display: 'inline-block', width: "150px" }}>
         <ExploreActions />
       </div>
       <MapContainerDiv>
-        <div>
+        <div style={{textAlign:"right"}}>
           <WorldMap
             discoveredPaths={discoveredPaths}
             room={room}
