@@ -8,7 +8,7 @@ const HeaderDiv = styled.div`
   position: fixed;
   top:0px;
   z-index: 1;
- 
+  background-color:  ${props => theme.BACKGROUND_COLOR};
   display: inline-block;
   width:100%;
   
@@ -17,7 +17,7 @@ const HeaderDiv = styled.div`
     position:relative;
     max-width: 600px;
     margin:0 auto;
-    background-color:  ${props => theme.BACKGROUND_COLOR};
+    
     height:60px;
   }
  

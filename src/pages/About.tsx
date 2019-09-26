@@ -10,7 +10,9 @@ const PageDiv = styled.div`
   margin: 70px auto 0px auto;
   padding: 10px;
   > p {
-    line-height: 18px;
+    line-height: 20px;
+    margin-block-start: 1px;
+    margin-block-end: 3px;
   }
 `;
 
@@ -27,13 +29,15 @@ const About: React.FC = (data: any) => {
   const [width, setWidth] = React.useState(0);
   const [height, setHeight] = React.useState(0);
 
-  const updateWindowDimensions = () => {
 
-    setWidth(window.innerWidth);
-    setHeight(window.innerHeight);
-  };
 
   useEffect(() => {
+    const updateWindowDimensions = () => {
+
+      setWidth(window.innerWidth);
+      setHeight(window.innerHeight);
+    };
+    updateWindowDimensions();
 
     window.addEventListener("resize", updateWindowDimensions);
     return () => {
@@ -45,37 +49,49 @@ const About: React.FC = (data: any) => {
   const handleRestart = (e: any) => {
     e.preventDefault();
     data.dispatch(restart())
-  
+
   };
 
 
   return (
     <React.StrictMode>
       <PageDiv>
-        <p>A game engine for Interactive fiction.</p>
-        <p>A React / Redux application.</p>
+      <div style={{ background: "#333", padding:"10px" , borderRadius:"4px"}}>
+        <h2>Game Engine For Interactive Fiction</h2>
         <p>By Mark Horsell</p>
-
-        <p>Version 1.0.3 : May 2018</p>
-
-        <p>Version 2.0.0 : 24 March 2019</p>
-        <p>Converted JS to TypeScript and CSS to Styled-components</p>
-
-        <p>{window.location.href}</p>
-        <p>
-          W:{width} | H:{height}
-        </p>
-        <p>React Version : {React.version} </p>
+        </div>
+        <br />
+        <div style={{ background: "#333", padding:"10px" , borderRadius:"4px"}}>
+        <h3>Version 2.1.0 : 25 September 2019</h3>
+        <p>Now uses 100% Functional Components with Hooks - All Classes and Lifecycle methods removed.</p>
+        <br />
+        <h3>Version 2.0.0 : 24 March 2019</h3>
+        <p>Converted from JavaScript to TypeScript and from Inline-CSS to Styled-components.</p>
+        <br />
+        <h3>Version 1.0.3 : May 2018</h3>
+        <p>Class Based, Inline-CSS, React Router, Redux.</p>
+        </div>
+        <br />
+        <div style={{ background: "#333",padding:"10px" , borderRadius:"4px" }}>
+          <h3>Debug Info</h3>
+          <p>URL : {window.location.href}</p>
+          <p>
+            W : {width} | H : {height}
+          </p>
+          <p>React Version : {React.version} </p>
+        </div>
+        <br />
         {/*
       <p>An editor is available here ------</p>
       <p>Strict mode wraps Home and About - Wrapping App will create warnings as either Provider or Router Libraries are not Strict as yet</p>
   */}
 
-
+<div style={{ background: "#333",padding:"10px" , borderRadius:"4px" }}>
         <p>
           WARNING : RESETTING GAME WILL CLEAR ALL DATA AND IS NOT UNDOABLE
           </p>
         <ActionButton onClick={handleRestart}>Reset game</ActionButton>
+        </div>
       </PageDiv>
     </React.StrictMode>
   );

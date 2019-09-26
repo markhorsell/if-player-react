@@ -124,6 +124,7 @@ const Game: React.FC = (data: any) => {
   //TODO assets folder will be switchable later
   const assetsFolder = "theshivers";
 
+  //TODO - I shouldnt need to worry about local paths? Is webpack misconfigured?
   const isLocal = window.location.href.substr(7, 9) === "localhost";
 
   return (
