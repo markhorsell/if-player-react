@@ -50,7 +50,7 @@ interface IProps {
 
 
   return(
-
+  
   
       <ThemeProvider theme={theme}>
       <>
@@ -77,6 +77,7 @@ interface IProps {
       </Router>
       </>
       </ThemeProvider>
+   
     );
   }
 
