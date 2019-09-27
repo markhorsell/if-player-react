@@ -42,17 +42,6 @@ const HomeDiv = styled.div`
   }
 `;
 const TextPanelDiv = styled.div`
-/*
-  display: inline-block;
-
- 
- 
-  max-width: 600px;
-  @media only screen and (min-width: 600px) {
-
-    max-width: 400px;
-  }
-  */
 `;
 const MapContainerDiv = styled.div`
   display: inline-block;
@@ -74,36 +63,19 @@ const ImageContainerDiv = styled.div`
 `
 
 interface IProps {
-  /*
-  money: any;
-  discoveredPaths: any;
-  rooms: any;
-  room: any;
-  objects: any;
-  lastMessage: any;
-  roll: any;
-  */
+ 
 }
 
 
 const Game: React.FC = (data: any) => {
 
   const objects:Array<string> = useSelector((state:any) => state.gameData.objects);
-  //const actions:Array<string> = useSelector((state:any) => state.gameData.actions);
   const room:any = useSelector((state:any) => state.gameData.room);
   const money:number = useSelector((state:any) => state.gameData.money);
   const rooms:Array<string> = useSelector((state:any) => state.gameData.rooms);
   const discoveredPaths:any = useSelector((state:any) => state.gameData.discoveredPaths);
   const lastMessage:string = useSelector((state:any) => state.gameData.lastMessage);
-  /*
-  discoveredPaths,
-    money,
-    rooms,
-    room,
-    objects,
-    lastMessage,
-    roll
-    */
+ 
 
   const getDescription = (roomData: any) => {
     if (roomData && roomData.desc && roomData.desc.length) {
@@ -120,17 +92,6 @@ const Game: React.FC = (data: any) => {
     }
   }
 
-  /*
-  const {
-    money,
-    discoveredPaths,
-    rooms,
-    room,
-    objects,
-    lastMessage,
-    //roll
-  } = data;
-  */
 
   //Dont Allow rendering if data is empty
   if (rooms.length === 0) {
@@ -146,12 +107,15 @@ const Game: React.FC = (data: any) => {
   const assetsFolder = "theshivers";
 
   //TODO - I shouldnt need to worry about local paths? Is webpack misconfigured?
-  const isLocal = window.location.href.substr(7, 9) === "localhost";
+  //const isLocal = window.location.href.substr(7, 9) === "localhost";
+
+
 
   return (
     <HomeDiv>
 
       <ImageContainerDiv>
+        {/*
         {isLocal ? (
           <RoomImage
             path={"../assets/" + assetsFolder + "/images/"}
@@ -163,8 +127,14 @@ const Game: React.FC = (data: any) => {
               image={image}
             />
           )}
+        */}
+         <RoomImage
+            path={process.env.PUBLIC_URL+"/assets/" + assetsFolder + "/images/"}
+            image={image}
+          />
       </ImageContainerDiv>
-     
+ 
+      
       <div style={{ display: 'inline-block', width: "150px" }}>
         <ExploreActions />
       </div>

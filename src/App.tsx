@@ -42,16 +42,10 @@ interface IProps {
       //Alreay has gameTitle so must have come from persist
       //console.log("game data from cache");
     } else {
-      console.log("HOOKS DISPATCH")
       dispatch(restart());
     }
-
   });
-
-
   return(
-  
-  
       <ThemeProvider theme={theme}>
       <>
       <GlobalStyles/>

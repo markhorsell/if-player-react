@@ -2,9 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { debounce } from "lodash";
 import styled from "styled-components/macro";
 
-const isLocal = window.location.href.substr(7, 9) === "localhost";
-const canvasPath = isLocal ? "url('../assets/theshivers/images/game_bg.jpg')" : "url('https://raw.githubusercontent.com/markhorsell/if-player-react/gh-pages/assets/theshivers/images/game_bg.jpg')";
-
+const canvasPath = "url('"+process.env.PUBLIC_URL+"../assets/theshivers/images/game_bg.jpg')"
+console.log(canvasPath)
 const WorldMapDiv = styled.div`
     > canvas {
       border-radius: 10px;
@@ -20,6 +19,7 @@ interface IProps {
 }
 
 const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
+
 
   const canvasRef = useRef<any>();
   const mapContainerRef = useRef<any>();

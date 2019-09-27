@@ -15,10 +15,15 @@ interface IProps {
   image: string;
 }
 
-const RoomImage: React.SFC<IProps> = ({ path, image }) => (
-  //const styleVal= "x"; //"url("+path+image+")";
-  <ImageDiv style={{ backgroundImage: "url(" + path + image + ")" }} />
-);
+const RoomImage: React.SFC<IProps> = ({ path, image }) => {
+  const imagePath: any = "url(" + path + image + ")";
+  console.log(imagePath)
+  return (
+    <ImageDiv style={{ backgroundImage: imagePath }} />
+  )
+
+}
+
 
 RoomImage.propTypes = {
   path: PropTypes.string.isRequired,

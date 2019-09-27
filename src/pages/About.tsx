@@ -79,6 +79,7 @@ const About: React.FC = () => {
         <div style={{ background: "#333",padding:"10px" , borderRadius:"4px" }}>
           <h3>Debug Info</h3>
           <p>URL : {window.location.href}</p>
+          <p>PUBLIC_URL : {process.env.PUBLIC_URL}</p>
           <p>
             W : {width} | H : {height}
           </p>
