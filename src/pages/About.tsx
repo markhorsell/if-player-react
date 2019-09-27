@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import styled from "styled-components/macro";
 
 import { ActionButton } from "../styled-constants";
@@ -24,8 +24,9 @@ interface IState {
   height: number;
 }
 
-const About: React.FC = (data: any) => {
+const About: React.FC = () => {
 
+  const dispatch = useDispatch();
   const [width, setWidth] = React.useState(0);
   const [height, setHeight] = React.useState(0);
 
@@ -48,7 +49,7 @@ const About: React.FC = (data: any) => {
 
   const handleRestart = (e: any) => {
     e.preventDefault();
-    data.dispatch(restart())
+    dispatch(restart())
 
   };
 

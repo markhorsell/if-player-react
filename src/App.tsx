@@ -10,7 +10,7 @@ import {
   Redirect,
   Switch
 } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 
 
 //import data from './assets/theshivers/data.json';
@@ -33,13 +33,15 @@ interface IProps {
 
 //class App extends Component<IProps> {
 
-  const App: React.SFC<IProps> = ({gameTitle,dispatch}) => {
+  const App: React.SFC<IProps> = ({gameTitle}) => {
  
+  const dispatch = useDispatch()
   useEffect(()=>{
     if (gameTitle) {
       //Alreay has gameTitle so must have come from persist
       //console.log("game data from cache");
     } else {
+      console.log("HOOKS DISPATCH")
       dispatch(restart());
     }
 

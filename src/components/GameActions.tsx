@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 
 import { ActionButton } from "../styled-constants";
 import {
@@ -33,8 +33,9 @@ interface IProps {
 
 
 
-const Actions: React.SFC<IProps> =({objects, actions, room, rooms, money, dispatch}) => {
+const Actions: React.SFC<IProps> =({objects, actions, room, money}) => {
   
+  const dispatch = useDispatch();
    
   const handleAction = (action:string) => (e:any) => {
     e.preventDefault();
@@ -173,5 +174,4 @@ function mapStateToProps(state:any) {
     money
   };
 }
-//mapDispatchToProps() is a utility which will help your component to fire an action event (dispatching action which may cause change of application state)
 export default connect(mapStateToProps)(Actions);

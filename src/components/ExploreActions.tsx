@@ -1,5 +1,5 @@
 import React, {  } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch} from "react-redux";
 
 import styled from "styled-components/macro";
 
@@ -17,9 +17,9 @@ interface IProps {
   dispatch: Function;
 }
 
-const ExploreActions: React.SFC<IProps> = ({ room, rooms, dispatch }) => {
+const ExploreActions: React.SFC<IProps> = ({ room, rooms }) => {
 
-
+  const dispatch = useDispatch();
 
   const handleMove = (exit: string) => (e: any) => {
     //const { rooms, room } = this.props;
