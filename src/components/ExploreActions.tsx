@@ -1,5 +1,5 @@
 import React, {  } from "react";
-import { connect, useDispatch} from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
 
 import styled from "styled-components/macro";
 
@@ -12,14 +12,14 @@ const ActionsDiv = styled.div`
   vertical-align: top;
 `;
 interface IProps {
-  rooms: Array<string>;
-  room: any;
-  dispatch: Function;
+ 
 }
 
-const ExploreActions: React.SFC<IProps> = ({ room, rooms }) => {
+const ExploreActions: React.SFC<IProps> = () => {
 
   const dispatch = useDispatch();
+  const room:any = useSelector((state:any) => state.gameData.room);
+  const rooms:Array<string> = useSelector((state:any) => state.gameData.rooms);
 
   const handleMove = (exit: string) => (e: any) => {
     //const { rooms, room } = this.props;
@@ -142,11 +142,4 @@ const ExploreActions: React.SFC<IProps> = ({ room, rooms }) => {
   }
 
 
-function mapStateToProps(state: any) {
-  const { rooms, room } = state.gameData;
-  return {
-    rooms,
-    room
-  };
-}
-export default connect(mapStateToProps)(ExploreActions);
+export default ExploreActions;

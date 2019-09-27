@@ -10,7 +10,7 @@ import {
   Redirect,
   Switch
 } from "react-router-dom";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 
 //import data from './assets/theshivers/data.json';
@@ -26,16 +26,17 @@ import {
 } from "./actions";
 
 interface IProps {
-  gameTitle: string;
-  dispatch: Function;
+  //gameTitle: string;
+  //dispatch: Function;
   //propTypes: any;
 }
 
 //class App extends Component<IProps> {
 
-  const App: React.SFC<IProps> = ({gameTitle}) => {
+  const App: React.SFC<IProps> = () => {
  
   const dispatch = useDispatch()
+  const gameTitle = useSelector((state:any) => state.gameData.gameTitle);
   useEffect(()=>{
     if (gameTitle) {
       //Alreay has gameTitle so must have come from persist
@@ -79,10 +80,5 @@ interface IProps {
     );
   }
 
-function mapStateToProps(state: any) {
-  const { gameTitle } = state.gameData;
-  return {
-    gameTitle
-  };
-}
-export default connect(mapStateToProps)(App);
+
+export default App;

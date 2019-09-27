@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { connect, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import styled from "styled-components/macro";
 
 import { ActionButton } from "../styled-constants";
@@ -63,6 +63,9 @@ const About: React.FC = () => {
         </div>
         <br />
         <div style={{ background: "#333", padding:"10px" , borderRadius:"4px"}}>
+        <h3>Version 2.1.1 : 27 September 2019</h3>
+        <p>Redux connect replaced with useDispatch and useSelector Hooks.</p>
+        <br />
         <h3>Version 2.1.0 : 25 September 2019</h3>
         <p>Now uses 100% Functional Components with Hooks - All Classes and Lifecycle methods removed.</p>
         <br />
@@ -99,6 +102,6 @@ const About: React.FC = () => {
 }
 
 
-//export default About;
 
-export default connect()(About);
+
+export default About;

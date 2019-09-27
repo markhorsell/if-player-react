@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { ActionButton } from "../styled-constants";
 import {
@@ -21,21 +21,27 @@ import {
 } from "../actions";
 
 interface IProps {
-  rooms: Array<string>;
-  room: any;
-  objects:Array<string>;
-  actions:Array<string>
-   money :number;
-  dispatch: Function;
+  //rooms: Array<string>;
+  //room: any;
+  //objects:Array<string>;
+  
+  // money :number;
+ // dispatch: Function;
 }
 
 
 
 
 
-const Actions: React.SFC<IProps> =({objects, actions, room, money}) => {
+const Actions: React.SFC<IProps> =() => {
   
   const dispatch = useDispatch();
+
+  const objects:Array<string> = useSelector((state:any) => state.gameData.objects);
+  const actions:Array<string> = useSelector((state:any) => state.gameData.actions);
+  const room:any = useSelector((state:any) => state.gameData.room);
+  const money:number = useSelector((state:any) => state.gameData.money);
+
    
   const handleAction = (action:string) => (e:any) => {
     e.preventDefault();
@@ -161,17 +167,6 @@ const Actions: React.SFC<IProps> =({objects, actions, room, money}) => {
   }
 
 
+export default Actions;
 
-function mapStateToProps(state:any) {
-  const { objects, actions, rooms, room, money } = state.gameData;
 
-  //console.log(actions);
-  return {
-    objects,
-    actions,
-    rooms,
-    room,
-    money
-  };
-}
-export default connect(mapStateToProps)(Actions);

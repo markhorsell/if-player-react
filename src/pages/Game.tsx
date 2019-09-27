@@ -1,5 +1,5 @@
 import React, {  } from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import styled from "styled-components/macro";
 import RoomDescription from "../components/RoomDescription";
 import RoomImage from "../components/RoomImage";
@@ -74,6 +74,7 @@ const ImageContainerDiv = styled.div`
 `
 
 interface IProps {
+  /*
   money: any;
   discoveredPaths: any;
   rooms: any;
@@ -81,10 +82,29 @@ interface IProps {
   objects: any;
   lastMessage: any;
   roll: any;
+  */
 }
 
 
 const Game: React.FC = (data: any) => {
+
+  const objects:Array<string> = useSelector((state:any) => state.gameData.objects);
+  //const actions:Array<string> = useSelector((state:any) => state.gameData.actions);
+  const room:any = useSelector((state:any) => state.gameData.room);
+  const money:number = useSelector((state:any) => state.gameData.money);
+  const rooms:Array<string> = useSelector((state:any) => state.gameData.rooms);
+  const discoveredPaths:any = useSelector((state:any) => state.gameData.discoveredPaths);
+  const lastMessage:string = useSelector((state:any) => state.gameData.lastMessage);
+  /*
+  discoveredPaths,
+    money,
+    rooms,
+    room,
+    objects,
+    lastMessage,
+    roll
+    */
+
   const getDescription = (roomData: any) => {
     if (roomData && roomData.desc && roomData.desc.length) {
       return roomData.desc[0];
@@ -100,7 +120,7 @@ const Game: React.FC = (data: any) => {
     }
   }
 
-
+  /*
   const {
     money,
     discoveredPaths,
@@ -110,6 +130,7 @@ const Game: React.FC = (data: any) => {
     lastMessage,
     //roll
   } = data;
+  */
 
   //Dont Allow rendering if data is empty
   if (rooms.length === 0) {
@@ -171,28 +192,4 @@ const Game: React.FC = (data: any) => {
 
 }
 
-
-
-function mapStateToProps(state: any) {
-
-  const {
-    discoveredPaths,
-    money,
-    rooms,
-    room,
-    objects,
-    lastMessage,
-    roll
-  } = state.gameData;
-
-  return {
-    discoveredPaths,
-    money,
-    rooms,
-    room,
-    objects,
-    lastMessage,
-    roll
-  };
-}
-export default connect(mapStateToProps)(Game);
+export default Game;

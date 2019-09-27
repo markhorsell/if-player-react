@@ -1,5 +1,5 @@
 import React, { } from "react";
-import { connect } from "react-redux";
+
 import styled  from "styled-components/macro";
 
 const PageDiv = styled.div`
@@ -41,4 +41,4 @@ const Todo: React.FC = () => {
   }
 
 
-export default connect()(Todo);
+export default Todo;
