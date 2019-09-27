@@ -6,8 +6,8 @@
 # testing
 /coverage
 
-# production
-/build
+# production - push build for gh-pages
+#/build
 
 # misc
 .DS_Store
