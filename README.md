@@ -1,4 +1,4 @@
 Interactive fiction player
 
-attempting to stay up to date with current react and typescript best practice
+Reference project Interactive Fiction game engine, attempting to stay up to date with current React, Redux and TypeScript best practice.
 
