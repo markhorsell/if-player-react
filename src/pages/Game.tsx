@@ -10,7 +10,8 @@ import Actions from "../components/GameActions";
 import ExploreActions from "../components/ExploreActions";
 import WorldMap from "../components/WorldMap";
 import Debug from '../components/Debug';
-import { IState, IRoomData, IItem } from "../types"
+import { IState, IRoomData, IItem } from "../types";
+
 
 
 import {
@@ -62,15 +63,19 @@ const ImageContainerDiv = styled.div`
   width:100%;
 `
 
-interface IProps {
-
+interface IRouter {
+  history:any;
+  location:any;
+  match:any;
 }
 
 
-const Game: React.FC = (data: any) => {
+const Game: React.FC<IRouter> = ({}) => {
+  
+  //console.log(history, location)
 
   const objects: Array<IItem> = useSelector((state: IState) => state.gameData.objects);
-  const room: number | string = useSelector((state: IState) => state.gameData.room);
+  const roomID: number | string = useSelector((state: IState) => state.gameData.room);
   const money: number = useSelector((state: IState) => state.gameData.money);
   const rooms: Array<IRoomData> = useSelector((state: IState) => state.gameData.rooms);
   const discoveredPaths: any = useSelector((state: IState) => state.gameData.discoveredPaths);
@@ -97,9 +102,9 @@ const Game: React.FC = (data: any) => {
   if (rooms.length === 0) {
     return <p>NOT LOADED</p>;
   }
-  const currentRoomData = getRoomData(room, rooms);
+  const currentRoomData = getRoomData(roomID, rooms);
   const description = getDescription(currentRoomData);
-  const locationObjects = getLocationObjects(room, objects);
+  const locationObjects = getLocationObjects(roomID, objects);
   const image = getImage(currentRoomData);
   const inventory = getInventory(objects);
 
@@ -131,7 +136,7 @@ const Game: React.FC = (data: any) => {
         <div style={{ textAlign: "right" }}>
           <WorldMap
             discoveredPaths={discoveredPaths}
-            roomID={room}
+            roomID={roomID}
             rooms={rooms}
           />
         </div>
@@ -144,7 +149,7 @@ const Game: React.FC = (data: any) => {
         <LocationObjects items={locationObjects} />
         <Inventory items={inventory} money={money} />
       </TextPanelDiv>
-      {/*<Debug debug={JSON.stringify(data)} />*/}
+    {/*<Debug debug={JSON.stringify(objects)} />*/}
 
     </HomeDiv>
   );

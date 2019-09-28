@@ -13,10 +13,12 @@ import {
   RESTART
 } from "../actions";
 
+import { IState, IRoomData, IItem } from "../types";
+
 import initialData from "../assets/theshivers/data.json";
 
 
-export function gameData(state = {}, action) {
+export function gameData(state:any = {}, action:any) {
  
   switch (action.type) {
     case RESTART:
@@ -54,8 +56,8 @@ export function gameData(state = {}, action) {
         score: state.score + action.data
       };
     case RESULT_TAKE:
-      const updatedObjects = state.objects.map(obj => {
-        action.data.forEach(element => {
+      const updatedObjects = state.objects.map((obj:IItem)  => {
+        action.data.forEach((element:any) => {
           if (obj.obj === element) {
             obj.loc = "INV";
           }
@@ -67,8 +69,8 @@ export function gameData(state = {}, action) {
         objects: [...updatedObjects]
       };
     case RESULT_DROP:
-      const droppedObjects = state.objects.map(obj => {
-        action.data.forEach(element => {
+      const droppedObjects = state.objects.map((obj:IItem) => {
+        action.data.forEach((element:any) => {
           if (obj.obj === element) {
             obj.loc = state.room;
           }
@@ -90,8 +92,8 @@ export function gameData(state = {}, action) {
         discoveredPaths: paths
       };
     case RESULT_DESTROY:
-      const updatedDestroyObjects = state.objects.map(obj => {
-        action.data.forEach(element => {
+      const updatedDestroyObjects = state.objects.map((obj:IItem) => {
+        action.data.forEach((element:any) => {
           if (obj.obj === element || element === "ALL") {
             obj.loc = "";
           }
@@ -109,7 +111,7 @@ export function gameData(state = {}, action) {
         money: state.money + action.data
       };
     case RESULT_ROOM_DESC:
-      const rooms = state.rooms.map(r => {
+      const rooms = state.rooms.map((r:IRoomData) => {
         if (r.id === state.room) {
           r.desc = action.data;
         }
@@ -120,7 +122,7 @@ export function gameData(state = {}, action) {
         rooms: [...rooms]
       };
     case RESULT_CREATE_EXIT:
-      const roomExits = state.rooms.map(r => {
+      const roomExits = state.rooms.map((r:IRoomData) => {
         if (r.id === state.room) {
           if (action.data.dir === "e") {
             r.exits.e = action.data.toRoom;

@@ -8,6 +8,11 @@ import rootReducer from '../reducers';
 
 import thunk from 'redux-thunk';
 
+
+
+
+
+
 const persistConfig = {
   key: 'root',
   storage,
@@ -17,7 +22,9 @@ const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+
+const composeEnhancers:typeof compose = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
 
 
 const store = createStore(

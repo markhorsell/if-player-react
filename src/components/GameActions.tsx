@@ -50,12 +50,14 @@ const Actions: React.SFC =() => {
     })[0].results;
 
     for (var key of Object.keys(results)) {
+      console.log("Dispatch 1+ Results from handle Action")
       dispatchResults(key, results[key]);
     }
   };
   const dispatchResults = (gameAction:string, data:any)=> {
  
     //console.log("action data is different for each action response - so not worth typing?");
+    console.log(gameAction, data)
     switch (gameAction) {
       case "createExitOnRollSuccess":
         const roll = Math.ceil(Math.random() * data.sides);

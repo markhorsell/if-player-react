@@ -1,23 +1,24 @@
 
+import { IState, IItem , IRoomData} from "../types"
 
-export const getRoomData = (roomId,rooms) => {
+export const getRoomData = (roomId:string | number,rooms:Array<IRoomData>) => {
 	const roomData = rooms.filter(room => room.id===roomId)[0];
 	
     return roomData; 
   }
 
-export const getInventory = (objects) => {
+export const getInventory = (objects:Array<IItem>) => {
     const inventory = objects.filter(object => object.loc==='INV').map(object => object);
     return inventory;
 }
-export const getLocationObjects= (roomId,objects) => {
+export const getLocationObjects= (roomId:number | string,objects:Array<IItem>) => {
 	//return the whole object as may want to filter on visibility later
 	const locObjects = objects.filter(object => object.loc===roomId).map(object => object);
     return locObjects;
 }
 
-export const getAllowedExits =(roomData) => {
-	const allowedExits=[];
+export const getAllowedExits =(roomData:any) => {
+	const allowedExits:Array<any>=[];
 	Object.keys(roomData.exits).forEach(function(key) {
 		var val = roomData.exits[key];
 		if(val!=='0'){
@@ -26,7 +27,7 @@ export const getAllowedExits =(roomData) => {
 	  });
 	return(allowedExits);
 }
-export const getAllowedActions = (objects,actions,room,money) => {
+export const getAllowedActions = (objects:Array<IItem>,actions:any,roomID:string | number,money:number) => {
 
 	let allowableActions= [];
 		let actionsToCheck = actions;
@@ -57,7 +58,7 @@ export const getAllowedActions = (objects,actions,room,money) => {
 				for (let j = 0; j < objects.length; j++) {
 					for (let k = 0; k < condition.roomContains.length; k++) {
 						if (condition.roomContains[k] === objects[j].obj) {
-							if (objects[j].loc === room) {
+							if (objects[j].loc === roomID) {
 								roomContains++;
 							}
 						}
@@ -71,7 +72,7 @@ export const getAllowedActions = (objects,actions,room,money) => {
 			// Is specific location condition
 			if (condition.hasOwnProperty('location')) {
 				let isValidLocation = false;
-				if (condition.location === room) {
+				if (condition.location === roomID) {
 					isValidLocation = true;
 				}
 				if (isValidLocation === false) {

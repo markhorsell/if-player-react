@@ -19,13 +19,13 @@ interface IProps {
 const ExploreActions: React.SFC<IProps> = () => {
 
   const dispatch = useDispatch();
-  const room: number | string = useSelector((state: IState) => state.gameData.room);
-  const rooms: Array<string> = useSelector((state: IState) => state.gameData.rooms);
+  const roomID: number | string = useSelector((state: IState) => state.gameData.room);
+  const rooms: Array<IRoomData> = useSelector((state: IState) => state.gameData.rooms);
 
   const handleMove = (exit: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
     //const { rooms, room } = this.props;
 
-    const currentRoomExits = getRoomData(room, rooms).exits;
+    const currentRoomExits:any = getRoomData(roomID, rooms).exits;
     e.preventDefault();
     switch (exit) {
       case "Up":
@@ -59,7 +59,7 @@ const ExploreActions: React.SFC<IProps> = () => {
 
  
 
-  const renderExits = (currentRoomData: IRoomData) => {
+  const renderExits = (currentRoomData: any) => {
 
     const unsortedExits = getAllowedExits(currentRoomData).map((exit:string) => {
       if (exit === "n") return "North";
@@ -137,7 +137,7 @@ const ExploreActions: React.SFC<IProps> = () => {
   };
 
 
-  const currentRoomData = getRoomData(room, rooms);
+  const currentRoomData:any = getRoomData(roomID, rooms);
 
   return (
     <>{renderExits(currentRoomData)}</>

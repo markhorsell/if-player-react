@@ -47,7 +47,7 @@ const About: React.FC = () => {
   }, [])
 
 
-  const handleRestart = (e: any) => {
+  const handleRestart = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch(restart())
 

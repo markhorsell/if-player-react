@@ -7,14 +7,14 @@ export interface IState {
     lastMessage: string;
     discoveredPaths: any;
     move: any;
-    rooms: any;
+    rooms: Array<IRoomData>;
     actions: any;
     objects: Array<IItem>;
   }
 }
 export interface IRoomData {
   desc: Array<string>;
-  exits: Object;
+  exits: any;
   id: string;
   image: string;
   showOnMap: boolean;
