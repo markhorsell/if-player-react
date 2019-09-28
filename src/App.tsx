@@ -55,11 +55,11 @@ interface IProps {
           <>
           <Header title={gameTitle} />
           <Switch>
-            <Route exact path="/shivers-react/game" component={Game} />
-            <Route exact path="/shivers-react/about" component={About} />
-            <Route exact path="/shivers-react/todo" component={Todo} />
-            <Redirect from="/shivers-react/" to="/shivers-react/game" />
-            <Redirect from="/" to="/shivers-react/game" />
+            <Route path="/game" component={Game} />
+            <Route path="/about" component={About} />
+            <Route path="/todo" component={Todo} />
+            <Redirect from="/" to="/game" />
+            <Redirect from="/" to="/game" />
           </Switch>
           </>
           }

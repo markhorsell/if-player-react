@@ -34,18 +34,18 @@ const Nav: React.SFC = () => (
   <NavDiv>
     <ul>
       <li>
-        <NavLink to="/shivers-react/game" activeStyle={{ color: theme.HIGHLIGHT_COLOR }}>
+        <NavLink to={`${process.env.PUBLIC_URL}/game`} activeStyle={{ color: theme.HIGHLIGHT_COLOR }}>
           Game
         </NavLink>
       </li>
       <li>
-        <NavLink to="/shivers-react/about" activeStyle={{ color: theme.HIGHLIGHT_COLOR }}>
+        <NavLink to={`${process.env.PUBLIC_URL}/about`} activeStyle={{ color: theme.HIGHLIGHT_COLOR }}>
           About
         </NavLink>
       </li>
       {/*
       <li>
-        <NavLink to="/shivers-react/todo" activeStyle={{ color: "white" }}>
+        <NavLink to="/todo" activeStyle={{ color: "white" }}>
           Todo
         </NavLink>
       </li>
