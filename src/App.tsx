@@ -59,7 +59,7 @@ interface IProps {
             <Route path="/about" component={About} />
             <Route path="/todo" component={Todo} />
             <Redirect from="/" to="/game" />
-            <Redirect from="/" to="/game" />
+            
           </Switch>
           </>
           }
