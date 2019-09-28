@@ -17,7 +17,6 @@ interface IProps {
 
 const RoomImage: React.SFC<IProps> = ({ path, image }) => {
   const imagePath: any = "url(" + path + image + ")";
-  console.log(imagePath)
   return (
     <ImageDiv style={{ backgroundImage: imagePath }} />
   )
