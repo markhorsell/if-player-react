@@ -20,30 +20,19 @@ import {
   restart
 } from "../actions";
 
-interface IProps {
-  //rooms: Array<string>;
-  //room: any;
-  //objects:Array<string>;
-  
-  // money :number;
- // dispatch: Function;
-}
+import { IState, IItem } from "../types"
 
-
-
-
-
-const Actions: React.SFC<IProps> =() => {
+const Actions: React.SFC =() => {
   
   const dispatch = useDispatch();
 
-  const objects:Array<string> = useSelector((state:any) => state.gameData.objects);
-  const actions:Array<string> = useSelector((state:any) => state.gameData.actions);
-  const room:any = useSelector((state:any) => state.gameData.room);
-  const money:number = useSelector((state:any) => state.gameData.money);
+  const objects:Array<IItem> = useSelector((state:IState) => state.gameData.objects);
+  const actions:Array<string> = useSelector((state:IState) => state.gameData.actions);
+  const room:number | string  = useSelector((state:IState) => state.gameData.room);
+  const money:number = useSelector((state:IState) => state.gameData.money);
 
    
-  const handleAction = (action:string) => (e:any) => {
+  const handleAction = (action:string) => (e:React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     //const { objects, actions, room, money } = this.props;
@@ -64,9 +53,10 @@ const Actions: React.SFC<IProps> =() => {
       dispatchResults(key, results[key]);
     }
   };
-  const dispatchResults = (key:string, data:any)=> {
-    
-    switch (key) {
+  const dispatchResults = (gameAction:string, data:any)=> {
+ 
+    //console.log("action data is different for each action response - so not worth typing?");
+    switch (gameAction) {
       case "createExitOnRollSuccess":
         const roll = Math.ceil(Math.random() * data.sides);
 
@@ -132,15 +122,10 @@ const Actions: React.SFC<IProps> =() => {
 
         break;
       default:
-        console.warn("WARNING result = [" + key + "] is not being processed!");
+        console.warn("WARNING result = [" + gameAction + "] is not being processed!");
     }
   }
   
-
-    //console.log('Actions rendered');
-    //const { objects, actions, rooms, room, money } = this.props;
-    //const currentRoomData = getRoomData(room, rooms);
-
     const allowableActions = getAllowedActions(
       objects,
       actions,

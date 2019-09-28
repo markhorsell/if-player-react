@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled  from "styled-components/macro"
+import styled  from "styled-components/macro";
+import { IItem } from "../types"
 
 const InventoryDiv= styled.div`
 	margin-top:10px;
 	margin-bottom:10px;
 `;
 type IProps = {
-	items:Array<any>;
+	items:Array<IItem>;
 	money:number;
 }
 
 const Inventory: React.SFC<IProps>  = ({ items = [],money=0 }) => {
-	const inventory = items.map((item:any)=>{
+	const inventory = items.map((item:IItem)=>{
 		return item.desc;
 	}).join(", ")+' and '+money+' coins.';
 	

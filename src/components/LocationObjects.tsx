@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import {  IItem } from "../types"
 import styled  from "styled-components/macro"
 
 const LocationObjectsDiv = styled.div`
@@ -8,15 +8,15 @@ const LocationObjectsDiv = styled.div`
 	margin-bottom:10px;
 `;
 type IProps = {
-	items:any;
+	items:Array<IItem>;
 }
 
 const LocationObjects: React.SFC<IProps>   = ({ items = [] }) => {
   const locationObjects = items
-    .filter((item: any) => {
+    .filter((item: IItem ) => {
       return item.show !== false;
     })
-    .map((item: any) => {
+    .map((item: IItem ) => {
       return item.desc;
     })
     .join(", ");

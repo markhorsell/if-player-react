@@ -22,14 +22,7 @@ body {
 	line-height: 18px;
 	background-color: ${props => theme.BACKGROUND_COLOR};
 	color: ${props => theme.TEXT_COLOR};
-	/* GOOD IDEA TO MAKE TEXT UNSELECTABLE?? */
-	-webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
+
 }
 `;
 

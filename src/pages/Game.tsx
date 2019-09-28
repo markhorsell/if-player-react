@@ -1,4 +1,4 @@
-import React, {  } from "react";
+import React, { } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components/macro";
 import RoomDescription from "../components/RoomDescription";
@@ -9,9 +9,9 @@ import Inventory from "../components/Inventory";
 import Actions from "../components/GameActions";
 import ExploreActions from "../components/ExploreActions";
 import WorldMap from "../components/WorldMap";
-//import Debug from '../components/Debug';
+import Debug from '../components/Debug';
+import { IState, IRoomData, IItem } from "../types"
 
-//import './Home.css';
 
 import {
   getRoomData,
@@ -63,19 +63,19 @@ const ImageContainerDiv = styled.div`
 `
 
 interface IProps {
- 
+
 }
 
 
 const Game: React.FC = (data: any) => {
 
-  const objects:Array<string> = useSelector((state:any) => state.gameData.objects);
-  const room:any = useSelector((state:any) => state.gameData.room);
-  const money:number = useSelector((state:any) => state.gameData.money);
-  const rooms:Array<string> = useSelector((state:any) => state.gameData.rooms);
-  const discoveredPaths:any = useSelector((state:any) => state.gameData.discoveredPaths);
-  const lastMessage:string = useSelector((state:any) => state.gameData.lastMessage);
- 
+  const objects: Array<IItem> = useSelector((state: IState) => state.gameData.objects);
+  const room: number | string = useSelector((state: IState) => state.gameData.room);
+  const money: number = useSelector((state: IState) => state.gameData.money);
+  const rooms: Array<IRoomData> = useSelector((state: IState) => state.gameData.rooms);
+  const discoveredPaths: any = useSelector((state: IState) => state.gameData.discoveredPaths);
+  const lastMessage: string = useSelector((state: IState) => state.gameData.lastMessage);
+
 
   const getDescription = (roomData: any) => {
     if (roomData && roomData.desc && roomData.desc.length) {
@@ -115,34 +115,23 @@ const Game: React.FC = (data: any) => {
     <HomeDiv>
 
       <ImageContainerDiv>
-        {/*
-        {isLocal ? (
-          <RoomImage
-            path={"../assets/" + assetsFolder + "/images/"}
-            image={image}
-          />
-        ) : (
-            <RoomImage
-              path={"/shivers-react/assets/" + assetsFolder + "/images/"}
-              image={image}
-            />
-          )}
-        */}
-         <RoomImage
-            path={process.env.PUBLIC_URL+"/assets/" + assetsFolder + "/images/"}
-            image={image}
-          />
+       
+        <RoomImage
+          path={process.env.PUBLIC_URL + "/assets/" + assetsFolder + "/images/"}
+          image={image}
+        />
       </ImageContainerDiv>
- 
-      
+
+
       <div style={{ display: 'inline-block', width: "150px" }}>
         <ExploreActions />
       </div>
+    
       <MapContainerDiv>
-        <div style={{textAlign:"right"}}>
+        <div style={{ textAlign: "right" }}>
           <WorldMap
             discoveredPaths={discoveredPaths}
-            room={room}
+            roomID={room}
             rooms={rooms}
           />
         </div>
@@ -155,7 +144,7 @@ const Game: React.FC = (data: any) => {
         <LocationObjects items={locationObjects} />
         <Inventory items={inventory} money={money} />
       </TextPanelDiv>
-      {/*<Debug data="TEST"/>*/}
+      {/*<Debug debug={JSON.stringify(data)} />*/}
 
     </HomeDiv>
   );

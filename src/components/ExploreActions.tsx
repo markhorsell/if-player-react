@@ -1,27 +1,28 @@
-import React, {  } from "react";
-import { useSelector, useDispatch} from "react-redux";
+import React, { } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import styled from "styled-components/macro";
 
 import { ActionButton } from "../styled-constants";
 import { getRoomData, getAllowedExits } from "../utils/dataHelper";
 import { resultMessage, resultLocation } from "../actions";
+import { IState, IRoomData } from "../types"
 
 const ActionsDiv = styled.div`
   display: inline-block;
   vertical-align: top;
 `;
 interface IProps {
- 
+
 }
 
 const ExploreActions: React.SFC<IProps> = () => {
 
   const dispatch = useDispatch();
-  const room:any = useSelector((state:any) => state.gameData.room);
-  const rooms:Array<string> = useSelector((state:any) => state.gameData.rooms);
+  const room: number | string = useSelector((state: IState) => state.gameData.room);
+  const rooms: Array<string> = useSelector((state: IState) => state.gameData.rooms);
 
-  const handleMove = (exit: string) => (e: any) => {
+  const handleMove = (exit: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
     //const { rooms, room } = this.props;
 
     const currentRoomExits = getRoomData(room, rooms).exits;
@@ -56,9 +57,11 @@ const ExploreActions: React.SFC<IProps> = () => {
     }
   };
 
-  const renderExits = (currentRoomData: any) => {
-    //console.log(currentRoomData);
-    const unsortedExits = getAllowedExits(currentRoomData).map(exit => {
+ 
+
+  const renderExits = (currentRoomData: IRoomData) => {
+
+    const unsortedExits = getAllowedExits(currentRoomData).map((exit:string) => {
       if (exit === "n") return "North";
       if (exit === "e") return "East";
       if (exit === "s") return "South";
@@ -66,11 +69,11 @@ const ExploreActions: React.SFC<IProps> = () => {
 
       if (exit === "u") return "Up";
       if (exit === "d") return "Down";
-      return null;
+      return "NONE";
     });
     //However the data arrive always show n,s,w,e,u,d
     const potentialExits = ["North", "East", "South", "West", "Up", "Down"];
-    const allowableExits = unsortedExits.filter((exit: any) => {
+    const allowableExits = unsortedExits.filter((exit: string) => {
       return potentialExits.includes(exit);
     });
 
@@ -138,8 +141,8 @@ const ExploreActions: React.SFC<IProps> = () => {
 
   return (
     <>{renderExits(currentRoomData)}</>
-    )
-  }
+  )
+}
 
 
 export default ExploreActions;

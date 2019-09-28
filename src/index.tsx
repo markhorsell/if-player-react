@@ -8,6 +8,7 @@ import store from "./store/configureStore";
 //import persistor  from './store/configureStore';
 import { PersistGate } from "redux-persist/integration/react";
 
+
 render(
   <React.StrictMode>
   <Provider store={store.store as any}>

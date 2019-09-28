@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { debounce } from "lodash";
 import styled from "styled-components/macro";
+import { IRoomData} from "../types"
 
 const canvasPath = "url('"+process.env.PUBLIC_URL+"/assets/theshivers/images/game_bg.jpg')"
 const WorldMapDiv = styled.div`
@@ -12,12 +13,12 @@ const WorldMapDiv = styled.div`
   `;
 
 interface IProps {
-  room: any;
-  rooms: Array<any>;
-  discoveredPaths: Array<any>;
+  roomID: number | string;
+  rooms: Array<IRoomData>;
+  discoveredPaths: Array<string>;
 }
 
-const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
+const WorldMap: React.SFC<IProps> = ({ roomID, rooms, discoveredPaths }) => {
 
 
   const canvasRef = useRef<any>();
@@ -42,9 +43,13 @@ const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
 
   useEffect(() => {
     const updateCanvasCalc = () => {
-      const ctx = canvasRef.current.getContext("2d");
-      const visitedRooms = rooms.filter((room: any) => {
-        if (discoveredPaths.includes(room.id)) {
+      if(canvasRef && canvasRef.current && canvasRef.current.getContext && canvasRef.current.getContext("2d")){
+        const ctx:CanvasRenderingContext2D = canvasRef.current.getContext("2d");
+        if(!ctx){
+          return;
+        }
+      const visitedRooms = rooms.filter((roomData: IRoomData) => {
+        if (discoveredPaths.includes(roomData.id)) {
           return true;
         } else {
           return false;
@@ -94,10 +99,12 @@ const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
         }
       };
       //DRAW PLAYER POSTION
-      if (room > 10) {
+      
+      if ((roomID) > 10) {
+        const roomNumber:number = Number(roomID);
         //Player
-        const x = Math.floor(room / 10) * spacing + middle;
-        const y = (room % 10) * spacing + middle;
+        const x = Math.floor(roomNumber / 10) * spacing + middle;
+        const y = (roomNumber % 10) * spacing + middle;
         ctx.save();
         ctx.beginPath();
         ctx.strokeStyle = "rgba(0, 0, 0, 0)";
@@ -107,6 +114,8 @@ const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
         ctx.fill();
         ctx.restore();
       }
+      
+      
       //DARKEN UNVISITED ROOMS
       for (let x = 0; x < 10; x++) {
         for (let y = 0; y < 10; y++) {
@@ -130,13 +139,20 @@ const WorldMap: React.SFC<IProps> = ({ room, rooms, discoveredPaths }) => {
         }
       }
     };
+      }
+      
     updateCanvasCalc();
-  }, [mapWidth, room, canvasRef, discoveredPaths, rooms]);
+  }, [mapWidth, roomID, canvasRef, discoveredPaths, rooms]);
 
   return (
-    <WorldMapDiv ref={mapContainerRef}>
+    <>
+    {mapContainerRef && canvasRef &&
+      <WorldMapDiv ref={mapContainerRef}>
       <canvas ref={canvasRef} />
     </WorldMapDiv>
+    }
+    </>
+   
   );
 }
 
