@@ -4,4 +4,8 @@ Reference project Interactive Fiction game engine, attempting to stay up to date
 
 Demo at
 
+https://markhorsell.github.io/if-player-react/
+
+more info at 
+
 https://markhorsell.com/shivers-react/game
