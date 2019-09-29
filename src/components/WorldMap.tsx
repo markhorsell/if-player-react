@@ -31,7 +31,7 @@ const WorldMap: React.SFC<IProps> = ({ roomID, rooms, discoveredPaths }) => {
         //TODO why is mapContainerRef sometimes missing?
         return;
       }
-      setMapWidth(Math.max(Math.min(mapContainerRef.current.offsetWidth, 160), 100));
+      setMapWidth(Math.max(Math.min(mapContainerRef.current.offsetWidth, 100), 100));
     }, 40);
 
     updateCanvasDebounce()

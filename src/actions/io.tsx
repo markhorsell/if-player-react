@@ -22,15 +22,17 @@ export function restart(){
     }
 }
 
-export function initData(data){
+export function initData(data:string | number){
+    console.log('is this just a room set?')
+   
     return {
         type:INIT_DATA,
         data: data,
     }
 }
 
-export function resultSuccessRoll(data){
-    console.log(data)
+export function resultSuccessRoll(data:boolean){
+   
     return {
         type:RESULT_ROLL,
         
@@ -38,25 +40,31 @@ export function resultSuccessRoll(data){
     }
 }
 
-export function resultMessage(data){
+export function resultMessage(data:string){
+  
     return {
         type:RESULT_MESSAGE,
         data:data,
     }
 }
-export function resultScore(data){
+export function resultScore(data:number){
+   //shivers doesnt dispatch any "changeScore" events in json..
+   //.. but other ganes could
+   
     return {
         type:RESULT_SCORE,
         data:data,
     }
 }
-export function resultTake(data){
+export function resultTake(data:Array<string>){
+   
     return {
         type:RESULT_TAKE,
         data:data,
     }
 }
-export function resultDrop(data){
+export function resultDrop(data:Array<string>){
+ 
     return {
         type:RESULT_DROP,
         data:data,
@@ -64,32 +72,42 @@ export function resultDrop(data){
 }
 
 
-export function resultLocation(data){
+export function resultLocation(data:string | number){
+ 
     return {
         type:RESULT_LOCATION,
         data:data,
     }
 }
-export function resultDestroy(data){
+export function resultDestroy(data:Array<string>){
+   
     return {
         type:RESULT_DESTROY,
         data:data,
     }
 }
 
-export function resultMoney(data){
+export function resultMoney(data:number){
+   
     return {
         type:RESULT_MONEY,
         data:data,
     }
 }
-export function resultRoomDesc(data){
+export function resultRoomDesc(data:string){
+    //called when desc changes, The miller, his wife and the babdy
+    
     return {
         type:RESULT_ROOM_DESC,
         data:data,
     }
 }
-export function resultCreateExit(data){
+interface ICreateExit  {
+    dir:string;
+    toRoom:string;
+}
+export function resultCreateExit(data:ICreateExit){
+   
     return {
         type:RESULT_CREATE_EXIT,
         data:data,

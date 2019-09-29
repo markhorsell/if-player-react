@@ -26,6 +26,7 @@ const ExploreActions: React.SFC<IProps> = () => {
     //const { rooms, room } = this.props;
 
     const currentRoomExits:any = getRoomData(roomID, rooms).exits;
+    //console.log(currentRoomExits)
     e.preventDefault();
     switch (exit) {
       case "Up":

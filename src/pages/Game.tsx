@@ -9,18 +9,9 @@ import Inventory from "../components/Inventory";
 import Actions from "../components/GameActions";
 import ExploreActions from "../components/ExploreActions";
 import WorldMap from "../components/WorldMap";
-import Debug from '../components/Debug';
+//import Debug from '../components/Debug';
 import { IState, IRoomData, IItem } from "../types";
-
-
-
-import {
-  getRoomData,
-  getInventory,
-  //getAllowedActions,
-  //getAllowedExits,
-  getLocationObjects
-} from "../utils/dataHelper";
+import { getRoomData, getInventory, getLocationObjects } from "../utils/dataHelper";
 
 /*
 The project was built assuming it is hosted at the server root.
@@ -63,16 +54,8 @@ const ImageContainerDiv = styled.div`
   width:100%;
 `
 
-interface IRouter {
-  history:any;
-  location:any;
-  match:any;
-}
 
-
-const Game: React.FC<IRouter> = ({}) => {
-  
-  //console.log(history, location)
+const Game: React.FC = () => {
 
   const objects: Array<IItem> = useSelector((state: IState) => state.gameData.objects);
   const roomID: number | string = useSelector((state: IState) => state.gameData.room);
@@ -81,22 +64,22 @@ const Game: React.FC<IRouter> = ({}) => {
   const discoveredPaths: any = useSelector((state: IState) => state.gameData.discoveredPaths);
   const lastMessage: string = useSelector((state: IState) => state.gameData.lastMessage);
 
-
-  const getDescription = (roomData: any) => {
+  const getDescription = (roomData: IRoomData): string => {
     if (roomData && roomData.desc && roomData.desc.length) {
       return roomData.desc[0];
     } else {
       console.log("NO roomData desc for " + roomData);
+      return "";
     }
   }
-  const getImage = (roomData: any) => {
+  const getImage = (roomData: IRoomData): string => {
     if (roomData && roomData.image) {
       return roomData.image;
     } else {
       console.log("NO roomData image for " + roomData);
+      return "";
     }
   }
-
 
   //Dont Allow rendering if data is empty
   if (rooms.length === 0) {
@@ -108,30 +91,20 @@ const Game: React.FC<IRouter> = ({}) => {
   const image = getImage(currentRoomData);
   const inventory = getInventory(objects);
 
-  //TODO assets folder will be switchable later
+  // assets folder may be switchable later
   const assetsFolder = "theshivers";
-
-  //TODO - I shouldnt need to worry about local paths? Is webpack misconfigured?
-  //const isLocal = window.location.href.substr(7, 9) === "localhost";
-
-
 
   return (
     <HomeDiv>
-
       <ImageContainerDiv>
-       
         <RoomImage
           path={process.env.PUBLIC_URL + "/assets/" + assetsFolder + "/images/"}
           image={image}
         />
       </ImageContainerDiv>
-
-
       <div style={{ display: 'inline-block', width: "150px" }}>
         <ExploreActions />
       </div>
-    
       <MapContainerDiv>
         <div style={{ textAlign: "right" }}>
           <WorldMap
@@ -141,7 +114,6 @@ const Game: React.FC<IRouter> = ({}) => {
           />
         </div>
       </MapContainerDiv>
-
       <Actions />
       <TextPanelDiv>
         <Message message={lastMessage} />
@@ -149,11 +121,9 @@ const Game: React.FC<IRouter> = ({}) => {
         <LocationObjects items={locationObjects} />
         <Inventory items={inventory} money={money} />
       </TextPanelDiv>
-    {/*<Debug debug={JSON.stringify(objects)} />*/}
-
+      {/*<Debug debug={JSON.stringify(objects)} />*/}
     </HomeDiv>
   );
-
 }
 
 export default Game;

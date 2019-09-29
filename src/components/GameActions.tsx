@@ -20,63 +20,66 @@ import {
   restart
 } from "../actions";
 
-import { IState, IItem } from "../types"
+import { IState, IItem, IAction } from "../types"
 
-const Actions: React.SFC =() => {
-  
+const Actions: React.SFC = () => {
+
   const dispatch = useDispatch();
 
-  const objects:Array<IItem> = useSelector((state:IState) => state.gameData.objects);
-  const actions:Array<string> = useSelector((state:IState) => state.gameData.actions);
-  const room:number | string  = useSelector((state:IState) => state.gameData.room);
-  const money:number = useSelector((state:IState) => state.gameData.money);
+  const objects: Array<IItem> = useSelector((state: IState) => state.gameData.objects);
+  const actions: Array<IAction> = useSelector((state: IState) => state.gameData.actions);
+  const room: number | string = useSelector((state: IState) => state.gameData.room);
+  const money: number = useSelector((state: IState) => state.gameData.money);
 
-   
-  const handleAction = (action:string) => (e:React.MouseEvent<HTMLButtonElement>) => {
+
+  const handleAction = (gameActionName: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
+    //console.log(gameActionName)
     e.preventDefault();
-
-    //const { objects, actions, room, money } = this.props;
-
-    const allowableActions = getAllowedActions(
+    const allowableActions: Array<IAction> = getAllowedActions(
       objects,
       actions,
       room,
       money
-    ).map(action => {
-      return action;
+    )
+   
+    const results = allowableActions.filter((a:IAction) => {
+      return a.action === gameActionName;
     });
-    const results = allowableActions.filter(a => {
-      return a.action === action;
-    })[0].results;
+    if(results.length!==1){
+      console.log("More than one action was matched: you should combine results instead")
+    }
+ 
 
-    for (var key of Object.keys(results)) {
-      console.log("Dispatch 1+ Results from handle Action")
-      dispatchResults(key, results[key]);
+    for (let key of Object.keys(results[0].results)) {
+      //console.log("Dispatch 1 or more Results from handle Action")
+      dispatchResults(key, results[0].results[key]);
     }
   };
-  const dispatchResults = (gameAction:string, data:any)=> {
- 
-    //console.log("action data is different for each action response - so not worth typing?");
-    console.log(gameAction, data)
-    switch (gameAction) {
+
+
+  const dispatchResults = (gameActionName: string, data: any) => {
+
+    //console.log("action data is different for each action response - so any is fine for now");
+
+    switch (gameActionName) {
       case "createExitOnRollSuccess":
-        const roll = Math.ceil(Math.random() * data.sides);
+        const roll:number = Math.ceil(Math.random() * data.sides);
 
         //console.log(roll, data.sides);
         if (roll === data.sides) {
           dispatch(resultSuccessRoll(roll === data.sides));
 
-         dispatch(resultCreateExit(data));
+          dispatch(resultCreateExit({ dir: data.dir, toRoom: data.toRoom }));
 
           //rollmMssage
           dispatch(
             resultMessage(
               "You rolled a " +
-                roll +
-                " from a " +
-                data.sides +
-                " sided dice. " +
-                data.rollMessage
+              roll +
+              " from a " +
+              data.sides +
+              " sided dice. " +
+              data.rollMessage
             )
           );
         } else {
@@ -96,7 +99,7 @@ const Actions: React.SFC =() => {
         dispatch(resultTake(data));
         break;
       case "drop":
-       dispatch(resultDrop(data));
+        dispatch(resultDrop(data));
         break;
       case "changeScore":
         dispatch(resultScore(data));
@@ -124,34 +127,33 @@ const Actions: React.SFC =() => {
 
         break;
       default:
-        console.warn("WARNING result = [" + gameAction + "] is not being processed!");
+        console.warn("WARNING result = [" + gameActionName + "] is not being processed!");
     }
   }
-  
-    const allowableActions = getAllowedActions(
-      objects,
-      actions,
-      room,
-      money
-    ).map(action => {
-      return action.action;
-    });
 
-    return (
-      <Fragment>
-    
-          {allowableActions.length > 0 &&
-            allowableActions.map((action, index) => {
-              return (
-                <ActionButton  key={index} onClick={handleAction(action)}>
-                  {action}
-                </ActionButton >
-              );
-            })}
-     
-      </Fragment>
-    );
-  }
+  const allowableActions: Array<IAction> = getAllowedActions(
+    objects,
+    actions,
+    room,
+    money
+  )
+
+
+  return (
+    <Fragment>
+
+      {allowableActions.length > 0 &&
+        allowableActions.map((action, index) => {
+          return (
+            <ActionButton key={index} onClick={handleAction(action.action)}>
+              {action.action}
+            </ActionButton >
+          );
+        })}
+
+    </Fragment>
+  );
+}
 
 
 export default Actions;

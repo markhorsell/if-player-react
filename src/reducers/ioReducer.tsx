@@ -13,18 +13,40 @@ import {
   RESTART
 } from "../actions";
 
-import { IState, IRoomData, IItem } from "../types";
+import { IRoomData, IItem, /*IAction, */ IGameState} from "../types";
 
 import initialData from "../assets/theshivers/data.json";
 
+interface IReduxAction {
+ type:string;
+ data:any;
+}
 
-export function gameData(state:any = {}, action:any) {
+
+const emptyState = {
+
+    gameTitle: "",
+    score: 0,
+    money: 0,
+    room: 0,
+    lastMessage: "",
+    discoveredPaths: "",
+    move: 0,
+    rooms: [],
+    actions: "",
+    objects: []
+  
+}
+
+
+export function gameData(state:IGameState = emptyState, action:IReduxAction) {
+  //console.log(state)
  
   switch (action.type) {
     case RESTART:
       //RestartData needs to be a copy not a reference!
       const restartData = JSON.parse(JSON.stringify(initialData));
-      console.log(restartData.room)
+     
       return {
         ...state,
         gameTitle: restartData.gameTitle,
@@ -57,8 +79,8 @@ export function gameData(state:any = {}, action:any) {
       };
     case RESULT_TAKE:
       const updatedObjects = state.objects.map((obj:IItem)  => {
-        action.data.forEach((element:any) => {
-          if (obj.obj === element) {
+        action.data.forEach((itemID:string) => {
+          if (obj.obj === itemID) {
             obj.loc = "INV";
           }
         });
@@ -70,8 +92,8 @@ export function gameData(state:any = {}, action:any) {
       };
     case RESULT_DROP:
       const droppedObjects = state.objects.map((obj:IItem) => {
-        action.data.forEach((element:any) => {
-          if (obj.obj === element) {
+        action.data.forEach((itemID:string) => {
+          if (obj.obj === itemID) {
             obj.loc = state.room;
           }
         });
@@ -93,8 +115,8 @@ export function gameData(state:any = {}, action:any) {
       };
     case RESULT_DESTROY:
       const updatedDestroyObjects = state.objects.map((obj:IItem) => {
-        action.data.forEach((element:any) => {
-          if (obj.obj === element || element === "ALL") {
+        action.data.forEach((itemID:string) => {
+          if (obj.obj === itemID || itemID === "ALL") {
             obj.loc = "";
           }
         });
@@ -143,6 +165,7 @@ export function gameData(state:any = {}, action:any) {
         ...state,
         rooms: [...roomExits]
       };
+      
     case (action.type.match(/^@@redux/) || {}).input:
     case (action.type.match(/^@@INIT/) || {}).input:
       // console.log('BUILT IN '+action.type);
