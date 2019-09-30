@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Message from './Message';
 import {act} from 'react-dom/test-utils';
 
-it('App renders without crashing', async () => {
+it('Message.tsx arenders without crashing', async () => {
   await act(async () => {
     const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
+    ReactDOM.render(<Message message="The message"/>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });

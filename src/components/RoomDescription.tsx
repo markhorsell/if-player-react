@@ -7,8 +7,7 @@ const DescDiv = styled.div`
 
 	margin-top:4px;
 	line-height:20px;
-	
-`
+`;
 
 type IProps = {
 	description:string
