@@ -1,3 +1,5 @@
+
+
 import {
   //INIT_DATA,
   RESULT_ROLL,
@@ -22,6 +24,7 @@ interface IReduxAction {
  data:any;
 }
 
+console.log("TODO Run jest tests on Reducers")
 
 const emptyState = {
 
