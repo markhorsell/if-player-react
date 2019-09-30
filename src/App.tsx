@@ -24,7 +24,7 @@ import {
   restart
 } from "./actions";
 
-import {IState } from "./types"
+import { IState } from "./types"
 
 interface IProps {
 
@@ -44,22 +44,22 @@ const AppContent: React.SFC<IProps> = () => {
   });
   return (
     <>
-    {gameTitle &&
-      <>
-        <Header title={gameTitle} />
-        <Switch>
-          <Route path={`${process.env.PUBLIC_URL}/game`} component={Game} />
-          <Route path={`${process.env.PUBLIC_URL}/about`} component={About} />
-          <Route path={`${process.env.PUBLIC_URL}/todo`} component={Todo} />
-          <Redirect from={`${process.env.PUBLIC_URL}/`} to={`${process.env.PUBLIC_URL}/game`} />
-          <Redirect from={`/`} to={`${process.env.PUBLIC_URL}/game`} />
-          {`${process.env.PUBLIC_URL}/about`}
-        </Switch>
-      </>
-    }
-    {!gameTitle &&
-      <div>Not Loaded...</div>
-    }
+      {gameTitle &&
+        <>
+          <Header title={gameTitle} />
+          <Switch>
+            <Route path={`${process.env.PUBLIC_URL}/game`} component={Game} />
+            <Route path={`${process.env.PUBLIC_URL}/about`} component={About} />
+            <Route path={`${process.env.PUBLIC_URL}/todo`} component={Todo} />
+            <Redirect from={`${process.env.PUBLIC_URL}/`} to={`${process.env.PUBLIC_URL}/game`} />
+            <Redirect from={`/`} to={`${process.env.PUBLIC_URL}/game`} />
+            {`${process.env.PUBLIC_URL}/about`}
+          </Switch>
+        </>
+      }
+      {!gameTitle &&
+        <div>Not Loaded...</div>
+      }
     </>
   )
 }
@@ -67,19 +67,19 @@ const AppContent: React.SFC<IProps> = () => {
 const App: React.SFC<IProps> = () => {
   return (
     <React.StrictMode>
-  <Provider store={store.store as any}>
-    <PersistGate loading={null} persistor={store.persistor}>
-    <ThemeProvider theme={theme}>
-      <>
-        <GlobalStyles />
-        <Router>
-          <AppContent/>
-        </Router>
-      </>
-    </ThemeProvider>
-    </PersistGate>
-  </Provider>
-  </React.StrictMode>
+      <Provider store={store.store as any}>
+        <PersistGate loading={null} persistor={store.persistor}>
+          <ThemeProvider theme={theme}>
+            <>
+              <GlobalStyles />
+              <Router>
+                <AppContent />
+              </Router>
+            </>
+          </ThemeProvider>
+        </PersistGate>
+      </Provider>
+    </React.StrictMode>
 
   );
 }
