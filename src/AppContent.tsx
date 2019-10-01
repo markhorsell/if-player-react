@@ -36,7 +36,7 @@ const AppContent: React.SFC<IProps> = () => {
       }
     });
     return (
-      <>
+      <main>
         {gameTitle &&
           <>
             <Header title={gameTitle} />
@@ -53,7 +53,7 @@ const AppContent: React.SFC<IProps> = () => {
         {!gameTitle &&
           <div>Not Loaded...</div>
         }
-      </>
+      </main>
     )
   }
 
