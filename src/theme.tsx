@@ -12,10 +12,12 @@ html {
   box-sizing: border-box;
 }
 
+/*font-display: auto;*/
+/*@import url(https://fonts.googleapis.com/css?family=Jacques+Francois+Shadow|Rye|Yesteryear|VT323|Lato);*/
  
-@import url(https://fonts.googleapis.com/css?family=Jacques+Francois+Shadow|Rye|Yesteryear|VT323|Lato);
+@import url(https://fonts.googleapis.com/css?family=Yesteryear|Lato);
 body {
-	font-family: 'VT323', monospace;
+	/*font-family: 'VT323', monospace;*/
 	font-family: 'Lato', sans-serif;
 	font-size:14px;
 	letter-spacing: 1px;
