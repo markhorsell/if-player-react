@@ -24,8 +24,6 @@ interface IReduxAction {
  data:any;
 }
 
-console.log("TODO Run jest tests on Reducers")
-
 export const emptyState = {
 
     gameTitle: "",
@@ -99,7 +97,6 @@ export function gameData(state:IGameState = emptyState, action:IReduxAction) {
       };
     case RESULT_DROP:
       const droppedObjects = state.objects.map((obj:IItem) => {
-        console.log(obj)
         action.data.forEach((itemID:string) => {
           if (obj.obj === itemID) {
             obj.loc = state.room;
