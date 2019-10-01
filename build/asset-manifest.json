@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/shivers-react/static/js/main.ec368698.chunk.js",
-    "main.js.map": "/shivers-react/static/js/main.ec368698.chunk.js.map",
+    "main.js": "/shivers-react/static/js/main.941d078f.chunk.js",
+    "main.js.map": "/shivers-react/static/js/main.941d078f.chunk.js.map",
     "runtime-main.js": "/shivers-react/static/js/runtime-main.0a4670ca.js",
     "runtime-main.js.map": "/shivers-react/static/js/runtime-main.0a4670ca.js.map",
     "static/js/2.4e10cee5.chunk.js": "/shivers-react/static/js/2.4e10cee5.chunk.js",
@@ -11,7 +11,7 @@
     "static/js/4.bb8733d6.chunk.js": "/shivers-react/static/js/4.bb8733d6.chunk.js",
     "static/js/4.bb8733d6.chunk.js.map": "/shivers-react/static/js/4.bb8733d6.chunk.js.map",
     "index.html": "/shivers-react/index.html",
-    "precache-manifest.bc398aa8cc79992126dede524e84004b.js": "/shivers-react/precache-manifest.bc398aa8cc79992126dede524e84004b.js",
+    "precache-manifest.1ec219b43ae46f1d5cc0b23d5814dfa5.js": "/shivers-react/precache-manifest.1ec219b43ae46f1d5cc0b23d5814dfa5.js",
     "service-worker.js": "/shivers-react/service-worker.js"
   }
 }

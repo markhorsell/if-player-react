@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/shivers-react/precache-manifest.bc398aa8cc79992126dede524e84004b.js"
+  "/shivers-react/precache-manifest.1ec219b43ae46f1d5cc0b23d5814dfa5.js"
 );
 
 self.addEventListener('message', (event) => {
