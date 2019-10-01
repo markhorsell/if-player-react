@@ -1,12 +1,5 @@
 import { gameData, emptyState } from "./ioReducer";
-import * as actions from '../actions/';
-//import { UPDATE_POST_SUCCESS } from '../actions/posts/updatePost';
-//import expect from 'expect';
-//import getPostMock from '../mocks/getPostMock';
-
-
-
-//console.log(actions);
+import * as actions from "../actions/";
 
 describe("post reducer", () => {
   it("should return the initial state", () => {
@@ -18,8 +11,59 @@ describe("post reducer", () => {
       type: actions.RESULT_DESTROY,
       data: ["HOOK"]
     };
-   
-    expect(gameData({...emptyState,room:"MOCK ROOM",objects:[{ desc: "",loc: "",obj: "HOOK", show:false}]}, action))
-    .toEqual({...emptyState,room:"MOCK ROOM",objects:[{ desc: "",loc: "",obj: "HOOK", show:false}]});
+    expect(
+      gameData(
+        {
+          ...emptyState,
+          room: "MOCK ROOM",
+          objects: [{ desc: "", loc: "", obj: "HOOK", show: false }]
+        },
+        action
+      )
+    ).toEqual({
+      ...emptyState,
+      room: "MOCK ROOM",
+      objects: [{ desc: "", loc: "", obj: "HOOK", show: false }]
+    });
+  });
+  it("should handle RESULT_TAKE", () => {
+    const action = {
+      type: actions.RESULT_TAKE,
+      data: ["HOOK"]
+    };
+    expect(
+      gameData(
+        {
+          ...emptyState,
+          room: "MOCK ROOM",
+          objects: [{ desc: "", loc: "MOCK ROOM", obj: "HOOK", show: false }]
+        },
+        action
+      )
+    ).toEqual({
+      ...emptyState,
+      room: "MOCK ROOM",
+      objects: [{ desc: "", loc: "INV", obj: "HOOK", show: false }]
+    });
+  });
+  it("should handle RESULT_DROP", () => {
+    const action = {
+      type: actions.RESULT_DROP,
+      data: ["HOOK"]
+    };
+    expect(
+      gameData(
+        {
+          ...emptyState,
+          room: "MOCK ROOM",
+          objects: [{ desc: "", loc: "INV", obj: "HOOK", show: false }]
+        },
+        action
+      )
+    ).toEqual({
+      ...emptyState,
+      room: "MOCK ROOM",
+      objects: [{ desc: "", loc: "MOCK ROOM", obj: "HOOK", show: false }]
+    });
   });
 });
