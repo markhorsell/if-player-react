@@ -1,17 +1,22 @@
 {
   "files": {
-    "main.js": "/if-player-react/static/js/main.f47f1401.chunk.js",
-    "main.js.map": "/if-player-react/static/js/main.f47f1401.chunk.js.map",
-    "runtime-main.js": "/if-player-react/static/js/runtime-main.249fd180.js",
-    "runtime-main.js.map": "/if-player-react/static/js/runtime-main.249fd180.js.map",
-    "static/js/2.fb20d58b.chunk.js": "/if-player-react/static/js/2.fb20d58b.chunk.js",
-    "static/js/2.fb20d58b.chunk.js.map": "/if-player-react/static/js/2.fb20d58b.chunk.js.map",
-    "static/js/3.3f96a422.chunk.js": "/if-player-react/static/js/3.3f96a422.chunk.js",
-    "static/js/3.3f96a422.chunk.js.map": "/if-player-react/static/js/3.3f96a422.chunk.js.map",
-    "static/js/4.d2ddff0f.chunk.js": "/if-player-react/static/js/4.d2ddff0f.chunk.js",
-    "static/js/4.d2ddff0f.chunk.js.map": "/if-player-react/static/js/4.d2ddff0f.chunk.js.map",
+    "main.js": "/if-player-react/static/js/main.b34239e0.chunk.js",
+    "main.js.map": "/if-player-react/static/js/main.b34239e0.chunk.js.map",
+    "runtime-main.js": "/if-player-react/static/js/runtime-main.f3b8242e.js",
+    "runtime-main.js.map": "/if-player-react/static/js/runtime-main.f3b8242e.js.map",
+    "static/js/2.1ff53cd5.chunk.js": "/if-player-react/static/js/2.1ff53cd5.chunk.js",
+    "static/js/2.1ff53cd5.chunk.js.map": "/if-player-react/static/js/2.1ff53cd5.chunk.js.map",
+    "static/js/3.504bc38d.chunk.js": "/if-player-react/static/js/3.504bc38d.chunk.js",
+    "static/js/3.504bc38d.chunk.js.map": "/if-player-react/static/js/3.504bc38d.chunk.js.map",
+    "static/js/4.deab0264.chunk.js": "/if-player-react/static/js/4.deab0264.chunk.js",
+    "static/js/4.deab0264.chunk.js.map": "/if-player-react/static/js/4.deab0264.chunk.js.map",
     "index.html": "/if-player-react/index.html",
-    "precache-manifest.9b68b05091dcd09dacd5a06ce376de48.js": "/if-player-react/precache-manifest.9b68b05091dcd09dacd5a06ce376de48.js",
+    "precache-manifest.d99989fb4fbcf443f8ce4051ce234e99.js": "/if-player-react/precache-manifest.d99989fb4fbcf443f8ce4051ce234e99.js",
     "service-worker.js": "/if-player-react/service-worker.js"
-  }
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f3b8242e.js",
+    "static/js/2.1ff53cd5.chunk.js",
+    "static/js/main.b34239e0.chunk.js"
+  ]
 }
