@@ -5,7 +5,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { GlobalStyles, theme } from "./theme";
 import /*styled,*/ { ThemeProvider } from "styled-components/macro";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
 } from "react-router-dom";
 
 const AppContent = lazy(() => import('./AppContent'));
@@ -19,7 +19,7 @@ const App: React.SFC = () => {
           <ThemeProvider theme={theme}>
             <>
               <GlobalStyles />
-              <Router basename={process.env.PUBLIC_URL}>
+              <Router basename={"/"}>
                 <Suspense fallback={<div>Loading...</div>}>
                   <AppContent />
                 </Suspense>
