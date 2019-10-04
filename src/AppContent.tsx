@@ -64,7 +64,7 @@ const AppContent: React.SFC<IProps> = () => {
             <Route path={`${process.env.PUBLIC_URL}/about`} component={About} />
             <Route path={`${process.env.PUBLIC_URL}/todo`} component={Todo} />
            
-            <Redirect from={`${process.env.PUBLIC_URL}/`} to={`/game`} />
+            <Redirect from={`${process.env.PUBLIC_URL}/`} to={`${process.env.PUBLIC_URL}/game`} />
 
           </Switch>
     </main>
