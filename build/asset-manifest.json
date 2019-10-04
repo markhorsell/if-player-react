@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/shivers-react/static/js/main.941d078f.chunk.js",
-    "main.js.map": "/shivers-react/static/js/main.941d078f.chunk.js.map",
-    "runtime-main.js": "/shivers-react/static/js/runtime-main.0a4670ca.js",
-    "runtime-main.js.map": "/shivers-react/static/js/runtime-main.0a4670ca.js.map",
-    "static/js/2.4e10cee5.chunk.js": "/shivers-react/static/js/2.4e10cee5.chunk.js",
-    "static/js/2.4e10cee5.chunk.js.map": "/shivers-react/static/js/2.4e10cee5.chunk.js.map",
-    "static/js/3.3f96a422.chunk.js": "/shivers-react/static/js/3.3f96a422.chunk.js",
-    "static/js/3.3f96a422.chunk.js.map": "/shivers-react/static/js/3.3f96a422.chunk.js.map",
-    "static/js/4.bb8733d6.chunk.js": "/shivers-react/static/js/4.bb8733d6.chunk.js",
-    "static/js/4.bb8733d6.chunk.js.map": "/shivers-react/static/js/4.bb8733d6.chunk.js.map",
-    "index.html": "/shivers-react/index.html",
-    "precache-manifest.1ec219b43ae46f1d5cc0b23d5814dfa5.js": "/shivers-react/precache-manifest.1ec219b43ae46f1d5cc0b23d5814dfa5.js",
-    "service-worker.js": "/shivers-react/service-worker.js"
+    "main.js": "/if-player-react/static/js/main.78386824.chunk.js",
+    "main.js.map": "/if-player-react/static/js/main.78386824.chunk.js.map",
+    "runtime-main.js": "/if-player-react/static/js/runtime-main.2b39f67a.js",
+    "runtime-main.js.map": "/if-player-react/static/js/runtime-main.2b39f67a.js.map",
+    "static/js/2.2c84d365.chunk.js": "/if-player-react/static/js/2.2c84d365.chunk.js",
+    "static/js/2.2c84d365.chunk.js.map": "/if-player-react/static/js/2.2c84d365.chunk.js.map",
+    "static/js/3.3f96a422.chunk.js": "/if-player-react/static/js/3.3f96a422.chunk.js",
+    "static/js/3.3f96a422.chunk.js.map": "/if-player-react/static/js/3.3f96a422.chunk.js.map",
+    "static/js/4.6c732a91.chunk.js": "/if-player-react/static/js/4.6c732a91.chunk.js",
+    "static/js/4.6c732a91.chunk.js.map": "/if-player-react/static/js/4.6c732a91.chunk.js.map",
+    "index.html": "/if-player-react/index.html",
+    "precache-manifest.b6e645ca919aa6d19098b81cae15d562.js": "/if-player-react/precache-manifest.b6e645ca919aa6d19098b81cae15d562.js",
+    "service-worker.js": "/if-player-react/service-worker.js"
   }
 }
