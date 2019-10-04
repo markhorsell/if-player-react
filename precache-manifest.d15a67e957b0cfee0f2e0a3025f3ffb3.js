@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a4385728b28164bde5f0acd1d8fbeb34",
+    "revision": "f0408a5c7a5490d95796fc457bbdb330",
     "url": "/if-player-react/index.html"
   },
   {
@@ -12,15 +12,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/if-player-react/static/js/3.504bc38d.chunk.js"
   },
   {
-    "revision": "3d39d5c345a9adaa56ef",
-    "url": "/if-player-react/static/js/4.f6bac8f1.chunk.js"
+    "revision": "05a57b9fb35c9e89eccd",
+    "url": "/if-player-react/static/js/4.d9c82bf0.chunk.js"
   },
   {
-    "revision": "68903b9d9340de785344",
-    "url": "/if-player-react/static/js/main.10df4747.chunk.js"
+    "revision": "1d92b7a9855b8a09979e",
+    "url": "/if-player-react/static/js/main.04c4e6f6.chunk.js"
   },
   {
-    "revision": "4220298afe402907bab1",
-    "url": "/if-player-react/static/js/runtime-main.18099c39.js"
+    "revision": "0f65fae6cad8a91814b9",
+    "url": "/if-player-react/static/js/runtime-main.947dce5c.js"
   }
 ]);
