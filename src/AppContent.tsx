@@ -4,7 +4,10 @@ import React, { useEffect } from "react";
 import {
   Route,
   Redirect,
-  Switch
+  Switch,
+  useParams,
+  useLocation,
+  useHistory
 } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -24,40 +27,48 @@ interface IProps {
 }
 
 
-const AppContent: React.SFC = () => {
-    const dispatch = useDispatch()
-    const gameTitle = useSelector((state: IState) => state.gameData.gameTitle);
-    useEffect(() => {
-      if (gameTitle) {
-        //Alreay has gameTitle so must have come from persist
-        //console.log("game data from cache");
-      } else {
-        dispatch(restart());
-      }
-    });
-  
-    return (
-      <main>
-        {gameTitle &&
-          <>
-            <Header title={gameTitle} />
-            <Switch>
-            <Route exact path={`/`} component={Game} />
-              <Route path={`/game`} component={Game} />
-              <Route path={`/about`} component={About} />
-              <Route path={`/todo`} component={Todo} />
-              {/*<Redirect from={`/`} to={`/game`} />*/}
-           
-          
-            </Switch>
-          </>
-        }
-        {!gameTitle &&
-          <div>Not Loaded...</div>
-        }
-      </main>
-    )
+const AppContent: React.SFC<IProps> = () => {
+
+  //let { slug } = useParams()
+  let location = useLocation()
+  //let history = useHistory()
+  // console.log(slug)
+  console.log(location.pathname)
+  //console.log(history)
+  const dispatch = useDispatch()
+  const gameTitle = useSelector((state: IState) => state.gameData.gameTitle);
+
+  useEffect(() => {
+    if (gameTitle) {
+      //Alreay has gameTitle so must have come from persist
+      //console.log("game data from cache");
+    } else {
+      dispatch(restart());
+    }
+  }, []);
+
+  if(!gameTitle){
+    return <main><div>Not Loaded...</div></main>
   }
+    
+
+  return (
+    <main>
+          <Header title={gameTitle} />
+          <Switch>
+            {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+
+            <Route path={`/game`} component={Game} />
+            <Route path={`/about`} component={About} />
+            <Route path={`/todo`} component={Todo} />
+            <Route path={`/`} component={Game} />
+            {/*<Redirect from={`/`} to={`/game`} />*/}
+
+          </Switch>
+    </main>
+  )
+}
 
 
 export default AppContent;

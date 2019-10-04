@@ -12,6 +12,7 @@ const AppContent = lazy(() => import('./AppContent'));
 
 
 const App: React.SFC = () => {
+  console.log("APP")
   return (
     <React.StrictMode>
       <Provider store={store.store as any}>

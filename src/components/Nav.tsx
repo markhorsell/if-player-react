@@ -30,7 +30,9 @@ const NavDiv = styled.div`
   }
 `;
 
-const Nav: React.SFC = () => (
+const Nav: React.SFC = () => {
+  console.log("NAV")
+  return (
   <NavDiv>
     <ul>
       <li>
@@ -51,7 +53,7 @@ const Nav: React.SFC = () => (
       </li>
       */}
     </ul>
-  </NavDiv>
-);
+  </NavDiv>)}
+
 
 export default Nav;
