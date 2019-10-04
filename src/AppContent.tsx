@@ -24,7 +24,7 @@ interface IProps {
 }
 
 
-const AppContent: React.SFC = (match) => {
+const AppContent: React.SFC = () => {
     const dispatch = useDispatch()
     const gameTitle = useSelector((state: IState) => state.gameData.gameTitle);
     useEffect(() => {
@@ -35,7 +35,7 @@ const AppContent: React.SFC = (match) => {
         dispatch(restart());
       }
     });
-    console.log(match)
+  
     return (
       <main>
         {gameTitle &&
