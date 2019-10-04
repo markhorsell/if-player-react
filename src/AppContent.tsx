@@ -59,11 +59,11 @@ const AppContent: React.SFC<IProps> = () => {
             {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
 
-            <Route path={`/game`} component={Game} />
-            <Route path={`/about`} component={About} />
-            <Route path={`/todo`} component={Todo} />
-            <Route path={`/`} component={Game} />
-            {/*<Redirect from={`/`} to={`/game`} />*/}
+            <Route path={`${process.env.PUBLIC_URL}/game`} component={Game} />
+            <Route path={`${process.env.PUBLIC_URL}/about`} component={About} />
+            <Route path={`${process.env.PUBLIC_URL}/todo`} component={Todo} />
+           
+            <Redirect from={`${process.env.PUBLIC_URL}/`} to={`/game`} />
 
           </Switch>
     </main>
