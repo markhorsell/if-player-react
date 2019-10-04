@@ -41,10 +41,11 @@ const AppContent: React.SFC<IProps> = () => {
           <>
             <Header title={gameTitle} />
             <Switch>
+            <Route path={`/`} component={Game} />
               <Route path={`/game`} component={Game} />
               <Route path={`/about`} component={About} />
               <Route path={`/todo`} component={Todo} />
-              <Redirect from={`/`} to={`/game`} />
+              {/*<Redirect from={`/`} to={`/game`} />*/}
            
           
             </Switch>
