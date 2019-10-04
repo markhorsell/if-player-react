@@ -19,7 +19,7 @@ const App: React.SFC = () => {
           <ThemeProvider theme={theme}>
             <>
               <GlobalStyles />
-              <Router>
+              <Router basename={process.env.PUBLIC_URL}>
                 <Suspense fallback={<div>Loading...</div>}>
                   <AppContent />
                 </Suspense>
