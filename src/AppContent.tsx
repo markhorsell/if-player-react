@@ -33,6 +33,7 @@ const AppContent: React.SFC<IProps> = () => {
   let location = useLocation()
   //let history = useHistory()
   // console.log(slug)
+  console.log(process.env.PUBLIC_URL);
   console.log(location.pathname)
   //console.log(history)
   const dispatch = useDispatch()
