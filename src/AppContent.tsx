@@ -59,7 +59,7 @@ const AppContent: React.SFC<IProps> = () => {
           <Switch>
             {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-
+            {/* GITHUB PAGES does not support any url rewrite - so not ideal for routed apps*/}
             <Route path={`${process.env.PUBLIC_URL}/game`} component={Game} />
             <Route path={`${process.env.PUBLIC_URL}/about`} component={About} />
             <Route path={`${process.env.PUBLIC_URL}/todo`} component={Todo} />
