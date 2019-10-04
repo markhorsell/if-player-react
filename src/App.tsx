@@ -5,7 +5,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { GlobalStyles, theme } from "./theme";
 import /*styled,*/ { ThemeProvider } from "styled-components/macro";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
 } from "react-router-dom";
 
 const AppContent = lazy(() => import('./AppContent'));
