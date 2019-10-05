@@ -46,6 +46,8 @@ export function gameData(state:IGameState = emptyState, action:IReduxAction) {
     //To satisfy testing.. needs work
     return emptyState
   }
+  //any action is a move
+
  
   switch (action.type) {
     case RESTART:
@@ -63,7 +65,7 @@ export function gameData(state:IGameState = emptyState, action:IReduxAction) {
         move: restartData.move,
         rooms: restartData.rooms,
         actions: restartData.actions,
-        objects: restartData.objects
+        objects: restartData.objects,
       };
 
     case RESULT_MESSAGE:
@@ -93,7 +95,8 @@ export function gameData(state:IGameState = emptyState, action:IReduxAction) {
       });
       return {
         ...state,
-        objects: [...updatedObjects]
+        objects: [...updatedObjects],
+       
       };
     case RESULT_DROP:
       const droppedObjects = state.objects.map((obj:IItem) => {
@@ -106,7 +109,8 @@ export function gameData(state:IGameState = emptyState, action:IReduxAction) {
       });
       return {
         ...state,
-        objects: [...droppedObjects]
+        objects: [...droppedObjects],
+       
       };
     case RESULT_LOCATION:
       const paths = state.discoveredPaths.concat();
@@ -116,7 +120,8 @@ export function gameData(state:IGameState = emptyState, action:IReduxAction) {
       return {
         ...state,
         room: action.data,
-        discoveredPaths: paths
+        discoveredPaths: paths,
+        move:++state.move
       };
     case RESULT_DESTROY:
       const updatedDestroyObjects = state.objects.map((obj:IItem) => {
