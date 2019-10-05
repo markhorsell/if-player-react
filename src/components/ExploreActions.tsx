@@ -1,8 +1,6 @@
 import React, { } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 import styled from "styled-components/macro";
-
 import { ActionButton } from "../styled-constants";
 import { getRoomData, getAllowedExits } from "../utils/dataHelper";
 import { resultMessage, resultLocation } from "../actions";
@@ -12,23 +10,30 @@ const ActionsDiv = styled.div`
   display: inline-block;
   vertical-align: top;
 `;
-interface IProps {
 
+const MoveButton = styled(ActionButton)`
+  margin:5px;
+`;
+interface IExits {
+  n: string;
+  e: string;
+  s: string;
+  w: string;
+  u: string;
+  d: string;
 }
 
-const ExploreActions: React.SFC<IProps> = () => {
+const ExploreActions: React.SFC = () => {
 
   const dispatch = useDispatch();
   const roomID: number | string = useSelector((state: IState) => state.gameData.room);
   const rooms: Array<IRoomData> = useSelector((state: IState) => state.gameData.rooms);
 
-  const handleMove = (exit: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
-    //const { rooms, room } = this.props;
-
-    const currentRoomExits:any = getRoomData(roomID, rooms).exits;
+  const handleMove = (selectedExit: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
+    const currentRoomExits: IExits = getRoomData(roomID, rooms).exits;
     //console.log(currentRoomExits)
     e.preventDefault();
-    switch (exit) {
+    switch (selectedExit) {
       case "Up":
         dispatch(resultLocation(currentRoomExits.u));
         dispatch(resultMessage("You've travelled Up"));
@@ -54,96 +59,54 @@ const ExploreActions: React.SFC<IProps> = () => {
         dispatch(resultMessage("You've travelled East"));
         break;
       default:
-        console.warn("WARNING - EXIT = [" + exit + "] is not being processed!");
+        console.warn("WARNING - EXIT = [" + selectedExit + "] is not being processed!");
     }
   };
 
- 
-
-  const renderExits = (currentRoomData: any) => {
-
-    const unsortedExits = getAllowedExits(currentRoomData).map((exit:string) => {
-      if (exit === "n") return "North";
-      if (exit === "e") return "East";
-      if (exit === "s") return "South";
-      if (exit === "w") return "West";
-
-      if (exit === "u") return "Up";
-      if (exit === "d") return "Down";
-      return "NONE";
-    });
-    //However the data arrive always show n,s,w,e,u,d
-    const potentialExits = ["North", "East", "South", "West", "Up", "Down"];
-    const allowableExits = unsortedExits.filter((exit: string) => {
-      return potentialExits.includes(exit);
-    });
-
-    return (
-      <ActionsDiv>
-        <div
-          style={{
-            width: "140px",
-            display: "inline-block",
-            textAlign: "center"
-          }}
-        >
-          <div>
-            {allowableExits.includes("North")
-              ? renderOpenExit("North")
-              : renderClosedExit("North")}
+  const currentRoomData: IRoomData = getRoomData(roomID, rooms);
+  const exits = getAllowedExits(currentRoomData);
+  return (
+    <ActionsDiv>
+      <div
+        style={{
+          width: "140px",
+          display: "inline-block",
+          textAlign: "center",
+        }}
+      >
+        <MoveButton disabled={!exits.includes("n")} onClick={handleMove("North")}>
+          North
+            </MoveButton>
+        <div>
+          <div style={{ display: "inline-block", width: "50%" }}>
+            <MoveButton disabled={!exits.includes("w")} onClick={handleMove("West")}>
+              West
+            </MoveButton>
           </div>
-          <div style={{ display: "inline-block", width: "40%" }}>
-            {allowableExits.includes("West")
-              ? renderOpenExit("West")
-              : renderClosedExit("West")}
-          </div>
-          <div style={{ display: "inline-block", width: "40%" }}>
-            {allowableExits.includes("East")
-              ? renderOpenExit("East")
-              : renderClosedExit("East")}
-          </div>
-          <div>
-            {allowableExits.includes("South")
-              ? renderOpenExit("South")
-              : renderClosedExit("South")}
-          </div>
-          <div style={{ display: "inline-block", width: "40%" }}>
-            {allowableExits.includes("Up")
-              ? renderOpenExit("Up")
-              : renderClosedExit("Up")}
-          </div>
-          <div style={{ display: "inline-block", width: "40%" }}>
-            {allowableExits.includes("Down")
-              ? renderOpenExit("Down")
-              : renderClosedExit("Down")}
+          <div style={{ display: "inline-block", width: "50%" }}>
+            <MoveButton disabled={!exits.includes("e")} onClick={handleMove("East")}>
+              East
+            </MoveButton>
           </div>
         </div>
-      </ActionsDiv>
-    );
-    //}
-  };
-  const renderOpenExit = (exit: string) => {
-    return (
-      <ActionButton key={exit} onClick={handleMove(exit)}>
-        {exit}
-      </ActionButton>
-    );
-  };
-  const renderClosedExit = (exit: string) => {
-    return (
-      <ActionButton key={exit} disabled={true}>
-        {exit}
-      </ActionButton>
-    );
-  };
-
-
-  const currentRoomData:any = getRoomData(roomID, rooms);
-
-  return (
-    <>{renderExits(currentRoomData)}</>
-  )
-}
-
+        <MoveButton disabled={!exits.includes("s")} onClick={handleMove("South")}>
+          South
+            </MoveButton>
+        <div>
+          <div style={{ display: "inline-block", width: "50%" }}>
+            <MoveButton disabled={!exits.includes("u")} onClick={handleMove("Up")}>
+              Up
+            </MoveButton>
+          </div>
+          <div style={{ display: "inline-block", width: "50%" }}>
+            <MoveButton disabled={!exits.includes("d")} onClick={handleMove("Down")}>
+              Down
+            </MoveButton>
+          </div>
+        </div>
+      </div>
+    </ActionsDiv>
+  );
+};
 
 export default ExploreActions;
