@@ -14,7 +14,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Header from "./components/Header";
 import Game from "./pages/Game";
 import About from "./pages/About";
-import Todo from "./pages/Todo";
 
 import {
   restart
@@ -22,13 +21,12 @@ import {
 
 import { IState } from "./types"
 
-interface IProps {
-
-}
 
 
-const AppContent: React.SFC<IProps> = () => {
 
+const AppContent: React.SFC = () => {
+
+  /*
   //let { slug } = useParams()
   let location = useLocation()
   //let history = useHistory()
@@ -36,6 +34,7 @@ const AppContent: React.SFC<IProps> = () => {
   console.log(process.env.PUBLIC_URL);
   console.log(location.pathname)
   //console.log(history)
+  */
   const dispatch = useDispatch()
   const gameTitle = useSelector((state: IState) => state.gameData.gameTitle);
 
@@ -59,10 +58,10 @@ const AppContent: React.SFC<IProps> = () => {
           <Switch>
             {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-            {/* GITHUB PAGES does not support any url rewrite - so not ideal for routed apps*/}
+            {/* GITHUB PAGES does not support any url rewrite - so not ideal for routed apps - use a 404 redirect instead*/}
             <Route path={`${process.env.PUBLIC_URL}/game`} component={Game} />
             <Route path={`${process.env.PUBLIC_URL}/about`} component={About} />
-            <Route path={`${process.env.PUBLIC_URL}/todo`} component={Todo} />
+         
            
             <Redirect from={`${process.env.PUBLIC_URL}/`} to={`${process.env.PUBLIC_URL}/game`} />
 

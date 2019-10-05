@@ -45,13 +45,7 @@ const Nav: React.SFC = () => {
           About
         </NavLink>
       </li>
-      {/*
-      <li>
-        <NavLink to="/todo" activeStyle={{ color: "white" }}>
-          Todo
-        </NavLink>
-      </li>
-      */}
+   
     </ul>
   </NavDiv>)}
 
