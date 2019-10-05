@@ -1,22 +1,22 @@
-import React, {FunctionComponent } from "react";
+import React, { FunctionComponent } from "react";
 import PropTypes from "prop-types";
-import {  IItem } from "../types"
-import styled  from "styled-components/macro"
+import { IItem } from "../types"
+import styled from "styled-components/macro"
 
 const LocationObjectsDiv = styled.div`
-    	margin-top:10px;
+  margin-top:10px;
 	margin-bottom:10px;
 `;
 type IProps = {
-	items:Array<IItem>;
+  items: Array<IItem>;
 }
 
-const LocationObjects: FunctionComponent<IProps>   = ({ items = [] }) => {
+const LocationObjects: FunctionComponent<IProps> = ({ items = [] }) => {
   const locationObjects = items
-    .filter((item: IItem ) => {
+    .filter((item: IItem) => {
       return item.show !== false;
     })
-    .map((item: IItem ) => {
+    .map((item: IItem) => {
       return item.desc;
     })
     .join(", ");
@@ -26,8 +26,8 @@ const LocationObjects: FunctionComponent<IProps>   = ({ items = [] }) => {
       {locationObjects.length > 0 ? (
         <div>{locationObjects}.</div>
       ) : (
-        <div>Nothing of interest.</div>
-      )}
+          <div>Nothing of interest.</div>
+        )}
     </LocationObjectsDiv>
   );
 };

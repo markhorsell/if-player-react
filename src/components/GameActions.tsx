@@ -1,6 +1,6 @@
 import React, { FunctionComponent , Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import styled from "styled-components/macro";
 import { ActionButton } from "../styled-constants";
 import {
   //getRoomData,
@@ -20,7 +20,11 @@ import {
   restart
 } from "../actions";
 
-import { IState, IItem, IAction } from "../types"
+import { IState, IItem, IAction } from "../types";
+
+const GameActionButton= styled(ActionButton)`
+  margin:5px;
+`;
 
 const Actions: FunctionComponent  = () => {
 
@@ -56,12 +60,8 @@ const Actions: FunctionComponent  = () => {
     }
   };
 
-
   const dispatchResults = (gameActionName: string, data: any) => {
-
     //console.log("action data is different for each action response - so any is fine for now");
-
-
     switch (gameActionName) {
       case "createExitOnRollSuccess":
         const roll:number = Math.ceil(Math.random() * data.sides);
@@ -146,9 +146,9 @@ const Actions: FunctionComponent  = () => {
       {allowableActions.length > 0 &&
         allowableActions.map((action, index) => {
           return (
-            <ActionButton key={index} onClick={handleAction(action.action)}>
+            <GameActionButton key={index} onClick={handleAction(action.action)}>
               {action.action}
-            </ActionButton >
+            </GameActionButton >
           );
         })}
 
@@ -156,7 +156,4 @@ const Actions: FunctionComponent  = () => {
   );
 }
 
-
 export default Actions;
-
-

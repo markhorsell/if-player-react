@@ -5,9 +5,9 @@ import {
   Route,
   Redirect,
   Switch,
-  useParams,
+  /*useParams,
   useLocation,
-  useHistory
+  useHistory*/
 } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -45,12 +45,11 @@ const AppContent: React.FC = () => {
     } else {
       dispatch(restart());
     }
-  }, []);
+  }, [gameTitle, dispatch]);
 
   if(!gameTitle){
     return <main><div>Not Loaded...</div></main>
   }
-    
 
   return (
     <main>
