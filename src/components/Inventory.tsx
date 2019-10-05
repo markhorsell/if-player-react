@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled  from "styled-components/macro";
 import { IItem } from "../types"
@@ -12,7 +12,7 @@ type IProps = {
 	money:number;
 }
 
-const Inventory: React.SFC<IProps>  = ({ items = [],money=0 }) => {
+const Inventory: FunctionComponent<IProps>  = ({ items = [],money=0 }) => {
 	const inventory = items.map((item:IItem)=>{
 		return item.desc;
 	}).join(", ")+' and '+money+' coins.';

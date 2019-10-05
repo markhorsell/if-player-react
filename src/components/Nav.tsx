@@ -1,9 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components/macro";
 import { theme } from "../theme";
-
-
-import React from "react";
+import React, { FunctionComponent } from "react";
 
 const NavDiv = styled.div`
   position: absolute;
@@ -30,24 +28,24 @@ const NavDiv = styled.div`
   }
 `;
 
-const Nav: React.SFC = () => {
-  console.log("NAV")
+const Nav: FunctionComponent = () => {
   return (
-  <NavDiv>
-    <ul>
-      <li>
-        <NavLink to={`${process.env.PUBLIC_URL}/game`} activeStyle={{ color: theme.HIGHLIGHT_COLOR }}>
-          Game
+    <NavDiv>
+      <ul>
+        <li>
+          <NavLink to={`${process.env.PUBLIC_URL}/game`} activeStyle={{ color: theme.HIGHLIGHT_COLOR }}>
+            Game
         </NavLink>
-      </li>
-      <li>
-        <NavLink to={`${process.env.PUBLIC_URL}/about`} activeStyle={{ color: theme.HIGHLIGHT_COLOR }}>
-          About
+        </li>
+        <li>
+          <NavLink to={`${process.env.PUBLIC_URL}/about`} activeStyle={{ color: theme.HIGHLIGHT_COLOR }}>
+            About
         </NavLink>
-      </li>
-   
-    </ul>
-  </NavDiv>)}
+        </li>
+
+      </ul>
+    </NavDiv>)
+}
 
 
 export default Nav;

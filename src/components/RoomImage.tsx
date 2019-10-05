@@ -1,4 +1,4 @@
-import React from "react";
+import React , {FunctionComponent }from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components/macro";
 
@@ -15,7 +15,7 @@ interface IProps {
   image: string;
 }
 
-const RoomImage: React.SFC<IProps> = ({ path, image }) => {
+const RoomImage: FunctionComponent <IProps> = ({ path, image }) => {
   const imagePath: string = "url(" + path + image + ")";
   return (
     <ImageDiv style={{ backgroundImage: imagePath }} />

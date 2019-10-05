@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FunctionComponent } from "react";
 import styled  from "styled-components/macro"
 import Nav from "./Nav";
 import { theme } from "../theme";
@@ -38,7 +38,7 @@ interface IProps {
   title: string;
 }
 
-const Header: React.SFC<IProps> = props => {
+const Header: FunctionComponent <IProps> = props => {
   return <HeaderDiv>
     <div>
     <TitleDiv>{props.title}</TitleDiv>

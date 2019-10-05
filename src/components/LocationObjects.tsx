@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FunctionComponent } from "react";
 import PropTypes from "prop-types";
 import {  IItem } from "../types"
 import styled  from "styled-components/macro"
@@ -11,7 +11,7 @@ type IProps = {
 	items:Array<IItem>;
 }
 
-const LocationObjects: React.SFC<IProps>   = ({ items = [] }) => {
+const LocationObjects: FunctionComponent<IProps>   = ({ items = [] }) => {
   const locationObjects = items
     .filter((item: IItem ) => {
       return item.show !== false;

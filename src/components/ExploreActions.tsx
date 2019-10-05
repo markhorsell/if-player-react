@@ -1,4 +1,4 @@
-import React, { } from "react";
+import React, { FunctionComponent } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components/macro";
 import { ActionButton } from "../styled-constants";
@@ -23,7 +23,7 @@ interface IExits {
   d: string;
 }
 
-const ExploreActions: React.SFC = () => {
+const ExploreActions: FunctionComponent  = () => {
 
   const dispatch = useDispatch();
   const roomID: number | string = useSelector((state: IState) => state.gameData.room);

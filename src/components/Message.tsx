@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled from "styled-components/macro"
 
@@ -10,7 +10,7 @@ type IProps = {
     message: string
 }
 
-const Message: React.SFC<IProps> = ({ message }) => (
+const Message: FunctionComponent <IProps> = ({ message }) => (
     <MessageDiv>{message}</MessageDiv>
 )
 

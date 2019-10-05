@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { FunctionComponent, Suspense, lazy } from "react";
 import { Provider } from "react-redux";
 import store from "./store/configureStore";
 import { PersistGate } from "redux-persist/integration/react";
@@ -11,7 +11,7 @@ import {
 const AppContent = lazy(() => import('./AppContent'));
 
 
-const App: React.SFC = () => {
+const App: FunctionComponent = () => {
   console.log("APP")
   return (
     <React.StrictMode>

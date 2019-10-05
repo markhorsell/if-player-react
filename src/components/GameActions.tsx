@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { FunctionComponent , Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { ActionButton } from "../styled-constants";
@@ -22,7 +22,7 @@ import {
 
 import { IState, IItem, IAction } from "../types"
 
-const Actions: React.SFC = () => {
+const Actions: FunctionComponent  = () => {
 
   const dispatch = useDispatch();
 
@@ -60,6 +60,7 @@ const Actions: React.SFC = () => {
   const dispatchResults = (gameActionName: string, data: any) => {
 
     //console.log("action data is different for each action response - so any is fine for now");
+
 
     switch (gameActionName) {
       case "createExitOnRollSuccess":

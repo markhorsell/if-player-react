@@ -24,7 +24,7 @@ import { IState } from "./types"
 
 
 
-const AppContent: React.SFC = () => {
+const AppContent: React.FC = () => {
 
   /*
   //let { slug } = useParams()

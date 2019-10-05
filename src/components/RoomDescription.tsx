@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import styled  from "styled-components/macro"
@@ -13,7 +13,7 @@ type IProps = {
 	description:string
 }
 
-const RoomDescription: React.SFC<IProps>  = ({ description }) => (
+const RoomDescription: FunctionComponent <IProps>  = ({ description }) => (
 	<DescDiv>{description}</DescDiv>
 	)
 

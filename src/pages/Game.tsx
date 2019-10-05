@@ -1,4 +1,4 @@
-import React, { } from "react";
+import React, { FunctionComponent } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components/macro";
 import RoomDescription from "../components/RoomDescription";
@@ -6,7 +6,7 @@ import RoomImage from "../components/RoomImage";
 import Message from "../components/Message";
 import LocationObjects from "../components/LocationObjects";
 import Inventory from "../components/Inventory";
-import Actions from "../components/GameActions";
+import GameActions from "../components/GameActions";
 import ExploreActions from "../components/ExploreActions";
 import WorldMap from "../components/WorldMap";
 //import Debug from '../components/Debug';
@@ -55,7 +55,7 @@ const ImageContainerDiv = styled.div`
 `
 
 
-const Game: React.FC = () => {
+const Game: FunctionComponent = () => {
 
   const objects: Array<IItem> = useSelector((state: IState) => state.gameData.objects);
   const roomID: number | string = useSelector((state: IState) => state.gameData.room);
@@ -114,7 +114,7 @@ const Game: React.FC = () => {
           />
         </div>
       </MapContainerDiv>
-      <Actions />
+      <GameActions />
       <TextPanelDiv>
         <Message message={lastMessage} />
         <RoomDescription description={description} />
