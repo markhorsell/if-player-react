@@ -17,10 +17,11 @@ const PageDiv = styled.div`
   max-width: 600px;
   margin: 70px auto 0px auto;
   padding: 10px;
-  > p {
+   p {
     line-height: 20px;
     margin-block-start: 1px;
     margin-block-end: 3px;
+   
   }
 `;
 
@@ -91,8 +92,8 @@ const About: FunctionComponent = () => {
           </p>
           <p>React Version : {React.version} </p>
           <p>slug : {slug} </p>
-          <p>location : {JSON.stringify(location)} </p>
-          <p>history : {JSON.stringify(history)} </p>
+          <p style={{wordBreak: "break-all"}}>location : {JSON.stringify(location)} </p>
+          <p style={{wordBreak: "break-all"}}>history : {JSON.stringify(history)} </p>
         </div>
 
         <br />
