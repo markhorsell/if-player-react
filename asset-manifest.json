@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.js": "/if-player-react/static/js/main.04c4e6f6.chunk.js",
-    "main.js.map": "/if-player-react/static/js/main.04c4e6f6.chunk.js.map",
-    "runtime-main.js": "/if-player-react/static/js/runtime-main.947dce5c.js",
-    "runtime-main.js.map": "/if-player-react/static/js/runtime-main.947dce5c.js.map",
-    "static/js/2.2a7f36f6.chunk.js": "/if-player-react/static/js/2.2a7f36f6.chunk.js",
-    "static/js/2.2a7f36f6.chunk.js.map": "/if-player-react/static/js/2.2a7f36f6.chunk.js.map",
-    "static/js/3.504bc38d.chunk.js": "/if-player-react/static/js/3.504bc38d.chunk.js",
-    "static/js/3.504bc38d.chunk.js.map": "/if-player-react/static/js/3.504bc38d.chunk.js.map",
-    "static/js/4.d9c82bf0.chunk.js": "/if-player-react/static/js/4.d9c82bf0.chunk.js",
-    "static/js/4.d9c82bf0.chunk.js.map": "/if-player-react/static/js/4.d9c82bf0.chunk.js.map",
+    "main.js": "/if-player-react/static/js/main.2e8bde46.chunk.js",
+    "main.js.map": "/if-player-react/static/js/main.2e8bde46.chunk.js.map",
+    "runtime-main.js": "/if-player-react/static/js/runtime-main.beb080fb.js",
+    "runtime-main.js.map": "/if-player-react/static/js/runtime-main.beb080fb.js.map",
+    "static/js/2.b7585de2.chunk.js": "/if-player-react/static/js/2.b7585de2.chunk.js",
+    "static/js/2.b7585de2.chunk.js.map": "/if-player-react/static/js/2.b7585de2.chunk.js.map",
+    "static/js/3.b429be72.chunk.js": "/if-player-react/static/js/3.b429be72.chunk.js",
+    "static/js/3.b429be72.chunk.js.map": "/if-player-react/static/js/3.b429be72.chunk.js.map",
+    "static/js/4.4bdadac9.chunk.js": "/if-player-react/static/js/4.4bdadac9.chunk.js",
+    "static/js/4.4bdadac9.chunk.js.map": "/if-player-react/static/js/4.4bdadac9.chunk.js.map",
     "index.html": "/if-player-react/index.html",
-    "precache-manifest.d15a67e957b0cfee0f2e0a3025f3ffb3.js": "/if-player-react/precache-manifest.d15a67e957b0cfee0f2e0a3025f3ffb3.js",
+    "precache-manifest.adbd88d282397f82d30ce6d1482b5699.js": "/if-player-react/precache-manifest.adbd88d282397f82d30ce6d1482b5699.js",
     "service-worker.js": "/if-player-react/service-worker.js"
   },
   "entrypoints": [
-    "static/js/runtime-main.947dce5c.js",
-    "static/js/2.2a7f36f6.chunk.js",
-    "static/js/main.04c4e6f6.chunk.js"
+    "static/js/runtime-main.beb080fb.js",
+    "static/js/2.b7585de2.chunk.js",
+    "static/js/main.2e8bde46.chunk.js"
   ]
 }
