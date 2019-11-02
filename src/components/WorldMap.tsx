@@ -34,7 +34,7 @@ const WorldMap: FunctionComponent<IProps> = React.memo(props => {
         //TODO why is mapContainerRef sometimes missing?
         return;
       }
-      setMapWidth(Math.max(Math.min(mapContainerRef.current.offsetWidth, 100), 100));
+      setMapWidth(Math.max(Math.min(mapContainerRef.current.offsetWidth, 100), 150));
     }, 40);
 
     updateCanvasDebounce()
@@ -78,10 +78,11 @@ const WorldMap: FunctionComponent<IProps> = React.memo(props => {
         ctx.fillRect(0, 0, mapWidth, mapWidth);
         ctx.fill();
         ctx.restore();
-        ctx.strokeStyle = "#333";
-        ctx.setLineDash([1, 5]);
 
         //DRAW ROOM LINKS
+        ctx.strokeStyle = "#AAA";
+        ctx.lineWidth = 1;
+        ctx.setLineDash([1]);
 
         for (let room of visitedRooms) {
           const grid = parseInt(room.id, 10);

@@ -38,7 +38,9 @@ const TextPanelDiv = styled.div`
 const MapContainerDiv = styled.div`
   display: inline-block;
   width: calc(100% - 150px);
+
   /*width:120px;*/
+
   vertical-align:top;
 
   @media only screen and (min-width: 600px) {
