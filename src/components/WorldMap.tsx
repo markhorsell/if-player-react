@@ -18,10 +18,15 @@ interface IProps {
   discoveredPaths: Array<string>;
 }
 
-const WorldMap: FunctionComponent<IProps> = ({ roomID, rooms, discoveredPaths }) => {
+
+const WorldMap: FunctionComponent<IProps> = React.memo(props => {
+  const { roomID, rooms, discoveredPaths } = props;
+  //const WorldMap: FunctionComponent<IProps> = ({ roomID, rooms, discoveredPaths }) => {
+  // console.log("MAP RENDER")
   const canvasRef = useRef<any>();
   const mapContainerRef = useRef<any>();
-  const [mapWidth, setMapWidth] = useState(0)
+  const [mapWidth, setMapWidth] = useState(0);
+ 
 
   useEffect(() => {
     const updateCanvasDebounce = debounce(() => {
@@ -152,6 +157,6 @@ const WorldMap: FunctionComponent<IProps> = ({ roomID, rooms, discoveredPaths })
     </>
 
   );
-}
+})
 
 export default WorldMap;
