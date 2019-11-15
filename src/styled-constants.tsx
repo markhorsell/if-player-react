@@ -8,6 +8,7 @@ display: inline-block;
 padding: 3px 4px 2px 4px;
 /*margin: 3px 5.9px 3px 0px;*/
 min-width: 52px;
+min-height:40px;
 border: none;
 border-radius: 2px;
 background-color: ${props => theme.BUTTON_ENABLED};
