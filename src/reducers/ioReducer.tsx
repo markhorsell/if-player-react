@@ -24,7 +24,7 @@ interface IReduxAction {
  data:any;
 }
 
-export const emptyState = {
+export const emptyState:IGameState = {
 
     gameTitle: "",
     score: 0,
