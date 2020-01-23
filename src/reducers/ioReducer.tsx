@@ -42,6 +42,7 @@ export const emptyState:IGameState = {
 
 export function gameData(state:IGameState = emptyState, action:IReduxAction) {
   //console.log(state)
+  console.log(action);
   if(!action.type){
     //To satisfy testing.. needs work
     return emptyState
@@ -52,7 +53,7 @@ export function gameData(state:IGameState = emptyState, action:IReduxAction) {
   switch (action.type) {
     case RESTART:
       //RestartData needs to be a copy not a reference!
-      const restartData = JSON.parse(JSON.stringify(initialData));
+      const restartData:IGameState = JSON.parse(JSON.stringify(initialData));
      
       return {
         ...state,
@@ -182,7 +183,7 @@ export function gameData(state:IGameState = emptyState, action:IReduxAction) {
       return state;
 
     default:
-      //  console.log('REDUCER DIDNT PROCESS [' + action.type + ']');
+       console.log('REDUCER DIDNT PROCESS [' + action.type + ']');
       return state;
   }
 }

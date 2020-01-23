@@ -16,12 +16,14 @@ export const RESULT_CREATE_EXIT='RESULT_CREATE_EXIT';
 export const RESTART='RESTART';
 
 export function restart(){
+   
     return {
         type:RESTART,
         
     }
 }
 
+/* not used?
 export function initData(data:string | number){
     console.log('is this just a room set?')
    
@@ -30,7 +32,7 @@ export function initData(data:string | number){
         data: data,
     }
 }
-
+*/
 export function resultSuccessRoll(data:boolean){
    
     return {
