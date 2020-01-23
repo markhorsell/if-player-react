@@ -21,7 +21,7 @@ import initialData from "../assets/theshivers/data.json";
 
 interface IReduxAction {
  type:string;
- data:any;
+ data?:any; // data is not always passed in because of Redux , breaks strict mode typescript
 }
 
 export const emptyState:IGameState = {
@@ -39,6 +39,7 @@ export const emptyState:IGameState = {
   
 }
 
+//actions cannot be of type IReduxAction 
 
 export function gameData(state:IGameState = emptyState, action:IReduxAction) {
   //console.log(state)
